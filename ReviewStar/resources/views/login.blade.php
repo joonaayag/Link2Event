@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('titulo', 'Login')
+@section('titulo', '- Login')
 
 @section('contenido')
 
@@ -37,7 +37,7 @@
 
                     <!-- Enlace para registrar -->
                     <div class="mt-3 text-center">
-                        <p>No tienes cuenta? <a href="{{ route('registrar') }}">Regístrate</a></p>
+                        <p>No tienes cuenta? <a href="{{ route('registrarse') }}">Regístrate</a></p>
                     </div>
                 </form>
             </div>

@@ -8,15 +8,15 @@ class UserController extends Controller
 {
     
     public function inicio(){
-        return view('base');
+        return view('layouts\base');
     }
 
     public function login(){
         return view('login');
     }
 
-    public function registrar(){
-        return view('registrar');
+    public function registrarse(){
+        return view('registrarse');
     }
 
 }

@@ -10,8 +10,8 @@ Route::get('/user', function (Request $request) {
 
 
 //Rutas GET
-Route::get('/', [UserController::class, 'inicio']);
+Route::get('/', [UserController::class, 'inicio'])->name('base');
 
 Route::get('/login', [UserController::class, 'login'])->name('login');
 
-Route::get('/registrar', [UserController::class, 'registrar'])->name('registrar');
+Route::get('/registrarse', [UserController::class, 'registrarse'])->name('registrarse');
