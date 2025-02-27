@@ -20,3 +20,5 @@ Route::get('/registrarse', [UserController::class, 'registrarse'])->name('regist
 
 //Rutas POST
 Route::post('/registrarse', [AutentificadorController::class, 'registrar'])->name('registrar');
+
+Route::post('/login', [AutentificadorController::class, 'iniciarSesion'])->name('login.post');

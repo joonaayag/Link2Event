@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -17,7 +18,7 @@ class AutentificadorController extends Controller
             'apellidos' => 'required|string|max:255',
             'edad' => 'required|integer|min:18',
             'nacionalidad' => 'required|string|max:255',
-            'tipo_identificacion' => 'required|in:NIE,DNI',
+            'tipo_identificacion' => 'required|in:NIF,DNI',
             'num_identificacion' => 'required|string|max:255|unique:users',
             'direccion' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -42,5 +43,26 @@ class AutentificadorController extends Controller
 
         // Redirigir con mensaje de éxito
         return redirect()->route('login')->with('success', 'Registro exitoso. Inicia sesión.');
+    }
+
+    public function iniciarSesion(Request $request)
+    {
+        // Validar los datos del formulario
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        // Intentar autenticar al usuario
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            // La autenticación fue exitosa
+            return redirect()->route('base');
+        }
+
+        // Si las credenciales son incorrectas
+        return back()->withErrors([
+            'email' => 'Las credenciales proporcionadas son incorrectas.',
+        ]);
     }
 }
