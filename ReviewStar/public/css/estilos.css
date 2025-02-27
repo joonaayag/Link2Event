@@ -12,6 +12,11 @@ body {
   --accent-color: #f1c40f;
   --transition-speed: 0.3s;
 }
+::selection {
+  background-color: var(--accent-color); /* Fondo amarillo */
+  color: #2c3e50; /* Texto oscuro */
+}
+
 
 .navbar {
   background-color: var(--navbar-bg);
@@ -159,6 +164,26 @@ footer {
 .card-header {
   background-color: var(--navbar-bg);
   color: white;
+}
+
+.form-control,
+select {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+}
+
+select {
+  background-color: white;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 5px rgba(241, 196, 15, 0.6);
 }
 
 
