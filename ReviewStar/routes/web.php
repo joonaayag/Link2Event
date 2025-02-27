@@ -17,6 +17,8 @@ Route::get('/login', [UserController::class, 'login'])->name('login');
 
 Route::get('/registrarse', [UserController::class, 'registrarse'])->name('registrarse');
 
+Route::get('/conciertos', [UserController::class,'conciertos'])->name('conciertos');
+
 
 //Rutas POST
 Route::post('/registrarse', [AutentificadorController::class, 'registrar'])->name('registrar');

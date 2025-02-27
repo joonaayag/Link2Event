@@ -19,4 +19,8 @@ class UserController extends Controller
         return view('registrarse');
     }
 
+    public function conciertos(){
+        return view('conciertos');
+    }
+
 }

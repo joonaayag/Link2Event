@@ -21,55 +21,60 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="logo-container">
-                <img src="assets/img/logo.png" class="navbar-brand" alt="Imagen logo">
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="{{ route('base') }}">
+            <img src="assets/img/logo.png" alt="Logo" height="50">
+        </a>
 
-            <ul class="navbar-nav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('base') }}">
-                        <img src="assets/iconos/home.svg" class="nav-icon" alt="Icono de inicio">
-                        <span>Inicio</span>
+                    <a class="nav-link {{ Route::currentRouteName() == 'base' ? 'active' : '' }}" 
+                        href="{{ route('base') }}">
+                        <img src="assets/iconos/home.svg" class="nav-icon" alt="Inicio"> Inicio
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <img src="assets/iconos/ticket.svg" class="nav-icon" alt="Icono usuario">
-                        <span>Conciertos</span>
+                    <a class="nav-link {{ Route::currentRouteName() == 'conciertos' ? 'active' : '' }}" 
+                        href="{{ route('conciertos') }}">
+                        <img src="assets/iconos/ticket.svg" class="nav-icon" alt="Conciertos"> Conciertos
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <img src="assets/iconos/favoritos.svg" class="nav-icon" alt="Icono favoritos">
-                        <span>Favoritos</span>
+                    <a class="nav-link {{ Route::currentRouteName() == 'favoritos' ? 'active' : '' }}" 
+                        href="">
+                        <img src="assets/iconos/favoritos.svg" class="nav-icon" alt="Favoritos"> Favoritos
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <img src="assets/iconos/informacion.svg" class="nav-icon" alt="Icono de contactanos">
-                        <span>Sobre nosotros</span>
+                    <a class="nav-link {{ Route::currentRouteName() == 'sobre' ? 'active' : '' }}" 
+                        href="">
+                        <img src="assets/iconos/informacion.svg" class="nav-icon" alt="Sobre Nosotros"> Sobre Nosotros
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <img src="assets/iconos/contacto.svg" class="nav-icon" alt="Icono de contacto">
-                        <span>Contacto</span>
+                    <a class="nav-link {{ Route::currentRouteName() == 'contacto' ? 'active' : '' }}" 
+                        href="">
+                        <img src="assets/iconos/contacto.svg" class="nav-icon" alt="Contacto"> Contacto
                     </a>
                 </li>
             </ul>
 
-            <div class="seccion-usuario">
-                <!-- Botón de login/logout -->
-                <a class="boton-usuario" href="{{ route('login') }}" id="boton-usuario">
-                    <img src="assets/iconos/usuario.svg" class="nav-icon" alt="Icono usuario">
-                    <span>Iniciar sesión</span>
+            <div class="d-flex">
+                <a class="btn btn-warning" href="{{ route('login') }}" id="boton-usuario">
+                    <img src="assets/iconos/usuario.svg" class="nav-icon" alt="Usuario"> Iniciar sesión
                 </a>
             </div>
-
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Contenido principal -->
     <div class="container my-4">
@@ -80,6 +85,7 @@
     <footer>
         <p>&copy; 2025 ReviewStar. Todos los derechos reservados.</p>
     </footer>
-    
+
 </body>
+
 </html>
