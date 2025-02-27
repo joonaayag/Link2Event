@@ -13,8 +13,8 @@ body {
   --transition-speed: 0.3s;
 }
 ::selection {
-  background-color: var(--accent-color); /* Fondo amarillo */
-  color: #2c3e50; /* Texto oscuro */
+  background-color: var(--accent-color);
+  color: #2c3e50;
 }
 
 
