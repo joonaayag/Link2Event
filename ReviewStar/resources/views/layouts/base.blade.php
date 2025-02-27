@@ -30,31 +30,31 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('base') }}">
-                        <i class="fas fa-home nav-icon"></i>
+                        <img src="assets/iconos/home.svg" class="nav-icon" alt="Icono de inicio">
                         <span>Inicio</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">
-                        <i class="fas fa-music nav-icon"></i>
+                        <img src="assets/iconos/ticket.svg" class="nav-icon" alt="Icono usuario">
                         <span>Conciertos</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">
-                        <img src="assets/iconos/favoritos.svg" class="nav-icon" alt="Icono usuario">
+                        <img src="assets/iconos/favoritos.svg" class="nav-icon" alt="Icono favoritos">
                         <span>Favoritos</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">
-                        <i class="fas fa-info-circle nav-icon"></i>
+                        <img src="assets/iconos/informacion.svg" class="nav-icon" alt="Icono de contactanos">
                         <span>Sobre nosotros</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">
-                        <i class="fas fa-envelope nav-icon"></i>
+                        <img src="assets/iconos/contacto.svg" class="nav-icon" alt="Icono de contacto">
                         <span>Contacto</span>
                     </a>
                 </li>

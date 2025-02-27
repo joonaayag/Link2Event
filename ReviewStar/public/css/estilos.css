@@ -151,10 +151,15 @@ footer {
 }
 
 .card {
-  border: none; 
+  border: 2px solid var(--accent-color); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+  width: 500px;
 }
 
 .card-header {
-  background-color: #4a6bcc;
+  background-color: var(--navbar-bg);
   color: white;
 }
+
+
+
