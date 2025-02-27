@@ -1,35 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReviewStar @yield('titulo')</title>
 
     <!-- Hay que agregar el Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
     <!-- Link css -->
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
-    
+
 </head>
+
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid flex-column">
-            <a class="navbar-brand" href="#">ReviewStar</a>
-            <ul class="nav flex-column">
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <img src="assets/img/logo.png" class="navbar-brand" alt="Imagen logo">
+            </div>
+
+            <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="{{ route('base') }}" class="nav-link text-white">Inicio</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('base') }}">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>Inicio</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('login') }}" class="nav-link text-white">Iniciar sesión</a>
+                    <a class="nav-link" href="">
+                        <i class="fas fa-music nav-icon"></i>
+                        <span>Conciertos</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('registrarse') }}" class="nav-link text-white">Registrarse</a>
+                    <a class="nav-link" href="">
+                        <img src="assets/iconos/favoritos.svg" class="nav-icon" alt="Icono usuario">
+                        <span>Favoritos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">
+                        <i class="fas fa-info-circle nav-icon"></i>
+                        <span>Sobre nosotros</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">
+                        <i class="fas fa-envelope nav-icon"></i>
+                        <span>Contacto</span>
+                    </a>
                 </li>
             </ul>
+
+            <div class="seccion-usuario">
+                <!-- Botón de login/logout -->
+                <a class="boton-usuario" href="{{ route('login') }}" id="boton-usuario">
+                    <img src="assets/iconos/usuario.svg" class="nav-icon" alt="Icono usuario">
+                    <span>Iniciar sesión</span>
+                </a>
+            </div>
+
         </div>
     </nav>
 
@@ -42,6 +80,6 @@
     <footer>
         <p>&copy; 2025 ReviewStar. Todos los derechos reservados.</p>
     </footer>
-
+    
 </body>
 </html>

@@ -4,13 +4,127 @@ body {
   min-height: 100vh;
 }
 
+:root {
+  --navbar-bg: #2c3e50;
+  --navbar-hover: #34495e;
+  --navbar-active: #1a2530;
+  --text-color: #ecf0f1;
+  --accent-color: #f1c40f;
+  --transition-speed: 0.3s;
+}
+
 .navbar {
-  background-color: #4a6bcc;
+  background-color: var(--navbar-bg);
   height: 100vh;
-  width: 250px;
+  width: 260px;
   position: fixed;
   left: 0;
   top: 0;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.6);
+  border-radius: 0 40px 0 0;
+  z-index: 1050;
+}
+
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+}
+
+.navbar-brand {
+  height: 180px;
+  width: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 0;
+  margin-bottom: auto;
+}
+
+.nav-item {
+  width: 95%;
+  margin-bottom: 8px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-color);
+  border-radius: 0 30px 30px 0;
+  text-decoration: none;
+}
+
+.nav-link.active {
+  background-color: var(--navbar-active);
+  color: var(--accent-color) !important;
+  border-left: 4px solid var(--accent-color);
+}
+
+.nav-link:hover {
+  background: var(--navbar-hover);
+  transform: translateX(5px);
+  color: var(--accent-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-icon {
+  margin-right: 12px;
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+}
+
+.seccion-usuario {
+  margin-top: auto;
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.boton-usuario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  background-color: var(--accent-color);
+  color: var(--navbar-bg);
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.boton-usuario:hover {
+  background-color: #e6b800;
+  transform: translateY(-2px);
+}
+
+.auth-icon {
+  margin-right: 8px;
 }
 
 .container {
