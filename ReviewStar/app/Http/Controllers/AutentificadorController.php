@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,14 +19,25 @@ class AutentificadorController extends Controller
             'edad' => 'required|integer|min:18',
             'nacionalidad' => 'required|string|max:255',
             'tipo_identificacion' => 'required|in:NIF,DNI',
-            'num_identificacion' => 'required|string|max:255|unique:users',
             'direccion' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:usuarios',
             'password' => 'required|string|min:6|confirmed'
         ]);
 
+        // dependiendo de qué seleccione el usuario tiene una validación u otra
+        if ($request->tipo_identificacion == 'NIF') {
+            if (!preg_match('/^[XYZ]?\d{5,8}[A-Z]$/', $request->num_identificacion)) {
+                return redirect()->back()->withErrors(['num_identificacion' => 'El NIF debe tener el formato correcto: [XYZ]-XXXXXXXX-A o XXXXXXXX-A'])->withInput();
+            }
+        } elseif ($request->tipo_identificacion == 'DNI') {
+            if (!preg_match('/^\d{8}[A-Z]$/', $request->num_identificacion)) {
+                return redirect()->back()->withErrors(['num_identificacion' => 'El DNI debe tener el formato correcto: XXXXXXXX-A'])->withInput();
+            }
+        }
+
+
         // Crear y guardar el usuario en la base de datos
-        $usuario = User::create([
+        $usuario = Usuario::create([
             'nombre' => $request->nombre,
             'apellidos' => $request->apellidos,
             'edad' => $request->edad,
@@ -54,9 +65,20 @@ class AutentificadorController extends Controller
         ]);
 
         // Intentar autenticar al usuario
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            // La autenticación fue exitosa
+        $credenciales = $request->only('email', 'password');
+        if (Auth::attempt($credenciales)) {
+            // Si la autenticación fue exitosa
+
+
+
+            ///////Hay que retomar por aquí (no funciona la sesión)
+
+
+
+
+            //Inicio la sesión
+            $request->session()->regenerate();
+            //Redirijo
             return redirect()->route('base');
         }
 
@@ -64,5 +86,15 @@ class AutentificadorController extends Controller
         return back()->withErrors([
             'email' => 'Las credenciales proporcionadas son incorrectas.',
         ]);
+    }
+
+    public function cerrarSesion(Request $request)
+    {
+        Auth::logout();
+        // Elimina los datos de la sesión
+        $request->session()->invalidate();
+        // Genera un nuevo token CSRF para que las siguientes solicitudes sean seguras (cambia el token)
+        $request->session()->regenerateToken();
+        return redirect()->route('layouts.base');
     }
 }

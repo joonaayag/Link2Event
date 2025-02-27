@@ -11,16 +11,6 @@
                     <h4 class="mb-0">Registrarse</h4>
                 </div>
                 <div class="card-body">
-                    {{-- Mostrar errores generales --}}
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     {{-- Los value que tienen "OLD" sirven para que el valor persista si hay un error en otro campo --}}
                     <form action="{{ route('registrar') }}" method="POST">
                         @csrf
