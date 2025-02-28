@@ -24,7 +24,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
+                        <div class="input-group">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
+                            <button type="button" class="btn btn-outline-secondary" id="botonContraseña">
+                                <i id="eyeIcon" class="fas fa-eye"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="form-check mb-3">
                         <input type="checkbox" class="form-check-input" id="recordar" name="recordar">
@@ -41,3 +46,4 @@
 </div>
 
 @endsection
+
