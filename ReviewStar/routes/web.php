@@ -19,9 +19,9 @@ Route::get('/registrarse', [UserController::class, 'registrarse'])->name('regist
 Route::middleware(['auth'])->group(function () {
     Route::get('/conciertos', [UserController::class, 'conciertos'])->name('conciertos');
 
-    Route::post('/logout', [AutentificadorController::class, 'cerrarSesion'])->name('logout');
+    Route::get('/logout', [AutentificadorController::class, 'cerrarSesion'])->name('logout');
 });
 
 //Rutas POST
 Route::post('/registrarse', [AutentificadorController::class, 'registrar'])->name('registrar');
-Route::post('/bienvenida', [AutentificadorController::class, 'iniciarSesion'])->name('login.post');
+Route::post('/bienvenida', [AutentificadorController::class, 'iniciarSesion'])->name('bienvenida');

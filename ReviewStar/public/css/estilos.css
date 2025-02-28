@@ -13,7 +13,8 @@
 body {
   font-family: 'Roboto', sans-serif;
   /* Aumentamos el padding-top para dar espacio al navbar de 120px de alto */
-  padding-top: 160px; /* Valor aumentado para dar espacio al navbar alto */
+  padding-top: 160px;
+  /* Valor aumentado para dar espacio al navbar alto */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -163,7 +164,7 @@ body {
   border-color: var(--navbar-bg);
   font-weight: 500;
   padding: 10px 20px;
-  
+
   transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -234,4 +235,15 @@ footer p {
   text-align: center;
   padding-bottom: 10px;
   border-bottom: 3px solid var(--accent-color);
+}
+
+/* ajustes para navBar */
+
+.foto-perfil {
+  height: 50px;
+  width: 50px;
+}
+
+.parrafo-perfil {
+  margin-bottom: 0px !important;
 }

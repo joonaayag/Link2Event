@@ -8,7 +8,7 @@ class UserController extends Controller
 {
     
     public function inicio(){
-        return view('layouts\base');
+        return view('layouts/base');
     }
 
     public function login(){

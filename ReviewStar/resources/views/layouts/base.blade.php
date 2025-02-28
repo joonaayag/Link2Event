@@ -66,14 +66,37 @@
                     </a>
                 </li>
             </ul>
+
+            @if (!Auth::check())
             <div class="d-flex">
                 <a class="btn btn-warning" href="{{ route('login') }}" id="boton-usuario">
                     <img src="assets/iconos/usuario.svg" class="nav-icon" alt="Usuario"> Iniciar sesión
                 </a>
             </div>
-            
-            
-            
+            @else
+            <div class="d-flex align-items-center ">
+                <!-- Nombre del usuario a la izquierda -->
+                <p class="navbar-brand parrafo-perfil">{{ Auth::user()->nombre }} {{ explode(' ', Auth::user()->apellidos)[0] }}</p>{{-- Para coger solo el primer apellido --}}
+    
+                <!-- Espaciador que empuja el perfil a la derecha -->
+                <div class="ms-auto">
+                    <!-- Dropdown para la foto de perfil -->
+                    <div class="dropdown">
+                        <img src="assets/img/foto-default.png" alt="Foto de perfil" 
+                             class="rounded-circle dropdown-toggle foto-perfil" 
+                             data-bs-toggle="dropdown" 
+                             aria-expanded="false">
+    
+                        <!-- Menú desplegable -->
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Ver perfil</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{route('logout')}}">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
     </div>
 </nav>

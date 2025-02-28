@@ -58,19 +58,23 @@ class AutentificadorController extends Controller
 
     public function iniciarSesion(Request $request)
     {
+        $recordar = $request->has('recordar'); // Comprueba si el checkbox está marcado para mantener la sesión
+
+        if (!$recordar) {
+            config(['session.lifetime' => 2]); // Si no le ha dado a recordar se pone un tiempo de 2 minutos de sesión
+        }
+
         // Validar los datos del formulario
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
         // Intentar autenticar al usuario
         $credenciales = $request->only('email', 'password');
-        if (Auth::attempt($credenciales)) {
-            // Si la autenticación fue exitosa
+        
+        if (Auth::attempt($credenciales, $recordar)) { // Si la autenticación fue exitosa
             //Inicio la sesión
             $request->session()->regenerate();
-            //Redirijo
             return view('bienvenida');
         }
 
@@ -87,6 +91,6 @@ class AutentificadorController extends Controller
         $request->session()->invalidate();
         // Genera un nuevo token CSRF para que las siguientes solicitudes sean seguras (cambia el token)
         $request->session()->regenerateToken();
-        return redirect()->route('layouts.base');
+        return redirect()->route('base');
     }
 }
