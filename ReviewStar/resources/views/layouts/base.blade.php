@@ -65,20 +65,7 @@
                         <img src="assets/iconos/contacto.svg" class="nav-icon" alt="Contacto"> Contacto
                     </a>
                 </li>
-                @if (Auth::check())
-                <li class="nav-item">
-                    <p>{{ Auth::user()->name }}</p>
-                </li>
-                @endif
             </ul>
-
-            @if (Auth::check())
-            <div class="d-flex">
-                <a class="btn btn-danger" href="{{ route('logout') }}" id="boton-usuario">
-                    <img src="assets/iconos/salir.svg" class="nav-icon" alt="Salir"> Salir
-                </a>
-            </div>
-            @else
             <div class="d-flex">
                 <a class="btn btn-warning" href="{{ route('login') }}" id="boton-usuario">
                     <img src="assets/iconos/usuario.svg" class="nav-icon" alt="Usuario"> Iniciar sesión
@@ -86,7 +73,7 @@
             </div>
             
             
-            @endif
+            
         </div>
     </div>
 </nav>

@@ -68,18 +68,10 @@ class AutentificadorController extends Controller
         $credenciales = $request->only('email', 'password');
         if (Auth::attempt($credenciales)) {
             // Si la autenticación fue exitosa
-
-
-
-            ///////Hay que retomar por aquí (no funciona la sesión)
-
-
-
-
             //Inicio la sesión
             $request->session()->regenerate();
             //Redirijo
-            return redirect()->route('base');
+            return view('bienvenida');
         }
 
         // Si las credenciales son incorrectas

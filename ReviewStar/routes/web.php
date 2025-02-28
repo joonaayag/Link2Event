@@ -17,10 +17,11 @@ Route::get('/registrarse', [UserController::class, 'registrarse'])->name('regist
 
 //Rutas cuyo acceso necesita ser autentificado (si no estas autentificado no puedes acceder a estas rutas)
 Route::middleware(['auth'])->group(function () {
-    Route::get('/conciertos', [UserController::class,'conciertos'])->name('conciertos');
+    Route::get('/conciertos', [UserController::class, 'conciertos'])->name('conciertos');
+
     Route::post('/logout', [AutentificadorController::class, 'cerrarSesion'])->name('logout');
 });
 
 //Rutas POST
 Route::post('/registrarse', [AutentificadorController::class, 'registrar'])->name('registrar');
-Route::post('/login', [AutentificadorController::class, 'iniciarSesion'])->name('login.post');
+Route::post('/bienvenida', [AutentificadorController::class, 'iniciarSesion'])->name('login.post');
