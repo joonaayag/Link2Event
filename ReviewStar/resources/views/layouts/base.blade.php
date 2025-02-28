@@ -31,7 +31,7 @@
     <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand" href="{{ route('base') }}">
-            <img src="assets/img/logo.png" alt="Logo" height="50">
+            <img src="{{asset('assets/img/logo.png')}}" alt="Logo" height="50">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -44,31 +44,31 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Route::currentRouteName() == 'base' ? 'active' : '' }}" 
                         href="{{ route('base') }}">
-                        <img src="assets/iconos/home.svg" class="nav-icon" alt="Inicio"> Inicio
+                        <img src="{{asset('assets/iconos/home.svg')}}" class="nav-icon" alt="Inicio"> Inicio
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Route::currentRouteName() == 'conciertos' ? 'active' : '' }}" 
                         href="{{ route('conciertos') }}">
-                        <img src="assets/iconos/ticket.svg" class="nav-icon" alt="Conciertos"> Conciertos
+                        <img src="{{asset('assets/iconos/ticket.svg')}}" class="nav-icon" alt="Conciertos"> Conciertos
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Route::currentRouteName() == 'favoritos' ? 'active' : '' }}" 
                         href="">
-                        <img src="assets/iconos/favoritos.svg" class="nav-icon" alt="Favoritos"> Favoritos
+                        <img src="{{asset('assets/iconos/favoritos.svg')}}" class="nav-icon" alt="Favoritos"> Favoritos
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Route::currentRouteName() == 'sobre' ? 'active' : '' }}" 
                         href="">
-                        <img src="assets/iconos/informacion.svg" class="nav-icon" alt="Sobre Nosotros"> Sobre Nosotros
+                        <img src="{{asset('assets/iconos/informacion.svg')}}" class="nav-icon" alt="Sobre Nosotros"> Sobre Nosotros
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Route::currentRouteName() == 'contacto' ? 'active' : '' }}" 
                         href="">
-                        <img src="assets/iconos/contacto.svg" class="nav-icon" alt="Contacto"> Contacto
+                        <img src="{{asset('assets/iconos/contacto.svg')}}" class="nav-icon" alt="Contacto"> Contacto
                     </a>
                 </li>
             </ul>
@@ -76,7 +76,7 @@
             @if (!Auth::check())
             <div class="d-flex">
                 <a class="btn btn-warning" href="{{ route('login') }}" id="boton-usuario">
-                    <img src="assets/iconos/usuario.svg" class="nav-icon" alt="Usuario"> Iniciar sesión
+                    <img src="{{asset('assets/iconos/usuario.svg')}}" class="nav-icon" alt="Usuario"> Iniciar sesión
                 </a>
             </div>
             @else
@@ -88,7 +88,7 @@
                 <div class="ms-auto">
                     <!-- Dropdown para la foto de perfil -->
                     <div class="dropdown">
-                        <img src="assets/img/foto-default.png" alt="Foto de perfil" 
+                        <img src="{{asset('assets/img/foto-default.png')}}" alt="Foto de perfil" 
                              class="rounded-circle dropdown-toggle foto-perfil" 
                              data-bs-toggle="dropdown" 
                              aria-expanded="false">
