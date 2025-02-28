@@ -69,6 +69,7 @@
                     <li class="nav-item">
                         <a class="nav-link {{ Route::currentRouteName() == 'contacto' ? 'active' : '' }}" href="">
                             <img src="{{asset('assets/iconos/contacto.svg')}}" class="nav-icon" alt="Contacto"> Contacto
+
                         </a>
                     </li>
                 </ul>
@@ -83,15 +84,18 @@
                     <div class="d-flex align-items-center ">
                         <!-- Nombre del usuario a la izquierda -->
                         <p class="navbar-brand parrafo-perfil">{{ Auth::user()->nombre }}
-                            {{ explode(' ', Auth::user()->apellidos)[0] }}</p>{{-- Para coger solo el primer apellido --}}
+                            {{ explode(' ', Auth::user()->apellidos)[0] }}
+                        </p>{{-- Para coger solo el primer apellido --}}
 
                         <!-- Espaciador que empuja el perfil a la derecha -->
                         <div class="ms-auto">
                             <!-- Dropdown para la foto de perfil -->
                             <div class="dropdown">
-                                <img src="{{ asset(Auth::user()->foto_perfil ? 'storage/perfiles/' . Auth::user()->foto_perfil : 'assets/img/foto-default.png') }}"
-                                    alt="Foto de perfil" class="rounded-circle dropdown-toggle foto-perfil"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+
+                                <!-- <img src="{{ asset('storage/perfiles/' . Auth::user()->foto_perfil) }}" alt="Foto de perfil"> -->
+                                <img src="{{ Auth::user()->foto_perfil ? asset('storage/perfiles/' . Auth::user()->foto_perfil) : asset('assets/img/foto-default.png') }}"
+                                    alt="Foto de perfil" class="rounded-circle" height="50px" width="50px">
+
 
                                 <!-- Menú desplegable -->
                                 <ul class="dropdown-menu dropdown-menu-end">
