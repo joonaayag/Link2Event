@@ -28,84 +28,86 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-        <!-- Logo -->
-        <a class="navbar-brand" href="{{ route('base') }}">
-            <img src="{{asset('assets/img/logo.png')}}" alt="Logo" height="50">
-        </a>
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="{{ route('base') }}">
+                <img src="{{asset('assets/img/logo.png')}}" alt="Logo" height="50">
+            </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() == 'base' ? 'active' : '' }}" 
-                        href="{{ route('base') }}">
-                        <img src="{{asset('assets/iconos/home.svg')}}" class="nav-icon" alt="Inicio"> Inicio
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() == 'conciertos' ? 'active' : '' }}" 
-                        href="{{ route('conciertos') }}">
-                        <img src="{{asset('assets/iconos/ticket.svg')}}" class="nav-icon" alt="Conciertos"> Conciertos
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() == 'favoritos' ? 'active' : '' }}" 
-                        href="">
-                        <img src="{{asset('assets/iconos/favoritos.svg')}}" class="nav-icon" alt="Favoritos"> Favoritos
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() == 'sobre' ? 'active' : '' }}" 
-                        href="">
-                        <img src="{{asset('assets/iconos/informacion.svg')}}" class="nav-icon" alt="Sobre Nosotros"> Sobre Nosotros
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() == 'contacto' ? 'active' : '' }}" 
-                        href="">
-                        <img src="{{asset('assets/iconos/contacto.svg')}}" class="nav-icon" alt="Contacto"> Contacto
-                    </a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::currentRouteName() == 'base' ? 'active' : '' }}"
+                            href="{{ route('base') }}">
+                            <img src="{{asset('assets/iconos/home.svg')}}" class="nav-icon" alt="Inicio"> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::currentRouteName() == 'conciertos' ? 'active' : '' }}"
+                            href="{{ route('conciertos') }}">
+                            <img src="{{asset('assets/iconos/ticket.svg')}}" class="nav-icon" alt="Conciertos">
+                            Conciertos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::currentRouteName() == 'favoritos' ? 'active' : '' }}" href="">
+                            <img src="{{asset('assets/iconos/favoritos.svg')}}" class="nav-icon" alt="Favoritos">
+                            Favoritos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::currentRouteName() == 'sobre' ? 'active' : '' }}" href="">
+                            <img src="{{asset('assets/iconos/informacion.svg')}}" class="nav-icon" alt="Sobre Nosotros">
+                            Sobre Nosotros
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::currentRouteName() == 'contacto' ? 'active' : '' }}" href="">
+                            <img src="{{asset('assets/iconos/contacto.svg')}}" class="nav-icon" alt="Contacto"> Contacto
+                        </a>
+                    </li>
+                </ul>
 
-            @if (!Auth::check())
-            <div class="d-flex">
-                <a class="btn btn-warning" href="{{ route('login') }}" id="boton-usuario">
-                    <img src="{{asset('assets/iconos/usuario.svg')}}" class="nav-icon" alt="Usuario"> Iniciar sesión
-                </a>
-            </div>
-            @else
-            <div class="d-flex align-items-center ">
-                <!-- Nombre del usuario a la izquierda -->
-                <p class="navbar-brand parrafo-perfil">{{ Auth::user()->nombre }} {{ explode(' ', Auth::user()->apellidos)[0] }}</p>{{-- Para coger solo el primer apellido --}}
-    
-                <!-- Espaciador que empuja el perfil a la derecha -->
-                <div class="ms-auto">
-                    <!-- Dropdown para la foto de perfil -->
-                    <div class="dropdown">
-                        <img src="{{asset('assets/img/foto-default.png')}}" alt="Foto de perfil" 
-                             class="rounded-circle dropdown-toggle foto-perfil" 
-                             data-bs-toggle="dropdown" 
-                             aria-expanded="false">
-    
-                        <!-- Menú desplegable -->
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="{{ route('perfil') }}">Ver perfil</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{route('logout')}}">Cerrar sesión</a></li>
-                        </ul>
+                @if (!Auth::check())
+                    <div class="d-flex">
+                        <a class="btn btn-warning" href="{{ route('login') }}" id="boton-usuario">
+                            <img src="{{asset('assets/iconos/usuario.svg')}}" class="nav-icon" alt="Usuario"> Iniciar sesión
+                        </a>
                     </div>
-                </div>
+                @else
+                    <div class="d-flex align-items-center ">
+                        <!-- Nombre del usuario a la izquierda -->
+                        <p class="navbar-brand parrafo-perfil">{{ Auth::user()->nombre }}
+                            {{ explode(' ', Auth::user()->apellidos)[0] }}</p>{{-- Para coger solo el primer apellido --}}
+
+                        <!-- Espaciador que empuja el perfil a la derecha -->
+                        <div class="ms-auto">
+                            <!-- Dropdown para la foto de perfil -->
+                            <div class="dropdown">
+                                <img src="{{ asset(Auth::user()->foto_perfil ? 'storage/perfiles/' . Auth::user()->foto_perfil : 'assets/img/foto-default.png') }}"
+                                    alt="Foto de perfil" class="rounded-circle dropdown-toggle foto-perfil"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+
+                                <!-- Menú desplegable -->
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="{{ route('perfil') }}">Ver perfil</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="{{route('logout')}}">Cerrar sesión</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
-            @endif
         </div>
-    </div>
-</nav>
+    </nav>
 
     <!-- Contenido principal -->
     <div class="container my-4">

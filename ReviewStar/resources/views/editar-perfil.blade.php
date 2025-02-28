@@ -12,7 +12,7 @@
                     </div>
                     <div class="card-body">
 
-                        <form action="{{ route('perfil.actualizar') }}" method="POST">
+                        <form action="{{ route('perfil.actualizar') }}" method="POST" enctype="multipart/form-data">  {{-- El enctype es para permitir subir archivos --}}
                             @csrf
                             <div class="row mb-3">
                                 <div class="col-md-6">
@@ -112,6 +112,13 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="foto_perfil" class="form-label">Modificar foto de perfil</label>
+                                    <input type="file" name="foto_perfil" id="foto_perfil">
                                 </div>
                             </div>
 
