@@ -1,14 +1,5 @@
 @extends('layouts.base')
-@push('styles')
-<style>
-  body {
-    background-image: url('{{ asset('assets/img/background-login.jpg') }}');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
-</style>
-@endpush
+
 @section('titulo', '- Login')
 
 @section('contenido')
@@ -24,11 +15,16 @@
                     @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" required value="{{ old('email') }}">
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
                     </div>
                     <div class="form-check mb-3">
                         <input type="checkbox" class="form-check-input" id="recordar" name="recordar">

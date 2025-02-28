@@ -20,6 +20,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/conciertos', [UserController::class, 'conciertos'])->name('conciertos');
 
     Route::get('/logout', [AutentificadorController::class, 'cerrarSesion'])->name('logout');
+    Route::get('/perfil', [UserController::class, 'perfil'])->name('perfil');
+    Route::get('/perfil/editar', [UserController::class, 'editarPerfil'])->name('perfil.editar');
+    Route::post('/perfil', [UserController::class, 'actualizarPerfil'])->name('perfil.actualizar');
+
+
+
 });
 
 //Rutas POST

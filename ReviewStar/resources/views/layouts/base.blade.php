@@ -89,7 +89,7 @@
     
                         <!-- Menú desplegable -->
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Ver perfil</a></li>
+                            <li><a class="dropdown-item" href="{{ route('perfil') }}">Ver perfil</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{route('logout')}}">Cerrar sesión</a></li>
                         </ul>
