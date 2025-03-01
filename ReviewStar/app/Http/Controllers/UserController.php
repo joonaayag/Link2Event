@@ -87,14 +87,14 @@ class UserController extends Controller
 
         if ($request->hasFile('foto_perfil')) {
             // // Borrar la foto anterior si existe
-            // if ($usuario->foto_perfil) {
-            //     Storage::delete('public/perfiles/' . $usuario->foto_perfil);
-            // }
+            if ($usuario->foto_perfil) {
+                Storage::delete('perfiles/' . $usuario->foto_perfil);
+            }
     
             // Guardar la nueva foto
             $imagen = $request->file('foto_perfil');
             $nombreImagen = time() . '.' . $imagen->getClientOriginalExtension();
-            $imagen->storeAs('public/perfiles/', $nombreImagen);
+            $imagen->storeAs('perfiles/', $nombreImagen);
     
             // Actualizar el usuario con la nueva foto
             $usuario->foto_perfil = $nombreImagen;

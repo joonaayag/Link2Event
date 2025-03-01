@@ -92,10 +92,9 @@
                             <!-- Dropdown para la foto de perfil -->
                             <div class="dropdown">
 
-                                <!-- <img src="{{ asset('storage/perfiles/' . Auth::user()->foto_perfil) }}" alt="Foto de perfil"> -->
                                 <img src="{{ Auth::user()->foto_perfil ? asset('storage/perfiles/' . Auth::user()->foto_perfil) : asset('assets/img/foto-default.png') }}"
-                                    alt="Foto de perfil" class="rounded-circle" height="50px" width="50px">
-
+                                    alt="Foto de perfil" class="rounded-circle dropdown-toggle foto-perfil"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
 
                                 <!-- Menú desplegable -->
                                 <ul class="dropdown-menu dropdown-menu-end">
