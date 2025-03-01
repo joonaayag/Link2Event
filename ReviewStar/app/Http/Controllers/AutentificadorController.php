@@ -75,13 +75,19 @@ class AutentificadorController extends Controller
         if (Auth::attempt($credenciales, $recordar)) { // Si la autenticación fue exitosa
             //Inicio la sesión
             $request->session()->regenerate();
-            return view('bienvenida');
+            return view('conciertos');
         }
 
-        // Si las credenciales son incorrectas
-        return back()->withErrors([
-            'email' => 'Las credenciales proporcionadas son incorrectas.',
-        ]);
+        if (Usuario::where('email', $request->email)->exists()) {
+            return back()->withErrors([
+                'password' => 'La contraseña proporcionada no es válida.',
+            ]);
+        } else {
+            return back()->withErrors([
+                'email' => 'Credenciales no encontradas.',
+                'password' => ' ',
+            ]);
+        }
     }
 
     public function cerrarSesion(Request $request)
@@ -91,6 +97,6 @@ class AutentificadorController extends Controller
         $request->session()->invalidate();
         // Genera un nuevo token CSRF para que las siguientes solicitudes sean seguras (cambia el token)
         $request->session()->regenerateToken();
-        return redirect()->route('base');
+        return redirect()->route('bienvenida');
     }
 }

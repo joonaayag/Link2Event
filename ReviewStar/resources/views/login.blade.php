@@ -11,7 +11,7 @@
                 <h4 class="mb-0">Iniciar sesión</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('bienvenida') }}" method="POST">
+                <form action="{{ route('iniciarSesion') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo electrónico</label>
@@ -29,6 +29,11 @@
                             <button type="button" class="btn btn-outline-secondary" id="botonContraseña">
                                 <i id="eyeIcon" class="fas fa-eye"></i>
                             </button>
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         </div>
                     </div>
                     <div class="form-check mb-3">

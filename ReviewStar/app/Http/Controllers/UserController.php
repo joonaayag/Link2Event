@@ -14,19 +14,23 @@ use Storage;
 class UserController extends Controller
 {
 
-    public function inicio()
+    public function bienvenida()
     {
-        return view('layouts/base');
-    }
-
-    public function login()
-    {
-        return view('login');
+        return view('bienvenida');
     }
 
     public function registrarse()
     {
         return view('registrarse');
+    }
+
+    public function login()
+    {
+        if (Auth::check()) {//Si ya estas logeado y tratas de entrar a /login
+            return redirect('/conciertos'); 
+        }
+
+        return view('login');
     }
 
     public function conciertos()

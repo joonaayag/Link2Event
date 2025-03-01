@@ -26,6 +26,7 @@
 
 <body>
 
+@if (Auth::check())
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
@@ -74,13 +75,7 @@
                     </li>
                 </ul>
 
-                @if (!Auth::check())
-                    <div class="d-flex">
-                        <a class="btn btn-warning" href="{{ route('login') }}" id="boton-usuario">
-                            <img src="{{asset('assets/iconos/usuario.svg')}}" class="nav-icon" alt="Usuario"> Iniciar sesión
-                        </a>
-                    </div>
-                @else
+                @if (Auth::check())
                     <div class="d-flex align-items-center ">
                         <!-- Nombre del usuario a la izquierda -->
                         <p class="navbar-brand parrafo-perfil">{{ Auth::user()->nombre }}
@@ -111,6 +106,7 @@
             </div>
         </div>
     </nav>
+    @endif
 
     <!-- Contenido principal -->
     <div class="container my-4">
@@ -121,6 +117,21 @@
     <footer>
         <p>&copy; 2025 ReviewStar. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Obtener la ruta actual
+        const currentRoute = "{{ Route::currentRouteName() }}";
+        
+        // Si estamos en la página de bienvenida, aplicar la clase al body
+        if (currentRoute === 'bienvenida') {
+            document.body.classList.add('pagina-bienvenida');
+        } else {
+            // Si estamos en cualquier otra página, asegurarse de que la clase no esté aplicada
+            document.body.classList.remove('pagina-bienvenida');
+        }
+    });
+</script>
 
 </body>
 
