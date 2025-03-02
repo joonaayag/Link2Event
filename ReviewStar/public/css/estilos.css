@@ -9,6 +9,16 @@
   --velocidad-transicion: 0.3s;
   --borde-carta: #e0e0e0;
 }
+::selection {
+  background-color: var(--color-seleccion);
+  color: var(--fondo-carta);
+}
+.form-check-input:checked {
+  background-color: var(--color-seleccion) !important;
+  border-color: var(--color-seleccion) !important;
+}
+
+
 
 /* ESTILOS GENERALES */
 
@@ -31,15 +41,18 @@ footer {
   height: 50px;
   color: white;
 }
-
 footer p{
   margin: 0;
 }
-
-
-
+.enlaceAmarillo{
+  color: var(--color-seleccion);
+}
 .negrita{
   font-weight: bold;
+}
+input:focus, select:focus{
+  box-shadow: none !important;
+  border-color: var(--color-seleccion) !important;
 }
 
 /* CARTAS */
@@ -58,13 +71,11 @@ footer p{
 .card-subtitle {
   color: var(--color-seleccion) !important;
 }
-
 /* FIN CARTAS */
-
 /* FIN ESTILOS GENERALES */
 
-/* PÁGINA BIENVENIDA */
 
+/* PÁGINA BIENVENIDA */
 .pagina-bienvenida {
   height: 90vh !important;
   display: flex;
@@ -75,7 +86,7 @@ footer p{
   background-repeat: no-repeat;
 }
 
-.tarjeta-bienvenida{
+.tarjeta-formulario{
   background-color: rgba(34,34,34,0.75) !important;
   color: var(--color-principal) !important;
 }
@@ -92,6 +103,8 @@ footer p{
 
 .btn-registro{
   background-color: var(--color-seleccion) !important;
+  border: none !important;
+  color: #222 !important;
 }
 
 .btn-registro:hover{
@@ -112,3 +125,34 @@ footer p{
   transform: scale(1.02);
   transition: all var(--velocidad-transicion);
 }
+/* FIN PÁGINA BIENVENIDA */
+
+
+/* PÁGINA DE LOGIN */
+
+.pagina-login{
+  height: 90vh !important;
+  display: flex;
+  align-items: center;
+  background-image: url('../assets/img/fondo-login.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* FIN PÁGINA DE LOGIN */
+
+
+/* PÁGINA DE REGISTRARSE */
+
+.pagina-registrarse{
+  height: 90vh !important;
+  display: flex;
+  align-items: center;
+  background-image: url('../assets/img/fondo-registro.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* FIN PÁGINA DE REGISTRARSE */

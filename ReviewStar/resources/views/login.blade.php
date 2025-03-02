@@ -2,13 +2,15 @@
 
 @section('titulo', '- Login')
 
+@section('claseBody', 'class=pagina-login')
+
 @section('contenido')
 
-<div class="container d-flex justify-content-center align-items-center">
+<div class="container d-flex justify-content-center align-items-center fondito">
     <div class="col-md-6">
-        <div class="card">
+        <div class="card tarjeta-formulario">
             <div class="card-header">
-                <h4 class="mb-0">Iniciar sesión</h4>
+                <h2 class="mb-0 negrita">Iniciar sesión</h2>
             </div>
             <div class="card-body">
                 <form action="{{ route('iniciarSesion') }}" method="POST">
@@ -40,9 +42,9 @@
                         <input type="checkbox" class="form-check-input" id="recordar" name="recordar">
                         <label class="form-check-label" for="recordar">Recordar sesión</label>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+                    <button type="submit" class="btn btn-primary w-100 btn-registro">Iniciar sesión</button>
                     <div class="mt-3 text-center">
-                        <p>No tienes cuenta? <a href="{{ route('registrarse') }}">Regístrate</a></p>
+                        <p>No tienes cuenta? <a href="{{ route('registrarse') }}" class="enlaceAmarillo">Regístrate</a></p>
                     </div>
                 </form>
             </div>

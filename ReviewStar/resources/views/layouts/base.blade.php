@@ -25,7 +25,7 @@
 
 </head>
 
-<body>
+<body @yield( 'claseBody')>
     @if (Auth::check())
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">

@@ -2,13 +2,15 @@
 
 @section('titulo', '- Registrarse')
 
+@section('claseBody', 'class=pagina-registrarse')
+
 @section('contenido')
 
     <div class="container d-flex justify-content-center align-items-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card tarjeta-formulario">
                 <div class="card-header">
-                    <h4 class="mb-0">Registrarse</h4>
+                    <h2 class="mb-0 negrita">Registrarse</h2>
                 </div>
                 <div class="card-body">
                     {{-- Los value que tienen "OLD" sirven para que el valor persista si hay un error en otro campo --}}
@@ -40,7 +42,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="nacionalidad" class="form-label">Nacionalidad</label>
-                                <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" value="{{ old('nacionalidad') }}" required>
+                                <select name="nacionalidad" id="nacionalidad" class="form-control">
+                                </select>
                                 @error('nacionalidad')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -93,9 +96,9 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+                        <button type="submit" class="btn btn-primary w-100 btn-registro">Registrarse</button>
                         <div class="mt-3 text-center">
-                            <p>¿Ya tienes una cuenta? <a href="{{ route('login') }}">Inicia sesión</a></p>
+                            <p>¿Ya tienes una cuenta? <a href="{{ route('login') }}" class="enlaceAmarillo">Inicia sesión</a></p>
                         </div>
                     </form>
                 </div>

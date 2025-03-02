@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <!-- Tarjeta -->
-                <div class="card tarjeta-bienvenida">
+                <div class="card tarjeta-formulario">
                     <div class="card-body">
                         <div class="row d-flex align-items-center justify-content-center">
                             <div class="col-lg-8 col-md-12">
