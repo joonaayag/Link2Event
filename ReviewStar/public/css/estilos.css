@@ -1,340 +1,114 @@
 :root {
-  --navbar-bg: #2c3e50;
-  --navbar-hover: #34495e;
-  --navbar-active: #1a2530;
-  --text-color: #ecf0f1;
-  --accent-color: #f1c40f;
-  --transition-speed: 0.3s;
-  --card-bg: #ffffff;
-  --card-border: #e0e0e0;
-  --footer-bg: #2c3e50;
+  --fondo-navbar: #2c3e50;
+  --fondo-footer: #2c3e50;
+  --fondo-carta: #222;
+  --hover-navbar: #34495e;
+  --activo-navbar: #1a2530;
+  --color-principal: #ecf0f1;
+  --color-seleccion: #f1c40f;
+  --velocidad-transicion: 0.3s;
+  --borde-carta: #e0e0e0;
 }
 
+/* ESTILOS GENERALES */
+
+html {
+  min-height: 100%;
+  position: relative;
+}
 body {
-  font-family: 'Roboto', sans-serif;
-  /* Aumentamos el padding-top para dar espacio al navbar de 120px de alto */
-  padding-top: 160px;
-  /* Valor aumentado para dar espacio al navbar alto */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: #f5f5f5;
-  color: #333;
-}
-
-/* Selección de texto */
-::selection {
-  background-color: var(--accent-color);
-  color: #2c3e50;
-}
-
-/* Navbar Styles */
-.navbar {
-  background-color: var(--navbar-bg);
-  padding: 10px 0;
-  /* Aseguramos que el navbar sea lo suficientemente alto */
-  min-height: 140px;
-}
-
-.navbar-brand img {
-  height: 120px;
-}
-
-.navbar-nav .nav-link {
-  color: var(--text-color);
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: background-color var(--transition-speed), color var(--transition-speed);
-}
-
-.navbar-nav .nav-link img {
-  width: 35px;
-  height: 35px;
-  margin-right: 15px;
-}
-
-.navbar-nav .nav-link:hover {
-  background-color: var(--navbar-hover);
-  color: var(--accent-color);
-  border-radius: 40px;
-}
-
-.navbar-nav .nav-link.active {
-  color: var(--accent-color);
-  pointer-events: none;
-}
-
-.navbar-toggler {
-  border: none;
-}
-
-.navbar-toggler:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-#boton-usuario {
-  background-color: var(--accent-color);
-  color: var(--navbar-active);
-  font-weight: bold;
-  padding: 8px 15px;
-  border-radius: 5px;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.5);
-}
-
-#boton-usuario img {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-}
-
-#boton-usuario:hover {
-  background-color: #f1c40fbe;
-  color: rgb(228, 228, 228);
-  transform: translateX(-10px);
-  transition: all 0.3s ease;
-}
-
-/* Container Principal */
-.container {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-
-}
-
-/* Content wrapper para asegurar espacio adecuado */
-.main-content {
-  padding-top: 20px;
-}
-
-/* Cards y Formularios */
-.card {
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--card-border);
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-.card-header {
-  background-color: var(--navbar-bg);
-  color: var(--text-color);
-  padding: 15px 20px;
-  border-bottom: 2px solid var(--accent-color);
-}
-
-.card-header h4 {
   margin: 0;
-  font-weight: 600;
+  margin-bottom: 40px;
 }
-
-.card-body {
-  padding: 20px;
-  background-color: var(--card-bg);
-}
-
-/* Formularios */
-.form-label {
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  color: #333;
-}
-
-.form-control {
-  border-radius: 5px;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.form-control:focus {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 0.2rem rgba(241, 196, 15, 0.25);
-}
-
-/* Botones */
-.btn-primary {
-  background-color: var(--navbar-bg);
-  border-color: var(--navbar-bg);
-  font-weight: 500;
-  padding: 10px 20px;
-
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.btn-primary:hover {
-  background-color: var(--navbar-hover);
-  border-color: var(--navbar-hover);
-  transform: translateY(-2px);
-}
-
-/* Links */
-a {
-  color: var(--navbar-bg);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-a:hover {
-  color: var(--accent-color);
-  text-decoration: underline;
-}
-
-/* Alertas de Error */
-.alert-danger {
-  background-color: #fee;
-  border-color: #faa;
-  color: #a33;
-  border-radius: 5px;
-  padding: 10px 15px;
-}
-
-.text-danger {
-  color: #a33 !important;
-  font-size: 0.85rem;
-  margin-top: 5px;
-  display: block;
-}
-
-/* Footer */
 footer {
-  background-color: var(--footer-bg);
-  color: var(--text-color);
-  text-align: center;
-  padding: 20px 0;
-  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--fondo-footer);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  color: white;
 }
 
-footer p {
+footer p{
   margin: 0;
 }
 
-/* Login Page Specific */
-.login-bg {
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+
+
+.negrita{
+  font-weight: bold;
 }
 
+/* CARTAS */
 
-/* Conciertos Page */
-.conciertos-container {
-  margin-top: 30px;
+.card{
+  border-radius: 15px !important;
+  box-shadow: 0 0 3px 5px rgba(0, 0, 0, 0.6) !important;
 }
 
-.conciertos-container h3 {
-  color: var(--navbar-bg);
-  font-weight: 700;
+.card-title{
+  color: var(--color-principal) !important;
   margin-bottom: 25px;
-  text-align: center;
-  padding-bottom: 10px;
-  border-bottom: 3px solid var(--accent-color);
+  font-weight: bold;
 }
 
-/* ajustes para navBar */
-
-.foto-perfil {
-  height: 50px;
-  width: 50px;
+.card-subtitle {
+  color: var(--color-seleccion) !important;
 }
 
-.parrafo-perfil {
-  margin-bottom: 0px !important;
-}
+/* FIN CARTAS */
 
-a{
-  text-decoration: none !important;
-}
+/* FIN ESTILOS GENERALES */
 
-/* Estilos específicos para la página de bienvenida */
+/* PÁGINA BIENVENIDA */
+
 .pagina-bienvenida {
-  background-image: url('../assets/img/background-login.jpg');
+  height: 90vh !important;
+  display: flex;
+  align-items: center;
+  background-image: url('../assets/img/fondo_bienvenida.png');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  color: #fff;
-  min-height: 100vh;
+  background-repeat: no-repeat;
 }
 
-/* Estilos para el contenedor central de bienvenida */
-.bienvenida-container {
-  margin-top: 80px;
-  padding: 20px 0;
+.tarjeta-bienvenida{
+  background-color: rgba(34,34,34,0.75) !important;
+  color: var(--color-principal) !important;
 }
 
-.contenedor-central {
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  margin-top: 40px;
-}
-
-.bienvenida-titulo {
-  color: #f8f9fa;
-  font-weight: 700;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.bienvenida-subtitulo {
-  color: #ffc107;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-}
-
-.bienvenida-descripcion {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 25px;
-}
-
-.bienvenida-seccion-titulo {
-  color: #ffc107;
-  font-size: 1.4rem;
-  margin-top: 20px;
-  margin-bottom: 15px;
-}
-
-.columna-botones {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.columna-botones a{
+  cursor: pointer;
+  transition: var(--velocidad-transicion);
+  border: none;
+  border-radius: 20px;
+  margin: 10px 5px;
+  width: 100%;
   height: 100%;
-  gap: 15px;
 }
 
-.btn-registro {
-  background-color: #6c757d;
-  border: none;
-  padding: 12px 20px;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
+.btn-registro{
+  background-color: var(--color-seleccion) !important;
 }
 
-.btn-registro:hover {
-  background-color: #5a6268;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+.btn-registro:hover{
+  background-color: #ffd940 !important;
+  color: #222 !important;
+  transform: scale(1.02);
+  transition: all var(--velocidad-transicion);
 }
 
-.btn-login {
-  background-color: #ffc107;
-  border: none;
-  color: #000;
-  padding: 12px 20px;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
+.btn-login{
+  background-color: var(--fondo-carta) !important;
+  color: var(--color-principal) !important;
 }
 
-.btn-login:hover {
-  background-color: #e0a800;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+.btn-login:hover{
+  background-color: #2c2c2c !important;
+  color: var(--color-principal) !important;
+  transform: scale(1.02);
+  transition: all var(--velocidad-transicion);
 }

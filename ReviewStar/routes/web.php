@@ -10,12 +10,12 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-// ------------- RUTAS GET -------------
+// ------------- RUTAS GET -------------//
 Route::get('/', [UserController::class, 'bienvenida'])->name('bienvenida');
 Route::get('/registrarse', [UserController::class, 'registrarse'])->name('registrarse');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 
-// ------------- RUTAS POST -------------
+// ------------- RUTAS POST -------------//
 //Ruta formulario de registro
 Route::post('/registro', [AutentificadorController::class, 'registrar'])->name('registrar');
 Route::post('/login', [AutentificadorController::class, 'iniciarSesion'])->name('iniciarSesion');
@@ -34,9 +34,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/conciertos', [UserController::class, 'conciertos'])->name('conciertos');
     Route::get('/perfil', [UserController::class, 'perfil'])->name('perfil');
     Route::get('/perfil/editar', [UserController::class, 'editarPerfil'])->name('perfil.editar');
-    
+
     Route::get('/logout', [AutentificadorController::class, 'cerrarSesion'])->name('logout');
-    
+
     // ------------- RUTAS POST -------------
     Route::post('/perfil', [UserController::class, 'actualizarPerfil'])->name('perfil.actualizar');
 });

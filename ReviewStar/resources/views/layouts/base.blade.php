@@ -20,92 +20,92 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script src="js/scriptContrasena.js"></script>
+    <script src="js/scriptBienvenida.js"></script>
 
 
 </head>
 
 <body>
+    @if (Auth::check())
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <!-- Logo -->
+                <a class="navbar-brand" href="{{ route('base') }}">
+                    <img src="{{asset('assets/img/logo.png')}}" alt="Logo" height="50">
+                </a>
 
-@if (Auth::check())
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
-            <!-- Logo -->
-            <a class="navbar-brand" href="{{ route('base') }}">
-                <img src="{{asset('assets/img/logo.png')}}" alt="Logo" height="50">
-            </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::currentRouteName() == 'base' ? 'active' : '' }}"
+                                href="{{ route('base') }}">
+                                <img src="{{asset('assets/iconos/home.svg')}}" class="nav-icon" alt="Inicio"> Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::currentRouteName() == 'conciertos' ? 'active' : '' }}"
+                                href="{{ route('conciertos') }}">
+                                <img src="{{asset('assets/iconos/ticket.svg')}}" class="nav-icon" alt="Conciertos">
+                                Conciertos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::currentRouteName() == 'favoritos' ? 'active' : '' }}" href="">
+                                <img src="{{asset('assets/iconos/favoritos.svg')}}" class="nav-icon" alt="Favoritos">
+                                Favoritos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::currentRouteName() == 'sobre' ? 'active' : '' }}" href="">
+                                <img src="{{asset('assets/iconos/informacion.svg')}}" class="nav-icon" alt="Sobre Nosotros">
+                                Sobre Nosotros
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::currentRouteName() == 'contacto' ? 'active' : '' }}" href="">
+                                <img src="{{asset('assets/iconos/contacto.svg')}}" class="nav-icon" alt="Contacto"> Contacto
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link {{ Route::currentRouteName() == 'base' ? 'active' : '' }}"
-                            href="{{ route('base') }}">
-                            <img src="{{asset('assets/iconos/home.svg')}}" class="nav-icon" alt="Inicio"> Inicio
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Route::currentRouteName() == 'conciertos' ? 'active' : '' }}"
-                            href="{{ route('conciertos') }}">
-                            <img src="{{asset('assets/iconos/ticket.svg')}}" class="nav-icon" alt="Conciertos">
-                            Conciertos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Route::currentRouteName() == 'favoritos' ? 'active' : '' }}" href="">
-                            <img src="{{asset('assets/iconos/favoritos.svg')}}" class="nav-icon" alt="Favoritos">
-                            Favoritos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Route::currentRouteName() == 'sobre' ? 'active' : '' }}" href="">
-                            <img src="{{asset('assets/iconos/informacion.svg')}}" class="nav-icon" alt="Sobre Nosotros">
-                            Sobre Nosotros
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Route::currentRouteName() == 'contacto' ? 'active' : '' }}" href="">
-                            <img src="{{asset('assets/iconos/contacto.svg')}}" class="nav-icon" alt="Contacto"> Contacto
+                            </a>
+                        </li>
+                    </ul>
 
-                        </a>
-                    </li>
-                </ul>
+                    @if (Auth::check())
+                        <div class="d-flex align-items-center ">
+                            <!-- Nombre del usuario a la izquierda -->
+                            <p class="navbar-brand parrafo-perfil">{{ Auth::user()->nombre }}
+                                {{ explode(' ', Auth::user()->apellidos)[0] }}
+                            </p>{{-- Para coger solo el primer apellido --}}
 
-                @if (Auth::check())
-                    <div class="d-flex align-items-center ">
-                        <!-- Nombre del usuario a la izquierda -->
-                        <p class="navbar-brand parrafo-perfil">{{ Auth::user()->nombre }}
-                            {{ explode(' ', Auth::user()->apellidos)[0] }}
-                        </p>{{-- Para coger solo el primer apellido --}}
+                            <!-- Espaciador que empuja el perfil a la derecha -->
+                            <div class="ms-auto">
+                                <!-- Dropdown para la foto de perfil -->
+                                <div class="dropdown">
 
-                        <!-- Espaciador que empuja el perfil a la derecha -->
-                        <div class="ms-auto">
-                            <!-- Dropdown para la foto de perfil -->
-                            <div class="dropdown">
+                                    <img src="{{ Auth::user()->foto_perfil ? asset('storage/perfiles/' . Auth::user()->foto_perfil) : asset('assets/img/foto-default.png') }}"
+                                        alt="Foto de perfil" class="rounded-circle dropdown-toggle foto-perfil"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
 
-                                <img src="{{ Auth::user()->foto_perfil ? asset('storage/perfiles/' . Auth::user()->foto_perfil) : asset('assets/img/foto-default.png') }}"
-                                    alt="Foto de perfil" class="rounded-circle dropdown-toggle foto-perfil"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-
-                                <!-- Menú desplegable -->
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="{{ route('perfil') }}">Ver perfil</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="{{route('logout')}}">Cerrar sesión</a></li>
-                                </ul>
+                                    <!-- Menú desplegable -->
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="{{ route('perfil') }}">Ver perfil</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="{{route('logout')}}">Cerrar sesión</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endif
+                    @endif
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     @endif
 
     <!-- Contenido principal -->
@@ -119,19 +119,19 @@
     </footer>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Obtener la ruta actual
-        const currentRoute = "{{ Route::currentRouteName() }}";
-        
-        // Si estamos en la página de bienvenida, aplicar la clase al body
-        if (currentRoute === 'bienvenida') {
-            document.body.classList.add('pagina-bienvenida');
-        } else {
-            // Si estamos en cualquier otra página, asegurarse de que la clase no esté aplicada
-            document.body.classList.remove('pagina-bienvenida');
-        }
-    });
-</script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Obtener la ruta actual
+            const currentRoute = "{{ Route::currentRouteName() }}";
+
+            // Si estamos en la página de bienvenida, aplicar la clase al body
+            if (currentRoute === 'bienvenida') {
+                document.body.classList.add('pagina-bienvenida');
+            } else {
+                // Si estamos en cualquier otra página, asegurarse de que la clase no esté aplicada
+                document.body.classList.remove('pagina-bienvenida');
+            }
+        });
+    </script>
 
 </body>
 
