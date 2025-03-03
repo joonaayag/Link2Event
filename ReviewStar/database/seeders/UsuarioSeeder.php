@@ -18,7 +18,7 @@ class UsuarioSeeder extends Seeder
         $usuario->nombre = 'Amador';
         $usuario->apellidos = 'Rivas Vilchez';
         $usuario->edad = 45;
-        $usuario->nacionalidad = 'Española';
+        $usuario->pais = 'España';
         $usuario->tipo_identificacion = 'DNI';
         $usuario->num_identificacion = '12345638G';
         $usuario->direccion = 'Calle Picasso, 1, 28001, Madrid';

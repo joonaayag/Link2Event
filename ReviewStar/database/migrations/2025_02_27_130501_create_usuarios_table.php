@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('nombre');
             $table->string('apellidos');
             $table->integer('edad');
-            $table->string('nacionalidad');
+            $table->string('pais');
             $table->enum('tipo_identificacion', ['NIF', 'DNI']);
             $table->string('num_identificacion')->unique();
             $table->string('direccion');

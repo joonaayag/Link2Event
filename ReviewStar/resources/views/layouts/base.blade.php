@@ -18,13 +18,14 @@
 
     <!-- Link iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-
+    
+    <!-- Scripts -->
+    <script src="js/jquery-3.7.1.min.js" defer></script>
 
 
 </head>
 
-<body @yield( 'claseBody')>
+<body @yield('claseBody')>
     @if (Auth::check())
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">

@@ -17,7 +17,7 @@ class AutentificadorController extends Controller
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
             'edad' => 'required|integer|min:18',
-            'nacionalidad' => 'required|string|max:255',
+            'pais' => 'required|string|max:255',
             'tipo_identificacion' => 'required|in:NIF,DNI',
             'direccion' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:usuarios',
@@ -41,7 +41,7 @@ class AutentificadorController extends Controller
             'nombre' => $request->nombre,
             'apellidos' => $request->apellidos,
             'edad' => $request->edad,
-            'nacionalidad' => $request->nacionalidad,
+            'pais' => $request->pais,
             'tipo_identificacion' => $request->tipo_identificacion,
             'num_identificacion' => $request->num_identificacion,
             'direccion' => $request->direccion,
@@ -75,7 +75,7 @@ class AutentificadorController extends Controller
         if (Auth::attempt($credenciales, $recordar)) { // Si la autenticación fue exitosa
             //Inicio la sesión
             $request->session()->regenerate();
-            return view('conciertos');
+            return redirect()->route('conciertos');
         }
 
         if (Usuario::where('email', $request->email)->exists()) {

@@ -19,7 +19,7 @@ class User extends Authenticatable
         'nombre',
         'apellidos',
         'edad',
-        'nacionalidad',
+        'pais',
         'tipo_identificacion',
         'num_identificacion',
         'direccion',

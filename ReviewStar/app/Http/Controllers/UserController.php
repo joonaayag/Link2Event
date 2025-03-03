@@ -59,7 +59,7 @@ class UserController extends Controller
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
             'edad' => 'required|integer|min:18',
-            'nacionalidad' => 'required|string|max:255',
+            'pais' => 'required|string|max:255',
             'tipo_identificacion' => 'required|in:NIF,DNI',
             'direccion' => 'required|string|max:255',
             'email' => [
@@ -87,7 +87,7 @@ class UserController extends Controller
         $usuario->nombre = $request->nombre;
         $usuario->apellidos = $request->apellidos;
         $usuario->edad = $request->edad;
-        $usuario->nacionalidad = $request->nacionalidad;
+        $usuario->pais = $request->pais;
         $usuario->tipo_identificacion = $request->tipo_identificacion;
         $usuario->num_identificacion = $request->num_identificacion;
         $usuario->direccion = $request->direccion;
@@ -117,5 +117,4 @@ class UserController extends Controller
 
         return redirect()->route('perfil')->with('success', 'Perfil actualizado correctamente');
     }
-
 }
