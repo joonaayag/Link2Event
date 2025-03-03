@@ -30,8 +30,6 @@ html {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
   margin: 0;
   margin-bottom: 40px;
   min-height: 100vh;
@@ -86,6 +84,21 @@ select:focus {
 
 .card-header {
   border-bottom: 2px solid var(--color-seleccion);
+}
+
+.foto-perfil{
+  height: 50px;
+  width: auto;
+}
+
+.nav-icon{
+  height: 30px;
+  width: auto;
+}
+
+.logo{
+  height: 60px;
+  width: auto;
 }
 
 /* FIN CARTAS */
@@ -164,7 +177,7 @@ select:focus {
 /* PÁGINA DE REGISTRARSE */
 
 .pagina-registrarse {
-  min-height: 100vh !important;
+  /* min-height: 100vh !important; */
   display: flex;
   align-items: center;
   background-image: url('../assets/img/fondo-registro.svg');

@@ -16,21 +16,25 @@ class UserController extends Controller
 
     public function bienvenida()
     {
-        if (Auth::check()) {//Si ya estas logeado y tratas de entrar a /login
+        if (Auth::check()) { //Si ya estas logeado y tratas de entrar a /login
             return redirect('/conciertos');
         }
-        
+
         return view('bienvenida');
     }
 
     public function registrarse()
     {
+        if (Auth::check()) { //Si ya estas logeado y tratas de entrar a /login
+            return redirect('/conciertos');
+        }
+
         return view('registrarse');
     }
 
     public function login()
     {
-        if (Auth::check()) {//Si ya estas logeado y tratas de entrar a /login
+        if (Auth::check()) { //Si ya estas logeado y tratas de entrar a /login
             return redirect('/conciertos');
         }
 
@@ -64,7 +68,7 @@ class UserController extends Controller
             'direccion' => 'required|string|max:255',
             'email' => [
                 'required',
-                'email',//Verifica que sea unico en la tabla ignorando el usuario actual
+                'email', //Verifica que sea unico en la tabla ignorando el usuario actual
                 Rule::unique('users')->ignore(Auth::user()->id)
             ],
             'password' => 'string|min:6|confirmed|nullable',

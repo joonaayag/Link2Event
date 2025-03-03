@@ -21,8 +21,6 @@
 
     <!-- Scripts -->
     <script src="js/jquery-3.7.1.min.js" defer></script>
-
-
 </head>
 
 <body @yield('claseBody')>
@@ -32,7 +30,7 @@
             <div class="container-fluid">
                 <!-- Logo -->
                 <a class="navbar-brand" href="{{ route('base') }}">
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" height="50">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

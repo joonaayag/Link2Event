@@ -3,6 +3,7 @@
 @section('titulo', '- Editar Perfil')
 
 @section('contenido')
+    <script src="js/scriptNacionalidades.js" defer></script>
     <div class="container py-5">
         <div class="row">
             <div class="col-md-9">
@@ -12,7 +13,8 @@
                     </div>
                     <div class="card-body">
 
-                        <form action="{{ route('perfil.actualizar') }}" method="POST" enctype="multipart/form-data">  {{-- El enctype es para permitir subir archivos --}}
+                        <form action="{{ route('perfil.actualizar') }}" method="POST" enctype="multipart/form-data">
+                            {{-- El enctype es para permitir subir archivos --}}
                             @csrf
                             <div class="row mb-3">
                                 <div class="col-md-6">
@@ -44,8 +46,12 @@
                                     <label for="tipo_identificacion" class="form-label">Tipo de identificación</label>
                                     <select class="form-select @error('tipo_identificacion') is-invalid @enderror"
                                         id="tipo_identificacion" name="tipo_identificacion" required>
-                                        <option value="NIF" {{ old('tipo_identificacion', Auth::user()->tipo_identificacion) == 'NIF' ? 'selected' : '' }}>NIF</option>
-                                        <option value="DNI" {{ old('tipo_identificacion', Auth::user()->tipo_identificacion) == 'DNI' ? 'selected' : '' }}>DNI</option>
+                                        <option value="NIF"
+                                            {{ old('tipo_identificacion', Auth::user()->tipo_identificacion) == 'NIF' ? 'selected' : '' }}>
+                                            NIF</option>
+                                        <option value="DNI"
+                                            {{ old('tipo_identificacion', Auth::user()->tipo_identificacion) == 'DNI' ? 'selected' : '' }}>
+                                            DNI</option>
                                     </select>
                                     @error('tipo_identificacion')
                                         <span class="invalid-feedback" role="alert">
@@ -70,8 +76,9 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Correo electrónico</label>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                                        name="email" value="{{ old('email', Auth::user()->email) }}" required>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                        id="email" name="email" value="{{ old('email', Auth::user()->email) }}"
+                                        required>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -80,8 +87,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="edad" class="form-label">Edad</label>
-                                    <input type="number" class="form-control @error('edad') is-invalid @enderror" id="edad"
-                                        name="edad" value="{{ old('edad', Auth::user()->edad) }}" required min="18">
+                                    <input type="number" class="form-control @error('edad') is-invalid @enderror"
+                                        id="edad" name="edad" value="{{ old('edad', Auth::user()->edad) }}"
+                                        required min="18">
                                     @error('edad')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -92,11 +100,16 @@
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <label for="nacionalidad" class="form-label">Nacionalidad</label>
-                                    <input type="text" class="form-control @error('nacionalidad') is-invalid @enderror"
-                                        id="nacionalidad" name="nacionalidad"
-                                        value="{{ old('nacionalidad', Auth::user()->nacionalidad) }}" required>
-                                    @error('nacionalidad')
+                                    <label for="pais" class="form-label">País</label>
+                                    <div class="contenedor-select">
+                                        <select name="pais" id="pais" class="form-control">
+
+                                        </select>
+                                        <svg viewBox="25 25 50 50" id="iconoCargando">
+                                            <circle r="20" cy="50" cx="50"></circle>
+                                        </svg>
+                                    </div>
+                                    @error('pais')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -139,7 +152,8 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="password_confirmation" class="form-label">Confirmar nueva contraseña</label>
+                                    <label for="password_confirmation" class="form-label">Confirmar nueva
+                                        contraseña</label>
                                     <input type="password" class="form-control" id="password_confirmation"
                                         name="password_confirmation">
                                 </div>

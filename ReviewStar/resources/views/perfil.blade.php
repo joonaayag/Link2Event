@@ -44,8 +44,8 @@
                                 <h5>{{ Auth::user()->edad }} años</h5>
                             </div>
                             <div class="col-md-6">
-                                <p class="mb-1 text-muted">Nacionalidad</p>
-                                <h5>{{ Auth::user()->nacionalidad }}</h5>
+                                <p class="mb-1 text-muted">País</p>
+                                <h5>{{ Auth::user()->pais }}</h5>
                             </div>
                         </div>
                         
