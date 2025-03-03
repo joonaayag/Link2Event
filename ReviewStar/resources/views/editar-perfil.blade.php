@@ -3,7 +3,7 @@
 @section('titulo', '- Editar Perfil')
 
 @section('contenido')
-    <script src="js/scriptNacionalidades.js" defer></script>
+    <script src="{{ asset('js/scriptNacionalidades.js') }}" defer></script>
     <div class="container py-5">
         <div class="row">
             <div class="col-md-9">

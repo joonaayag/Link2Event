@@ -6,7 +6,7 @@
 
 @section('contenido')
     {{-- SCRIPTS EN ESTA PÁGINA --}}
-    <script src="js/scriptNacionalidades.js" defer></script>
+    <script src="{{ asset('js/scriptNacionalidades.js') }}" defer></script>
 
 
     <div class="container d-flex justify-content-center align-items-center">
@@ -40,8 +40,8 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="edad" class="form-label">Edad</label>
-                                <input type="number" class="form-control" id="edad" name="edad" value="{{ old('edad') }}"
-                                    required>
+                                <input type="number" class="form-control" id="edad" name="edad"
+                                    value="{{ old('edad') }}" required>
                                 @error('edad')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -50,7 +50,7 @@
                                 <label for="pais" class="form-label">País</label>
                                 <div class="contenedor-select">
                                     <select name="pais" id="pais" class="form-control">
-                                        
+
                                     </select>
                                     <svg viewBox="25 25 50 50" id="iconoCargando">
                                         <circle r="20" cy="50" cx="50"></circle>
@@ -93,8 +93,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}"
-                                required>
+                            <input type="email" class="form-control" id="email" name="email"
+                                value="{{ old('email') }}" required>
                             @error('email')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
