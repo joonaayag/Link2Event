@@ -1,4 +1,4 @@
-:root {  
+:root {
   --fondo-navbar: #2c3e50;
   --fondo-footer: #2c3e50;
   --fondo-carta: #222;
@@ -30,8 +30,11 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   margin-bottom: 40px;
+  min-height: 100vh;
 }
 
 footer {
@@ -161,7 +164,7 @@ select:focus {
 /* PÁGINA DE REGISTRARSE */
 
 .pagina-registrarse {
-  height: 100vh !important;
+  min-height: 100vh !important;
   display: flex;
   align-items: center;
   background-image: url('../assets/img/fondo-registro.svg');
