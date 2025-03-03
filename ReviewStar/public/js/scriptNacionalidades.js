@@ -1,7 +1,9 @@
 window.addEventListener('load', inicio);
 
+const API = `https://api.thecompaniesapi.com/v2/locations/countries`;
+
 function inicio() {
 
-    document.getElementById("botonNacionalidad").addEventListener("click", mostrarNacionalidad);
+    document.getElementById("nacionalidad").addEventListener("click", mostrarNacionalidad);
 
 }

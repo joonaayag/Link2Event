@@ -43,6 +43,7 @@
                             <div class="col-md-6">
                                 <label for="nacionalidad" class="form-label">Nacionalidad</label>
                                 <select name="nacionalidad" id="nacionalidad" class="form-control">
+                                    
                                 </select>
                                 @error('nacionalidad')
                                     <small class="text-danger">{{ $message }}</small>

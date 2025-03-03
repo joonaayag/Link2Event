@@ -16,6 +16,10 @@ class UserController extends Controller
 
     public function bienvenida()
     {
+        if (Auth::check()) {//Si ya estas logeado y tratas de entrar a /login
+            return redirect('/conciertos');
+        }
+        
         return view('bienvenida');
     }
 
@@ -27,7 +31,7 @@ class UserController extends Controller
     public function login()
     {
         if (Auth::check()) {//Si ya estas logeado y tratas de entrar a /login
-            return redirect('/conciertos'); 
+            return redirect('/conciertos');
         }
 
         return view('login');
@@ -94,12 +98,12 @@ class UserController extends Controller
             if ($usuario->foto_perfil) {
                 Storage::delete('perfiles/' . $usuario->foto_perfil);
             }
-    
+
             // Guardar la nueva foto
             $imagen = $request->file('foto_perfil');
             $nombreImagen = time() . '.' . $imagen->getClientOriginalExtension();
             $imagen->storeAs('perfiles/', $nombreImagen);
-    
+
             // Actualizar el usuario con la nueva foto
             $usuario->foto_perfil = $nombreImagen;
         }

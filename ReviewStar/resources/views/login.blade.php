@@ -6,6 +6,8 @@
 
 @section('contenido')
 
+<script src="js/scriptContrasena.js" defer></script>
+
 <div class="container d-flex justify-content-center align-items-center fondito">
     <div class="col-md-6">
         <div class="card tarjeta-formulario">
