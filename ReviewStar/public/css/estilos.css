@@ -1,4 +1,4 @@
-:root {
+:root {  
   --fondo-navbar: #2c3e50;
   --fondo-footer: #2c3e50;
   --fondo-carta: #222;
@@ -79,6 +79,10 @@ select:focus {
 
 .card-subtitle {
   color: var(--color-seleccion) !important;
+}
+
+.card-header {
+  border-bottom: 2px solid var(--color-seleccion);
 }
 
 /* FIN CARTAS */
