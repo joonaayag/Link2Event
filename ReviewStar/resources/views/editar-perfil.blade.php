@@ -103,7 +103,9 @@
                                     <label for="pais" class="form-label">País</label>
                                     <div class="contenedor-select">
                                         <select name="pais" id="pais" class="form-control">
-
+                                            <option value="{{ old('pais', Auth::user()->pais) }}" selected disable>
+                                            {{ old('pais', Auth::user()->pais) }}
+                                            </option>
                                         </select>
                                         <svg viewBox="25 25 50 50" id="iconoCargando">
                                             <circle r="20" cy="50" cx="50"></circle>

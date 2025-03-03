@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
-use Storage;
-
+// use Storage;
+use Illuminate\Support\Facades\Storage;
 
 
 class UserController extends Controller
@@ -105,6 +105,10 @@ class UserController extends Controller
 
             // Guardar la nueva foto
             $imagen = $request->file('foto_perfil');
+            if (!$imagen->isValid()) {
+                echo "ERRRRRRRRRRRRRRRRRRRRR";
+                return redirect()->back()->withErrors(['foto_perfil' => 'El archivo no es válido']);
+            }
             $nombreImagen = time() . '.' . $imagen->getClientOriginalExtension();
             $imagen->storeAs('perfiles/', $nombreImagen);
 
