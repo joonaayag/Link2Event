@@ -142,7 +142,7 @@ select:focus {
 /* PÁGINA DE LOGIN */
 
 .pagina-login {
-  height: 90vh !important;
+  height: 100vh !important;
   display: flex;
   align-items: center;
   background-image: url('../assets/img/fondo-login.svg');
@@ -157,7 +157,7 @@ select:focus {
 /* PÁGINA DE REGISTRARSE */
 
 .pagina-registrarse {
-  height: 90vh !important;
+  height: 100vh !important;
   display: flex;
   align-items: center;
   background-image: url('../assets/img/fondo-registro.svg');
