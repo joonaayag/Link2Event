@@ -26,7 +26,7 @@
 <body @yield('claseBody')>
     @if (Auth::check())
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container-fluid">
                 <!-- Logo -->
                 <a class="navbar-brand" href="{{ route('base') }}">
@@ -81,7 +81,7 @@
                     @if (Auth::check())
                         <div class="d-flex align-items-center ">
                             <!-- Nombre del usuario a la izquierda -->
-                            <p class="navbar-brand parrafo-perfil">{{ Auth::user()->nombre }}
+                            <p class="navbar-brand parrafo-navbar">{{ Auth::user()->nombre }}
                                 {{ explode(' ', Auth::user()->apellidos)[0] }}
                             </p>{{-- Para coger solo el primer apellido --}}
 

@@ -6,12 +6,11 @@
 @section('contenido')
     <div class="container d-flex justify-content-center align-items-center">
         <div class="row w-100">
-
             <!-- Contenido principal -->
 
             <div class="col-md-8 mx-auto">
                 <!-- Información del perfil -->
-                <div class="card mb-4 tarjeta-formulario tarjeta-perfil">
+                <div class="card mb-4 tarjeta-formulario">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h2 class="mb-0 negrita">Información personal</h2>
                         <a href="{{ route('perfil.editar') }}" class="btn btn-sm btn-primary btn-registro" id="editarPerfilBtn">
