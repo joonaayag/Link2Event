@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Scripts -->
-    <script src="{{asset('js/jquery-3.7.1.min.js')}}" defer></script>
+    <script src="{{ asset('js/jquery-3.7.1.min.js') }}" defer></script>
 </head>
 
 <body @yield('claseBody')>
@@ -50,7 +50,7 @@
                             <a class="nav-link {{ Route::currentRouteName() == 'conciertos' ? 'active' : '' }}"
                                 href="{{ route('conciertos') }}">
                                 <img src="{{ asset('assets/iconos/ticket.svg') }}" class="nav-icon" alt="Conciertos">
-                                Conciertos
+                                Eventos
                             </a>
                         </li>
                         <li class="nav-item">
@@ -113,8 +113,8 @@
     @endif
 
     <!-- Contenido principal -->
-        @yield('contenido')
-        
+    @yield('contenido')
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 ReviewStar. Todos los derechos reservados.</p>
