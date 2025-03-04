@@ -41,8 +41,8 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'base' ? 'active' : '' }}"
-                                href="{{ route('base') }}">
+                            <a class="nav-link {{ Route::currentRouteName() == 'inicio' ? 'active' : '' }}"
+                                href="{{ route('inicio') }}">
                                 <img src="{{ asset('assets/iconos/home.svg') }}" class="nav-icon" alt="Inicio"> Inicio
                             </a>
                         </li>
