@@ -113,10 +113,8 @@
     @endif
 
     <!-- Contenido principal -->
-    <div class="container my-4">
         @yield('contenido')
-    </div>
-
+        
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 ReviewStar. Todos los derechos reservados.</p>

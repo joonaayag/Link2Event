@@ -35,6 +35,7 @@ body {
   min-height: 100vh;
 }
 
+
 footer {
   display: flex;
   justify-content: center;
@@ -57,6 +58,9 @@ footer p {
 
 .negrita {
   font-weight: bold;
+}
+.naranjita{
+  color: var(--color-seleccion);
 }
 
 input:focus,
@@ -236,3 +240,22 @@ circle {
 /* FIN ICONO CARGANDO */
 
 /* FIN PÁGINA DE REGISTRARSE */
+
+
+/* PAGINA DE PERFIL */
+
+.pagina-perfil{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../assets/img/fondo_bienvenida.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.infoPerfil .row{
+  height: 90px;
+}
+
+/* FIN PAGINA DE PERFIL */
