@@ -60,6 +60,10 @@ class UserController extends Controller
     {
         return view('editar-perfil');
     }
+    public function contactanos()
+    {
+        return view('contactanos');
+    }
 
     public function actualizarPerfil(Request $request)
     {

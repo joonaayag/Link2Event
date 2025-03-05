@@ -101,6 +101,19 @@ select:focus {
   border-color: var(--color-seleccion) !important;
 }
 
+textarea {
+  border: 1px solid var(--color-seleccion);
+  outline: none;
+  border-radius: 10px;
+}
+
+textarea:focus {
+  border: 1px solid var(--color-seleccion);
+  outline: none;
+}
+
+
+
 /* CARTAS */
 
 .card {
@@ -308,3 +321,39 @@ circle {
 
 
 /* FIN PÁGINA EDITAR PERFIL */
+
+
+/* PÁGINA DE CONTACTANOS */
+.fondo-contactanos {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+.contactanos-contenedor{
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+.contactanos-mensaje{
+  min-height: 100px;
+}
+.btn-enviar {
+  background-color: var(--color-seleccion) !important;
+  border: none !important;
+  color: #222 !important;
+  width: 50%;
+}
+
+.btn-enviar:hover {
+  background-color: #ffd940 !important;
+  color: #222 !important;
+  transform: scale(1.02);
+  transition: all var(--velocidad-transicion);
+}
+
+/* FIN PÁGINA DE CONTACTANOS */

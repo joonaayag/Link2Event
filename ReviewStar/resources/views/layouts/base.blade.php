@@ -66,8 +66,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'contacto' ? 'active' : '' }}" href="">
-                                <img src="{{ asset('assets/iconos/contacto.svg') }}" class="nav-icon" alt="Contacto">
+                            <a class="nav-link {{ Route::currentRouteName() == 'contactanos' ? 'active' : '' }}" href="{{ route('contactanos') }}">
+                                <img src="{{ asset('assets/iconos/contacto.svg') }}" class="nav-icon" alt="Contactanos">
                                 Contacto
 
                             </a>
