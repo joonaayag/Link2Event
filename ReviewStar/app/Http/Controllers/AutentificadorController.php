@@ -75,7 +75,7 @@ class AutentificadorController extends Controller
         if (Auth::attempt($credenciales, $recordar)) { // Si la autenticación fue exitosa
             //Inicio la sesión
             $request->session()->regenerate();
-            return redirect()->route('conciertos');
+            return redirect()->route('inicio');
         }
 
         if (Usuario::where('email', $request->email)->exists()) {

@@ -21,7 +21,7 @@ Route::post('/registro', [AutentificadorController::class, 'registrar'])->name('
 Route::post('/login', [AutentificadorController::class, 'iniciarSesion'])->name('iniciarSesion');
 
 //Ruta despues de haber iniciado sesión y haber entrado a la ruta iniciarSesion (al final mostramos la vista conciertos)
-Route::post('/conciertos', [UserController::class, 'conciertos'])->name('conciertos');
+Route::post('/eventos', [UserController::class, 'eventos'])->name('eventos');
 
 
 
@@ -31,7 +31,7 @@ Route::post('/conciertos', [UserController::class, 'conciertos'])->name('concier
 Route::middleware(['auth'])->group(function () {
 
     // ------------- RUTAS GET -------------
-    Route::get('/conciertos', [UserController::class, 'conciertos'])->name('conciertos');
+    Route::get('/eventos', [UserController::class, 'eventos'])->name('eventos');
     Route::get('/perfil', [UserController::class, 'perfil'])->name('perfil');
     Route::get('/perfil/editar', [UserController::class, 'editarPerfil'])->name('perfil.editar');
     Route::get('/inicio', [UserController::class, 'inicio'])->name('inicio');
