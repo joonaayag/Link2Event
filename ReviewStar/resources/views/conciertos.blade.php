@@ -64,6 +64,8 @@
 </div>
 
 <script src="{{ asset('js/concierto.js') }}"></script>
+<script src="{{ asset('js/validarFiltros.js') }}"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
