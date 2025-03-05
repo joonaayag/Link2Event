@@ -181,7 +181,18 @@ function validarFormulario(event) {
         password_confirmation.parentElement.appendChild(mensaje_error);
 
         valido = false;
-    } else {
+    } else if (password.value.trim().length < 6) {
+        password.classList.add('borde-error');
+        password_confirmation.classList.add('borde-error');
+
+        let mensaje_error = document.createElement('small');
+        mensaje_error.textContent = "La contraseña debe tener al menos 6 caracteres";
+        mensaje_error.classList.add('mensaje-error');
+        password_confirmation.parentElement.appendChild(mensaje_error);
+
+        valido = false;
+
+    }else {
         password.classList.add("borde-correcto");
         password_confirmation.classList.add("borde-correcto");
     }
