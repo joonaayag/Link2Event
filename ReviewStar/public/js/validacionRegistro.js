@@ -93,10 +93,18 @@ function validarFormulario(event) {
     }
 
     //Validar país
+    let paises = JSON.parse(localStorage.getItem("paisesOrdenados")) || [];
     if (pais.value === "") {
         pais.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
         mensaje_error.textContent = "Debes seleccionar un país";
+        mensaje_error.classList.add('mensaje-error');
+        pais.parentElement.appendChild(mensaje_error);
+        valido = false;
+    }else if(!paises.includes(pais.value)){
+        pais.classList.add('borde-error');
+        let mensaje_error = document.createElement('small');
+        mensaje_error.textContent = "El pais seleccionado no es válido";
         mensaje_error.classList.add('mensaje-error');
         pais.parentElement.appendChild(mensaje_error);
         valido = false;

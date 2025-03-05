@@ -25,6 +25,8 @@ function mostrarPaises() {
                 paises.push(pais.translations.spa.common);
             });
             paises.sort();//Ordenamos los paises
+
+            localStorage.setItem("paisesOrdenados", JSON.stringify(paises));//Guardo los paises
             console.log(response);
             paises.forEach(pais => {
                 let opcion = document.createElement("option");
