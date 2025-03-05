@@ -17,7 +17,7 @@ class UserController extends Controller
     public function bienvenida()
     {
         if (Auth::check()) { //Si ya estas logeado y tratas de entrar a /login
-            return redirect('/conciertos');
+            return redirect('/inicio');
         }
 
         return view('bienvenida');
@@ -31,7 +31,7 @@ class UserController extends Controller
     public function registrarse()
     {
         if (Auth::check()) { //Si ya estas logeado y tratas de entrar a /login
-            return redirect('/conciertos');
+            return redirect()->route('inicio');
         }
 
         return view('registrarse');
@@ -40,15 +40,15 @@ class UserController extends Controller
     public function login()
     {
         if (Auth::check()) { //Si ya estas logeado y tratas de entrar a /login
-            return redirect('/conciertos');
+            return redirect()->route('inicio');
         }
 
         return view('login');
     }
 
-    public function conciertos()
+    public function eventos()
     {
-        return view('conciertos');
+        return view('eventos');
     }
 
     public function perfil()

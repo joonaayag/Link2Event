@@ -11,7 +11,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+        </script>
 
     <!-- Link css -->
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
@@ -29,10 +29,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container-fluid">
                 <!-- Logo -->
-                <a class="navbar-brand" href="{{ route('base') }}">
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo">
-                </a>
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo">
 
+                {{-- Botón desplegable de bootstrap --}}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -47,30 +46,27 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'conciertos' ? 'active' : '' }}"
-                                href="{{ route('conciertos') }}">
-                                <img src="{{ asset('assets/iconos/ticket.svg') }}" class="nav-icon" alt="Conciertos">
+                            <a class="nav-link {{ Route::currentRouteName() == 'eventos' ? 'active' : '' }}"
+                                href="{{ route('eventos') }}">
+                                <img src="{{ asset('assets/iconos/ticket.svg') }}" class="nav-icon" alt="eventos">
                                 Eventos
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'favoritos' ? 'active' : '' }}"
-                                href="">
+                            <a class="nav-link {{ Route::currentRouteName() == 'favoritos' ? 'active' : '' }}" href="">
                                 <img src="{{ asset('assets/iconos/favoritos.svg') }}" class="nav-icon" alt="Favoritos">
                                 Favoritos
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'sobre' ? 'active' : '' }}"
-                                href="">
+                            <a class="nav-link {{ Route::currentRouteName() == 'sobre' ? 'active' : '' }}" href="">
                                 <img src="{{ asset('assets/iconos/informacion.svg') }}" class="nav-icon"
                                     alt="Sobre Nosotros">
                                 Sobre Nosotros
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'contacto' ? 'active' : '' }}"
-                                href="">
+                            <a class="nav-link {{ Route::currentRouteName() == 'contacto' ? 'active' : '' }}" href="">
                                 <img src="{{ asset('assets/iconos/contacto.svg') }}" class="nav-icon" alt="Contacto">
                                 Contacto
 
@@ -121,7 +117,7 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Obtener la ruta actual
             const currentRoute = "{{ Route::currentRouteName() }}";
 
