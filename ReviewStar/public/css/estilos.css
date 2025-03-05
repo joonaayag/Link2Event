@@ -20,8 +20,12 @@
   border-color: var(--color-seleccion) !important;
 }
 
-.error {
+.borde-error {
   border: red 1.5px solid;
+}
+
+.borde-correcto {
+  border: green 1.5px solid;
 }
 
 
@@ -225,7 +229,7 @@ select:focus {
   background-repeat: no-repeat;
 }
 
-.mensaje-error{
+.mensaje-error {
   color: red;
   margin: 0;
 }
