@@ -67,10 +67,10 @@ class UserController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:15',
             'apellidos' => 'required|string|max:30',
-            'edad' => 'required|integer|min:18',
-            'pais' => 'required|string|max:255',
+            'edad' => 'required|integer|min:18|max:120',
+            'pais' => 'required|string|max:30',
             'tipo_identificacion' => 'required|in:NIF,DNI',
-            'direccion' => 'required|string|max:255',
+            'direccion' => 'required|string|max:100',
             'email' => [
                 'required',
                 'email', //Verifica que sea unico en la tabla ignorando el usuario actual

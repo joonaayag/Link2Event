@@ -69,15 +69,22 @@ function validarFormulario(event) {
         mensaje_error.classList.add('mensaje-error');
         apellidos.parentElement.appendChild(mensaje_error);
         valido = false;
+    } else if (apellidos.value.trim().length > 30) {
+        apellidos.classList.add('borde-error');
+        let mensaje_error = document.createElement('small');
+        mensaje_error.textContent = "Los apellidos no pueden tener más de 30 caracteres";
+        mensaje_error.classList.add('mensaje-error');
+        apellidos.parentElement.appendChild(mensaje_error);
+        valido = false;
     } else {
         apellidos.classList.add("borde-correcto");
     }
 
     //Validar edad
-    if (edad.value.trim() === "" || isNaN(edad.value) || edad.value < 18) {
+    if (edad.value.trim() === "" || isNaN(edad.value) || edad.value < 18 || edad.value > 120) {
         edad.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
-        mensaje_error.textContent = "Debes ser mayor de edad";
+        mensaje_error.textContent = "Debes ingresar una edad entre 18 y 120";
         mensaje_error.classList.add('mensaje-error');
         edad.parentElement.appendChild(mensaje_error);
         valido = false;
@@ -144,6 +151,13 @@ function validarFormulario(event) {
         mensaje_error.classList.add('mensaje-error');
         direccion.parentElement.appendChild(mensaje_error);
         valido = false;
+    } else if (direccion.value.trim().length > 100) {
+        direccion.classList.add('borde-error');
+        let mensaje_error = document.createElement('small');
+        mensaje_error.textContent = "La dirección no puede tener más de 100 caracteres";
+        mensaje_error.classList.add('mensaje-error');
+        direccion.parentElement.appendChild(mensaje_error);
+        valido = false;
     } else {
         direccion.classList.add("borde-correcto");
     }
@@ -153,6 +167,13 @@ function validarFormulario(event) {
         email.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
         mensaje_error.textContent = "Formato de email incorrecto";
+        mensaje_error.classList.add('mensaje-error');
+        email.parentElement.appendChild(mensaje_error);
+        valido = false;
+    } else if (email.value.trim().length > 50) {
+        email.classList.add('borde-error');
+        let mensaje_error = document.createElement('small');
+        mensaje_error.textContent = "El email no puede tener más de 50 caracteres";
         mensaje_error.classList.add('mensaje-error');
         email.parentElement.appendChild(mensaje_error);
         valido = false;
@@ -192,7 +213,7 @@ function validarFormulario(event) {
 
         valido = false;
 
-    }else {
+    } else {
         password.classList.add("borde-correcto");
         password_confirmation.classList.add("borde-correcto");
     }

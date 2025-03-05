@@ -33,6 +33,7 @@ function mostrarPaises() {
                 opcion.appendChild(textoOpcion);
                 $("#pais").append(opcion);
             });
+            
         },
         error: function () {
             console.error("error en la petición");

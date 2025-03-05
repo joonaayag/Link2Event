@@ -14,13 +14,14 @@ class AutentificadorController extends Controller
     {
         // Validar los datos del formulario
         $request->validate([
-            'nombre' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
-            'edad' => 'required|integer|min:18',
-            'pais' => 'required|string|max:255',
+            'nombre' => 'required|string|max:15',
+            'apellidos' => 'required|string|max:30',
+            'edad' => 'required|integer|min:18|max:120',
+            'pais' => 'required|string|max:30',
             'tipo_identificacion' => 'required|in:NIF,DNI',
-            'direccion' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:usuarios',
+            'num_identificacion' => 'required|string|max:9',
+            'direccion' => 'required|string|max:100',
+            'email' => 'required|string|email|max:50|unique:usuarios',
             'password' => 'required|string|min:6|confirmed'
         ]);
 
