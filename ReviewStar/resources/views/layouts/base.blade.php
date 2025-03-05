@@ -19,8 +19,10 @@
     <!-- Link iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+
     <!-- Scripts -->
     <script src="{{ asset('js/jquery-3.7.1.min.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/concierto.js') }}"></script> --}}
 </head>
 
 <body @yield('claseBody')>
@@ -60,8 +62,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'contacto' ? 'active' : '' }}" href="">
-                                <img src="{{ asset('assets/iconos/contacto.svg') }}" class="nav-icon" alt="Contacto">
+                            <a class="nav-link {{ Route::currentRouteName() == 'contactanos' ? 'active' : '' }}" href="{{ route('contactanos') }}">
+                                <img src="{{ asset('assets/iconos/contacto.svg') }}" class="nav-icon" alt="Contactanos">
                                 Contacto
 
                             </a>
