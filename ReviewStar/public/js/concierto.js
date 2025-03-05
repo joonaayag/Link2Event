@@ -1,10 +1,9 @@
-// Make sure this is in public/js/conciertos.js or resources/js/conciertos.js
 async function fetchConcerts(filtros = {}) {
     try {
         const apiKey = "NaABMVnPL3zTNZQa5eaP5AEuVTf4V0Aw";
         let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}`;
         
-        // Add filters to URL
+        // Mapear los filtros para que coincidan con la API de Ticketmaster
         if (filtros.ciudad) {
             url += `&city=${encodeURIComponent(filtros.ciudad)}`;
         }
@@ -67,6 +66,23 @@ async function sendConcertsToLaravel(concerts, filtros) {
         document.getElementById('results-container').innerHTML = `<p>Error: ${error.message}</p>`;
     }
 }
+
+// Añadir evento de escucha para el formulario de filtro
+document.addEventListener('DOMContentLoaded', function() {
+    const filterForm = document.getElementById('filterForm');
+    if (filterForm) {
+        filterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Recoger los valores del formulario
+            const formData = new FormData(filterForm);
+            const filtros = Object.fromEntries(formData.entries());
+            
+            // Llamar a la función de búsqueda
+            fetchConcerts(filtros);
+        });
+    }
+});
 
 // Ensure the function is in the global scope
 window.fetchConcerts = fetchConcerts;

@@ -3,90 +3,57 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Concierto;
+use Carbon\Carbon;
 
 class EventosController extends Controller
 {
     public function index()
     {
-        $apiKey = 'NaABMVnPL3zTNZQa5eaP5AEuVTf4V0Aw';
-        $baseUrl = 'https://app.ticketmaster.com/discovery/v2/events.json';
+        // Obtener eventos de hoy
+        $today = Carbon::now()->format('Y-m-d');
+        $conciertos = Concierto::whereDate('fecha', $today)
+            ->paginate(9); // 9 eventos por página para un diseño de 3 columnas
 
-        try {
-            // Obtener el país del usuario autenticado (asumiendo que tienes esta información)
-            $userCountry = Auth::user()->pais ?? 'ES'; // Por defecto España
-
-            // Llamada a la API de Ticketmaster con parámetros optimizados
-            $response = Http::get($baseUrl, [
-                'apikey' => $apiKey,
-                'countryCode' => $userCountry, // País del usuario
-                'size' => 50, // Número de resultados por página
-                'page' => 0, // Primera página
-                'sort' => 'date,asc', // Ordenar por fecha ascendente
-                'includeTBA' => 'no', // Excluir eventos sin fecha confirmada
-                'includeTBD' => 'no' // Excluir eventos con fecha tentativa
-            ]);
-            
-            // Verificar si la solicitud fue exitosa
-            if ($response->successful()) {
-                $data = $response->json();
-                
-                // Extraer información relevante
-                $eventos = $data['_embedded']['events'] ?? [];
-                $totalPages = $data['page']['totalPages'] ?? 1;
-
-                // Preparar vista con eventos
-                return view('eventos.index', [
-                    'eventos' => $eventos,
-                    'totalPages' => $totalPages,
-                    'currentPage' => 0,
-                    'userCountry' => $userCountry
-                ]);
-            } else {
-                // Manejo de errores si la API no responde correctamente
-                return view('eventos.index')->with('error', 'No se pudieron cargar los eventos');
-            }
-        } catch (\Exception $e) {
-            // Manejo de errores de conexión
-            return view('eventos.index')->with('error', 'Error al conectar con Ticketmaster: ' . $e->getMessage());
-        }
+        return view('conciertos', compact('conciertos'));
     }
 
-    // Método para cargar más eventos mediante AJAX
-    public function loadMoreEvents(Request $request)
+    // Método para búsqueda con filtros
+    public function buscar(Request $request)
     {
-        $apiKey = 'NaABMVnPL3zTNZQa5eaP5AEuVTf4V0Aw';
-        $baseUrl = 'https://app.ticketmaster.com/discovery/v2/events.json';
+        $query = Concierto::query();
 
-        try {
-            $page = $request->input('page', 1);
-            $userCountry = $request->input('country', 'ES');
-
-            $response = Http::get($baseUrl, [
-                'apikey' => $apiKey,
-                'countryCode' => $userCountry,
-                'size' => 50,
-                'page' => $page,
-                'sort' => 'date,asc',
-                'includeTBA' => 'no',
-                'includeTBD' => 'no'
-            ]);
-
-            if ($response->successful()) {
-                $data = $response->json();
-                $eventos = $data['_embedded']['events'] ?? [];
-
-                return response()->json([
-                    'eventos' => $eventos,
-                    'totalPages' => $data['page']['totalPages'] ?? 1,
-                    'currentPage' => $page
-                ]);
-            } else {
-                return response()->json(['error' => 'No se pudieron cargar más eventos'], 400);
-            }
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+        // Aplicar filtros si existen
+        if ($request->filled('nombre')) {
+            $query->where('nombre', 'like', '%' . $request->nombre . '%');
         }
+
+        if ($request->filled('ciudad')) {
+            $query->where('ciudad', 'like', '%' . $request->ciudad . '%');
+        }
+
+        if ($request->filled('fecha_desde')) {
+            $query->where('fecha', '>=', $request->fecha_desde);
+        }
+
+        if ($request->filled('fecha_hasta')) {
+            $query->where('fecha', '<=', $request->fecha_hasta);
+        }
+
+        if ($request->filled('genero')) {
+            $query->where('genero', $request->genero);
+        }
+
+        if ($request->filled('precio_min')) {
+            $query->where('precio', '>=', $request->precio_min);
+        }
+
+        if ($request->filled('precio_max')) {
+            $query->where('precio', '<=', $request->precio_max);
+        }
+
+        $conciertos = $query->paginate(9);
+
+        return view('eventos', compact('conciertos'));
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Concierto;
-use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
 
 class SearchController extends Controller
 {
@@ -46,48 +46,39 @@ class SearchController extends Controller
         if (!empty($data['precio_max'])) {
             $conciertos->where('precio', '<=', $data['precio_max']);
         }
-        if (!empty($data['creado_desde'])) {
-            $conciertos->where('created_at', '>=', $data['creado_desde']);
-        }
-        if (!empty($data['creado_hasta'])) {
-            $conciertos->where('created_at', '<=', $data['creado_hasta']);
-        }
-        if (!empty($data['actualizado_desde'])) {
-            $conciertos->where('updated_at', '>=', $data['actualizado_desde']);
-        }
-        if (!empty($data['actualizado_hasta'])) {
-            $conciertos->where('updated_at', '<=', $data['actualizado_hasta']);
-        }       
-        $conciertos = $conciertos->get();
+
+        // Paginación
+        $conciertos = $conciertos->paginate(10);
 
         return view('filter', compact('data', 'conciertos'));
     }
-public function mostrarConciertos(Request $request)
-{
-    $concerts = $request->input('concerts', []);
-    $filtros = $request->input('filtros', []);
-    
-    $processedConcerts = [];
-    foreach ($concerts as $concert) {
 
-        $processedConcerts[] = [
-            'event_id' => $concert['id'] ?? '',
-            'nombre' => $concert['name'] ?? '',
-            'fecha' => isset($concert['dates']['start']['localDate']) ? $concert['dates']['start']['localDate'] : null,
-            'hora' => isset($concert['dates']['start']['localTime']) ? $concert['dates']['start']['localTime'] : null,
-            'lugar' => isset($concert['_embedded']['venues'][0]['name']) ? $concert['_embedded']['venues'][0]['name'] : '',
-            'ciudad' => isset($concert['_embedded']['venues'][0]['city']['name']) ? $concert['_embedded']['venues'][0]['city']['name'] : '',
-            'imagen' => isset($concert['images'][0]['url']) ? $concert['images'][0]['url'] : '',
-            'genero' => isset($concert['classifications'][0]['genre']['name']) ? $concert['classifications'][0]['genre']['name'] : '',
-            'precio' => isset($concert['priceRanges'][0]['min']) ? $concert['priceRanges'][0]['min'] : 0,
-        ];
+    public function mostrarConciertos(Request $request)
+    {
+        $concerts = $request->input('concerts', []);
+        $filtros = $request->input('filtros', []);
+        
+        $processedConcerts = [];
+        foreach ($concerts as $concert) {
+            $processedConcerts[] = [
+                'event_id' => $concert['id'] ?? '',
+                'nombre' => $concert['name'] ?? '',
+                'fecha' => isset($concert['dates']['start']['localDate']) ? $concert['dates']['start']['localDate'] : null,
+                'hora' => isset($concert['dates']['start']['localTime']) ? $concert['dates']['start']['localTime'] : null,
+                'lugar' => isset($concert['_embedded']['venues'][0]['name']) ? $concert['_embedded']['venues'][0]['name'] : '',
+                'ciudad' => isset($concert['_embedded']['venues'][0]['city']['name']) ? $concert['_embedded']['venues'][0]['city']['name'] : '',
+                'imagen' => isset($concert['images'][0]['url']) ? $concert['images'][0]['url'] : '',
+                'genero' => isset($concert['classifications'][0]['genre']['name']) ? $concert['classifications'][0]['genre']['name'] : '',
+                'precio' => isset($concert['priceRanges'][0]['min']) ? $concert['priceRanges'][0]['min'] : 0,
+                'url' => $concert['url'] ?? '#',
+            ];
+        }
+        
+        $html = view('partials.conciertos-list', ['conciertos' => $processedConcerts])->render();
+        
+        return response()->json([
+            'success' => true,
+            'html' => $html
+        ]);
     }
-    
-    $html = view('partials.conciertos-list', ['conciertos' => $processedConcerts])->render();
-    
-    return response()->json([
-        'success' => true,
-        'html' => $html
-    ]);
-}
 }

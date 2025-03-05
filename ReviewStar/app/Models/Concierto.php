@@ -10,14 +10,14 @@ class Concierto extends Model
     use HasFactory;
 
     protected $fillable = [
-        'event_id',
-        'nombre',
-        'fecha',
-        'hora',
-        'lugar',
-        'ciudad',
-        'imagen',
-        'genero',
-        'precio',
+        'nombre', 
+        'fecha', 
+        'hora', 
+        'lugar', 
+        'ciudad', 
+        'genero', 
+        'precio', 
+        'imagen', 
+        'url'
     ];
 }
