@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inicio', [UserController::class, 'inicio'])->name('inicio');
     Route::get('/sobre_nosotros', [UserController::class, 'sobreNosotros'])->name('sobre_nosotros');
     Route::get('/contactanos', [UserController::class, 'contactanos'])->name('contactanos');
+    Route::get('/favoritos', [UserController::class, 'favoritos'])->name('favoritos');
 
     Route::get('/logout', [AutentificadorController::class, 'cerrarSesion'])->name('logout');
 

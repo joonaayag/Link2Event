@@ -55,6 +55,11 @@ class UserController extends Controller
         return view('eventos');
     }
 
+    public function favoritos()
+    {
+        return view('favoritos');
+    }
+
     public function perfil()
     {
         return view('perfil');

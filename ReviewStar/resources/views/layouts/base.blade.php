@@ -55,6 +55,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {{ Route::currentRouteName() == 'favoritos' ? 'active' : '' }}"
+                                href="{{ route('favoritos') }}">
+                                <img src="{{ asset('assets/iconos/ticket.svg') }}" class="nav-icon" alt="favoritos">
+                                Favoritos
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {{ Route::currentRouteName() == 'sobre' ? 'active' : '' }}" href="{{route('sobre_nosotros')}}">
                                 <img src="{{ asset('assets/iconos/informacion.svg') }}" class="nav-icon"
                                     alt="Sobre Nosotros">

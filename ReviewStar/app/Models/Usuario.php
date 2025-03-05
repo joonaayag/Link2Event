@@ -50,5 +50,9 @@ class Usuario extends Authenticatable
         ];
     }
 
-    // Puedes agregar métodos adicionales aquí si es necesario.
+    //Hago la relacion de uno a muchos (un usuario tiene muchos favoritos)
+    public function favoritos()
+    {
+        return $this->hasMany(Favorito::class);
+    }
 }
