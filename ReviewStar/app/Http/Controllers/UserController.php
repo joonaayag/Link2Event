@@ -65,8 +65,8 @@ class UserController extends Controller
     {
         // Validar los datos del formulario
         $request->validate([
-            'nombre' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
+            'nombre' => 'required|string|max:15',
+            'apellidos' => 'required|string|max:30',
             'edad' => 'required|integer|min:18',
             'pais' => 'required|string|max:255',
             'tipo_identificacion' => 'required|in:NIF,DNI',

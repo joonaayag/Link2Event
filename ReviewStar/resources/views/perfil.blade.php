@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-md-4 d-flex justify-content-center">
                                     <img src="{{ Auth::user()->foto_perfil ? asset('storage/perfiles/' . Auth::user()->foto_perfil) : asset('assets/img/foto-default.png') }}"
-                                        alt="Foto de perfil" class="rounded-circle" height="130px">
+                                        alt="Foto de perfil" class="rounded-circle foto-perfil-grande">
                                 </div>
                             </div>
 

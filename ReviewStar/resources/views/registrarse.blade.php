@@ -7,7 +7,7 @@
 @section('contenido')
     {{-- SCRIPTS EN ESTA PÁGINA --}}
     <script src="{{ asset('js/scriptNacionalidades.js') }}" defer></script>
-
+    <script src="{{ asset('js/validacionRegistro.js') }}" defer></script>
 
     <div class="container d-flex justify-content-center align-items-center">
         <div class="col-md-6">
@@ -32,9 +32,9 @@
                                 <label for="apellidos" class="form-label">Apellidos</label>
                                 <input type="text" class="form-control" id="apellidos" name="apellidos"
                                     value="{{ old('apellidos') }}" required>
-                                @error('apellidos')
+                                {{-- @error('apellidos')
                                     <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                @enderror --}}
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -42,9 +42,9 @@
                                 <label for="edad" class="form-label">Edad</label>
                                 <input type="number" class="form-control" id="edad" name="edad"
                                     value="{{ old('edad') }}" required>
-                                @error('edad')
+                                {{-- @error('edad')
                                     <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                @enderror --}}
                             </div>
                             <div class="col-md-6">
                                 <label for="pais" class="form-label">País</label>
@@ -56,9 +56,9 @@
                                         <circle r="20" cy="50" cx="50"></circle>
                                     </svg>
                                 </div>
-                                @error('pais')
+                                {{-- @error('pais')
                                     <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                @enderror --}}
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -70,51 +70,52 @@
                                     <option value="NIE" {{ old('tipo_identificacion') == 'NIE' ? 'selected' : '' }}>NIE
                                     </option>
                                 </select>
-                                @error('tipo_identificacion')
+                                {{-- @error('tipo_identificacion')
                                     <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                @enderror --}}
                             </div>
                             <div class="col-md-6">
                                 <label for="num_identificacion" class="form-label">Número de identificación</label>
                                 <input type="text" class="form-control" id="num_identificacion" name="num_identificacion"
                                     value="{{ old('num_identificacion') }}" required>
-                                @error('num_identificacion')
+                                {{-- @error('num_identificacion')
                                     <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                @enderror --}}
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="direccion" class="form-label">Dirección</label>
                             <input type="text" class="form-control" id="direccion" name="direccion"
                                 value="{{ old('direccion') }}" required>
-                            @error('direccion')
+                            {{-- @error('direccion')
                                 <small class="text-danger">{{ $message }}</small>
-                            @enderror
+                            @enderror --}}
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Correo electrónico</label>
                             <input type="email" class="form-control" id="email" name="email"
                                 value="{{ old('email') }}" required>
-                            @error('email')
+                            {{-- @error('email')
                                 <small class="text-danger">{{ $message }}</small>
-                            @enderror
+                            @enderror --}}
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Contraseña</label>
                             <input type="password" class="form-control" id="password" name="password" required>
-                            @error('password')
+                            {{-- @error('password')
                                 <small class="text-danger">{{ $message }}</small>
-                            @enderror
+                            @enderror --}}
                         </div>
                         <div class="mb-3">
                             <label for="password_confirmation" class="form-label">Confirmar contraseña</label>
                             <input type="password" class="form-control" id="password_confirmation"
                                 name="password_confirmation" required>
-                            @error('password_confirmation')
+                            {{-- @error('password_confirmation')
                                 <small class="text-danger">{{ $message }}</small>
-                            @enderror
+                            @enderror --}}
                         </div>
-                        <button type="submit" class="btn btn-primary w-100 btn-registro">Registrarse</button>
+                        <button type="submit" class="btn btn-primary w-100 btn-registro"
+                            id="botonRegistrarse">Registrarse</button>
                         <div class="mt-3 text-center">
                             <p>¿Ya tienes una cuenta? <a href="{{ route('login') }}" class="enlaceAmarillo">Inicia
                                     sesión</a></p>

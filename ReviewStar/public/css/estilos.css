@@ -20,6 +20,13 @@
   border-color: var(--color-seleccion) !important;
 }
 
+.borde-error {
+  border: red 1.5px solid;
+}
+
+.borde-correcto {
+  border: green 1.5px solid;
+}
 
 
 /* ESTILOS GENERALES */
@@ -117,7 +124,12 @@ select:focus {
 
 .foto-perfil {
   height: 50px;
-  width: auto;
+  max-width: 50px;
+}
+
+.foto-perfil-grande {
+  height: 130px;
+  max-width: 130px;
 }
 
 .nav-icon {
@@ -217,6 +229,11 @@ select:focus {
   background-repeat: no-repeat;
 }
 
+.mensaje-error {
+  color: red;
+  margin: 0;
+}
+
 /* ICONO CARGANDO */
 
 .contenedor-select {
@@ -289,19 +306,5 @@ circle {
 
 /* PÁGINA EDITAR PERFIL */
 
-/* .boton-guardar, .boton-cancelar {
-  background-color: var(--color-seleccion) !important;
-  border: none !important;
-  padding: 8px 16px !important;
-  text-align: center;
-  height: auto;
-}
-
-.boton-cancelar{
-  background-color: var(--fondo-carta) !important;
-  border: none !important;
-  color: var(--color-principal) !important;
-  margin-right: 10px;
-} */
 
 /* FIN PÁGINA EDITAR PERFIL */
