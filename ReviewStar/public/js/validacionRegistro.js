@@ -93,7 +93,7 @@ function validarFormulario(event) {
     }
 
     //Validar país
-    let paises = JSON.parse(localStorage.getItem("paisesOrdenados")) || [];
+    let paises = JSON.parse(localStorage.getItem("paisesOrdenados")) || []; //Accedemos al valor del localStorage, si no, devolvemos un array vacío
     if (pais.value === "") {
         pais.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
