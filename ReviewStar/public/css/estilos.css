@@ -43,6 +43,10 @@ body {
   padding-top: 85px;
 }
 
+.gigante{
+  font-size: 100px;
+}
+
 .container {
   min-height: calc(100vh - 85px);
   /* Esto es para que respete la altura del navbar */
@@ -148,10 +152,9 @@ select:focus {
 
 /* PÁGINA BIENVENIDA */
 .pagina-bienvenida {
-  height: 90vh !important;
+  background-image: url('../assets/img/fondo_bienvenida.png');
   display: flex;
   align-items: center;
-  background-image: url('../assets/img/fondo_bienvenida.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -205,10 +208,9 @@ select:focus {
 /* PÁGINA DE LOGIN */
 
 .pagina-login {
-  height: 100vh !important;
+  background-image: url('../assets/img/fondo-registro.svg');
   display: flex;
   align-items: center;
-  background-image: url('../assets/img/fondo-login.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -221,9 +223,9 @@ select:focus {
 
 .pagina-registrarse {
   /* min-height: 100vh !important; */
+  background-image: url('../assets/img/fondo-registro.svg');
   display: flex;
   align-items: center;
-  background-image: url('../assets/img/fondo-registro.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -289,10 +291,9 @@ circle {
 /* PAGINA DE PERFIL */
 
 .pagina-perfil {
+  background-image: url('../assets/img/fondo_bienvenida.png');
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-image: url('../assets/img/fondo_bienvenida.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -308,3 +309,17 @@ circle {
 
 
 /* FIN PÁGINA EDITAR PERFIL */
+
+/* PÁGINA SOBRE-NOSOTROS */
+
+.pagina-sobre_nosotros {
+  background-image: url('../assets/img/fondo_bienvenida.png');
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* FIN PÁGINA SOBRE-NOSOTROS */

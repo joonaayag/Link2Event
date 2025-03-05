@@ -28,6 +28,10 @@ class UserController extends Controller
         return view('inicio');
     }
 
+    public function sobreNosotros(){
+        return view('sobre_nosotros');
+    }
+
     public function registrarse()
     {
         if (Auth::check()) { //Si ya estas logeado y tratas de entrar a /login
