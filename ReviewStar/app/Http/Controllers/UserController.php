@@ -111,7 +111,6 @@ class UserController extends Controller
             // Guardar la nueva foto
             $imagen = $request->file('foto_perfil');
             if (!$imagen->isValid()) {
-                echo "ERRRRRRRRRRRRRRRRRRRRR";
                 return redirect()->back()->withErrors(['foto_perfil' => 'El archivo no es válido']);
             }
             $nombreImagen = time() . '.' . $imagen->getClientOriginalExtension();
