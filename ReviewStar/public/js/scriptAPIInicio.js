@@ -34,6 +34,54 @@ function inicio() {
                 : "No disponible",
         };
     }
+    function imprimirColumnaDep(datosEvento) {
+        return `<div class="row mb-3">
+                        <div class="col-4">
+                            <img src="${datosEvento.imagen}" alt="Imagen del evento">
+                        </div>
+                        <div class="col-8">
+                            <h4>Nombre del evento: ${datosEvento.nombre}</h4>
+                            <p>Lugar: ${datosEvento.ciudad}</p>
+                            <p>Fecha de inicio:  ${datosEvento.fechaInicio}</p>
+                            <p>Fecha entradas disponibles:  ${datosEvento.entradas}</p>
+                            
+                            <button type="button" class="btn btn-primary btn-modal" data-target="#modal_${datosEvento.id}">
+                                Ver detalles
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal_${datosEvento.id}" tabindex="-1" role="dialog" aria-labelledby="modalTitle_${datosEvento.id}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Más información sobre ${datosEvento.nombre}</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="col-4">
+                                                <img src="${datosEvento.imagen}" alt="Imagen del evento">
+                                            </div>
+                                            <div class="col-8">
+                                                <p>Ciudad: ${datosEvento.ciudad}</p>
+                                                <p>Lugar: ${datosEvento.lugar}</p>
+                                                <p>Fecha de inicio:  ${datosEvento.fechaInicio}</p>
+                                                <p>Hora de inicio:  ${datosEvento.fechaHora}</p>
+                                                <p>Fecha entradas disponibles:  ${datosEvento.entradas}</p>
+                                                <p>Dirección:  ${datosEvento.direccion}</p>
+                                                <p>Genero:  ${datosEvento.genero}</p>
+                                                <p>Precio minimo:  ${datosEvento.precioMinimo}$</p>
+                                                <p>Precio maximo:  ${datosEvento.precioMaximo}$</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <a href="${datosEvento.url}" target="_blank" class="btn btn-primary">Ver en Ticketmaster</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+    }
 
     function imprimirColumnaMA(datosEvento) {
         return `<div class="row mb-3">
@@ -69,8 +117,8 @@ function inicio() {
                                                 <p>Fecha entradas disponibles:  ${datosEvento.entradas}</p>
                                                 <p>Dirección:  ${datosEvento.direccion}</p>
                                                 <p>Genero:  ${datosEvento.genero}</p>
-                                                <p>Precio minimo:  ${datosEvento.precioMinimo}</p>
-                                                <p>Precio maximo:  ${datosEvento.precioMaximo}</p>
+                                                <p>Precio minimo:  ${datosEvento.precioMinimo}$</p>
+                                                <p>Precio maximo:  ${datosEvento.precioMaximo}$</p>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -97,54 +145,7 @@ function inicio() {
 
                     let datosEvento = obtenerDatosEvento(event);
 
-                    $("#columnaDeportes").append(`
-                    <div class="row mb-3">
-                        <div class="col-4">
-                            <img src="${datosEvento.imagen}" alt="Imagen del evento">
-                        </div>
-                        <div class="col-8">
-                            <h4>Nombre del evento: ${datosEvento.nombre}</h4>
-                            <p>Lugar: ${datosEvento.ciudad}</p>
-                            <p>Fecha de inicio:  ${datosEvento.fechaInicio}</p>
-                            <p>Fecha entradas disponibles:  ${datosEvento.entradas}</p>
-                            
-                            <button type="button" class="btn btn-primary btn-modal" data-target="#modal_${datosEvento.id}">
-                                Ver detalles
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="modal_${datosEvento.id}" tabindex="-1" role="dialog" aria-labelledby="modalTitle_${datosEvento.id}" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Más información sobre ${datosEvento.nombre}</h5>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="col-4">
-                                                <img src="${datosEvento.imagen}" alt="Imagen del evento">
-                                            </div>
-                                            <div class="col-8">
-                                                <p>Ciudad: ${datosEvento.ciudad}</p>
-                                                <p>Lugar: ${datosEvento.lugar}</p>
-                                                <p>Fecha de inicio:  ${datosEvento.fechaInicio}</p>
-                                                <p>Hora de inicio:  ${datosEvento.fechaHora}</p>
-                                                <p>Fecha entradas disponibles:  ${datosEvento.entradas}</p>
-                                                <p>Dirección:  ${datosEvento.direccion}</p>
-                                                <p>Genero:  ${datosEvento.genero}</p>
-                                                <p>Precio minimo:  ${datosEvento.precioMinimo}</p>
-                                                <p>Precio maximo:  ${datosEvento.precioMaximo}</p>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <a href="${datosEvento.url}" target="_blank" class="btn btn-primary">Ver en Ticketmaster</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    `);
+                    $("#columnaDeportes").append(imprimirColumnaDep(datosEvento));
                 });
             } else {
                 console.log("No se encontraron eventos de deportes.");
