@@ -22,6 +22,7 @@ class AutentificadorController extends Controller
             'num_identificacion' => 'required|string|max:9',
             'direccion' => 'required|string|max:100',
             'email' => 'required|string|email|max:50|unique:usuarios',
+            'foto_perfil' => 'nullable|string',
             'password' => 'required|string|min:6|confirmed'
         ]);
 
