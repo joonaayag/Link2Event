@@ -38,16 +38,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inicio', [UserController::class, 'inicio'])->name('inicio');
     Route::get('/sobre_nosotros', [UserController::class, 'sobreNosotros'])->name('sobre_nosotros');
     Route::get('/contactanos', [UserController::class, 'contactanos'])->name('contactanos');
-    Route::get('/admin/panel', [UserController::class, 'panelAdmin'])->name('admin.panel');
-
-    Route::get('/logout', [AutentificadorController::class, 'cerrarSesion'])->name('logout');
-
-
     
+    Route::get('/logout', [AutentificadorController::class, 'cerrarSesion'])->name('logout');
+    Route::get('/admin/panel', [AutentificadorController::class, 'adminPanel'])->name('admin.panel');
+
     // ------------- RUTAS POST -------------
     Route::post('/perfil', [UserController::class, 'actualizarPerfil'])->name('perfil.actualizar');
     Route::post('/contactanos', [comentariosController::class, 'almacenarComentario'])->name('enviarComentario');
 });
-
-
-

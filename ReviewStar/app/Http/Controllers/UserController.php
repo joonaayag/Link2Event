@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -14,14 +15,7 @@ use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
 
-    public function adminPanel()
-    {
-        if (Auth::user()->rol !== 'ADMIN') {
-            redirect()->route('inicio');
-        }
-        return view('admin.panel');
-    }
-
+    
     public function bienvenida()
     {
         if (Auth::check()) { //Si ya estas logeado y tratas de entrar a /login
