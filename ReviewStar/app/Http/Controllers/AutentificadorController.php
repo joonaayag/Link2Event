@@ -103,16 +103,5 @@ class AutentificadorController extends Controller
     }
 
     
-    //Compruebo que el usuario sea admin
-    public function adminPanel()
-    {
-        if (Auth::user()->rol !== 'ADMIN') {
-            redirect()->route('inicio');
-        }
-
-        //Cojo todos los datos de los usuarios que no sean admin.
-        $usuarios = Usuario::where('rol', '!=', 'ADMIN')->get();
-        return view('panelAdministrador');
-    }
-
+    
 }
