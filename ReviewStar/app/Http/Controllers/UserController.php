@@ -14,10 +14,18 @@ use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
 
+    public function adminPanel()
+    {
+        if (Auth::user()->rol !== 'ADMIN') {
+            redirect()->route('inicio');
+        }
+        return view('admin.panel');
+    }
+
     public function bienvenida()
     {
         if (Auth::check()) { //Si ya estas logeado y tratas de entrar a /login
-            return redirect('/inicio');
+            return redirect()->route('inicio');
         }
 
         return view('bienvenida');
@@ -28,7 +36,8 @@ class UserController extends Controller
         return view('inicio');
     }
 
-    public function sobreNosotros(){
+    public function sobreNosotros()
+    {
         return view('sobre_nosotros');
     }
 

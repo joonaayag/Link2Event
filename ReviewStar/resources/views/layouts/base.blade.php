@@ -11,8 +11,8 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
-        
+    </script>
+
 
     <!-- Link css -->
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
@@ -56,15 +56,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'sobre' ? 'active' : '' }}" href="{{route('sobre_nosotros')}}">
+                            <a class="nav-link {{ Route::currentRouteName() == 'sobre' ? 'active' : '' }}"
+                                href="{{ route('sobre_nosotros') }}">
                                 <img src="{{ asset('assets/iconos/informacion.svg') }}" class="nav-icon"
                                     alt="Sobre Nosotros">
                                 Sobre Nosotros
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::currentRouteName() == 'contactanos' ? 'active' : '' }}" href="{{ route('contactanos') }}">
-                                <img src="{{ asset('assets/iconos/contacto.svg') }}" class="nav-icon" alt="Contactanos">
+                            <a class="nav-link {{ Route::currentRouteName() == 'contactanos' ? 'active' : '' }}"
+                                href="{{ route('contactanos') }}">
+                                <img src="{{ asset('assets/iconos/contacto.svg') }}" class="nav-icon"
+                                    alt="Contactanos">
                                 Contacto
 
                             </a>
@@ -93,7 +96,16 @@
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
-                                        <li><a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a>
+                                        {{-- Condición para el rol ADMIN --}}
+                                        @if (Auth::user()->rol === 'ADMIN')
+                                            <li><a class="dropdown-item" href="{{ route('admin.panel') }}">Panel de
+                                                    Administración</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                        @endif
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -114,7 +126,7 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Obtener la ruta actual
             const currentRoute = "{{ Route::currentRouteName() }}";
 

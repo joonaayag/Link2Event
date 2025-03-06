@@ -40,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/logout', [AutentificadorController::class, 'cerrarSesion'])->name('logout');
 
-    // ------------- RUTAS POST -------------
+    Route::get('/admin/panel', [UserController::class, 'panelAdmin'])->name('admin.panel');
+
+    // ------------- RUTAS POST -------------//
     Route::post('/perfil', [UserController::class, 'actualizarPerfil'])->name('perfil.actualizar');
 });
