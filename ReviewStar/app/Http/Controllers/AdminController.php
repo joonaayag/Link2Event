@@ -13,7 +13,7 @@ class AdminController extends Controller
     public function adminPanel()
     {
         if (Auth::user()->rol !== 'ADMIN') {
-            redirect()->route('inicio');
+            return redirect()->route('inicio');
         }
 
         //Cojo todos los datos de los usuarios que no sean admin.
@@ -24,7 +24,7 @@ class AdminController extends Controller
     public function eliminarUsuario(Request $request)
     {
         if (Auth::user()->rol !== 'ADMIN') {
-            redirect()->route('inicio');
+            return redirect()->route('inicio');
         }
 
         $id_usuario = $request->input('id_usuario');
@@ -37,7 +37,7 @@ class AdminController extends Controller
     {
 
         if (Auth::user()->rol !== 'ADMIN') {
-            redirect()->route('inicio');
+            return redirect()->route('inicio');
         }
 
         $id_usuario = $request->input('id_usuario');
@@ -50,11 +50,18 @@ class AdminController extends Controller
     public function mostrarComentarios(Request $request){
 
         if (Auth::user()->rol !== 'ADMIN') {
-            redirect()->route('inicio');
+            return redirect()->route('inicio');
         }
+        $usuario = Usuario::findOrFail($request->input('id_usuario'));
 
-        $comentarios = Comentarios::where('id_usuario', $request->input('id_usuario'));
-        return view('adminComentarios', compact('comentarios'));
+        $comentarios = Comentarios::where('id_usuario', $request->input('id_usuario'))->get();
+        return view('adminComentarios', compact('comentarios', 'usuario'));
+    }
+    
+    public function eliminarComentario(Request $request){
+        $comentario = Comentarios::findOrFail($request->id);
+        $comentario->delete();
+        return redirect()->back()->with('success', 'Comentario eliminado correctamente');
     }
 
 }

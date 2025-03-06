@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('admin/eliminarUsuario', [AdminController::class, 'eliminarUsuario'])->name('eliminarUsuario'); //Ruta para eliminar usuario pulsando el botón
     Route::get('/admin/editarUsuario', [AdminController::class, 'editarUsuario'])->name('editarUsuario');
     Route::get('/admin/mostrarComentariosUsuario', [AdminController::class, 'mostrarComentarios'])->name('mostrarComentarios');
+    Route::delete('/admin/eliminarComentario/{id}', [AdminController::class, 'eliminarComentario'])->name('eliminarComentario');
 
     Route::post('/contactanos', [comentariosController::class, 'almacenarComentario'])->name('enviarComentario');
 });

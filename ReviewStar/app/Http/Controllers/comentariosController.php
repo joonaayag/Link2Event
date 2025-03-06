@@ -19,18 +19,20 @@ class comentariosController extends Controller
             'comentario' => 'required|string',
         ]);
 
-        $user = Auth::user();
+        $usuario = Auth::user();
 
-        $fotoPerfil = $user->foto_perfil ? $user->foto_perfil : 'foto-default.png'; 
+        $fotoPerfil = $usuario->foto_perfil ? $usuario->foto_perfil : url('assets/img/foto-default.png'); 
 
         Comentarios::create([
-            'id_usuario' => $user->id,
-            'nombre_usuario' => $user->nombre,
-            'email_usuario' => $user->email,
+            'id_usuario' => $usuario->id,
+            'nombre_usuario' => $usuario->nombre,
+            'email_usuario' => $usuario->email,
             'foto_perfil' => $fotoPerfil,
             'comentario' => $request->comentario,
         ]);
 
         return redirect()->back()->with('success', 'Texto enviado al administrador correctamente');
     }
+
+
 }

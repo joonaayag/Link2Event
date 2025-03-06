@@ -6,15 +6,24 @@
 
 @section('contenido')
 
-    <div class="container">
-        <h2>Comentarios de {{ Auth::user()->name }}</h2>
-
+    <div class="container mt-5">
+        <h2>Comentarios de {{ $comentarios[0]->nombre_usuario }}</h2>
+        
         @foreach ($comentarios as $comentario)
-            <div class="card mb-3">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <img src="{{ $comentario->foto_perfil }}" alt="Foto de {{ $comentario->nombre_usuario }}" class="rounded-circle me-2" width="50">
-                        <div>
+        <div class="card mb-3">
+            <div class="card-body position-relative">
+                <div class="position-absolute top-0 end-0 mt-3">
+                    <form action="{{ route('eliminarComentario', $comentario->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">
+                            Eliminar comentario
+                        </button>
+                    </form>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div>
+                            <img class="rounded-circle" src="{{ $usuario->foto_perfil ? asset('storage/perfiles/' . $usuario->foto_perfil) : asset('assets/img/foto-default.png') }}" alt="" width="50px" height="50px">
                             <h5 class="mb-0">{{ $comentario->nombre_usuario }}</h5>
                             <small class="text-muted">{{ $comentario->email_usuario }}</small>
                         </div>
