@@ -23,13 +23,14 @@ function inicio() {
             fechaHora: event.dates?.start?.dateTime
                 ? new Date(event.dates.start.dateTime).toLocaleString()
                 : "No disponible",
-            estado: event.dates?.status?.code || "No disponible",
+            lugar : event._embedded?.venues?.[0]?.name || "No disponible",
             direccion: event._embedded?.venues?.[0]?.address?.line1 || "No disponible",
+            genero : event.classifications?.[0]?.genre?.name || "No disponible",
             precioMinimo: event.priceRanges?.[0]?.min
-                ? `$${event.priceRanges[0].min.toFixed(2)}`
+                ? `${event.priceRanges[0].min.toFixed(2)}`
                 : "No disponible",
             precioMaximo: event.priceRanges?.[0]?.max
-                ? `$${event.priceRanges[0].max.toFixed(2)}`
+                ? `${event.priceRanges[0].max.toFixed(2)}`
                 : "No disponible",
         };
     }
@@ -41,7 +42,7 @@ function inicio() {
                         </div>
                         <div class="col-8">
                             <h4>Nombre del evento: ${datosEvento.nombre}</h4>
-                            <p>Lugar: ${datosEvento.ciudad}</p>
+                            <p>Ciudad: ${datosEvento.ciudad}</p>
                             <p>Fecha de inicio:  ${datosEvento.fechaInicio}</p>
                             <p>Fecha entradas disponibles:  ${datosEvento.entradas}</p>
                             
@@ -61,18 +62,20 @@ function inicio() {
                                                 <img src="${datosEvento.imagen}" alt="Imagen del evento">
                                             </div>
                                             <div class="col-8">
-                                                <p>Lugar: ${datosEvento.ciudad}</p>
+                                                <p>Ciudad: ${datosEvento.ciudad}</p>
+                                                <p>Lugar: ${datosEvento.lugar}</p>
                                                 <p>Fecha de inicio:  ${datosEvento.fechaInicio}</p>
                                                 <p>Hora de inicio:  ${datosEvento.fechaHora}</p>
                                                 <p>Fecha entradas disponibles:  ${datosEvento.entradas}</p>
-                                                <p>Estado:  ${datosEvento.estado}</p>
                                                 <p>Dirección:  ${datosEvento.direccion}</p>
+                                                <p>Genero:  ${datosEvento.genero}</p>
                                                 <p>Precio minimo:  ${datosEvento.precioMinimo}</p>
                                                 <p>Precio maximo:  ${datosEvento.precioMaximo}</p>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <a href="${datosEvento.url}" target="_blank" class="btn btn-primary">Ver en Ticketmaster</a>
                                         </div>
                                     </div>
                                 </div>
@@ -121,18 +124,20 @@ function inicio() {
                                                 <img src="${datosEvento.imagen}" alt="Imagen del evento">
                                             </div>
                                             <div class="col-8">
-                                                <p>Lugar: ${datosEvento.ciudad}</p>
+                                                <p>Ciudad: ${datosEvento.ciudad}</p>
+                                                <p>Lugar: ${datosEvento.lugar}</p>
                                                 <p>Fecha de inicio:  ${datosEvento.fechaInicio}</p>
                                                 <p>Hora de inicio:  ${datosEvento.fechaHora}</p>
                                                 <p>Fecha entradas disponibles:  ${datosEvento.entradas}</p>
-                                                <p>Estado:  ${datosEvento.estado}</p>
                                                 <p>Dirección:  ${datosEvento.direccion}</p>
+                                                <p>Genero:  ${datosEvento.genero}</p>
                                                 <p>Precio minimo:  ${datosEvento.precioMinimo}</p>
                                                 <p>Precio maximo:  ${datosEvento.precioMaximo}</p>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <a href="${datosEvento.url}" target="_blank" class="btn btn-primary">Ver en Ticketmaster</a>
                                         </div>
                                     </div>
                                 </div>
