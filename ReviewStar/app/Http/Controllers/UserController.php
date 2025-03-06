@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Comentarios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -146,4 +147,12 @@ class UserController extends Controller
 
         return redirect()->route('perfil')->with('success', 'Perfil actualizado correctamente');
     }
+
+    public function mostrarComentarios($id)
+    {
+        $comentarios = Comentarios::where('id_usuario', $id)->get();
+
+        return view('adminComentarios', compact('comentarios'));
+    }
+
 }
