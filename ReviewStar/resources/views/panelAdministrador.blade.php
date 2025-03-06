@@ -41,11 +41,14 @@
                                 <button type="submit" class="btn btn-warning">Editar Usuario</button>
                             </form>
                             <!-- Ver mensajes -->
+
+
                             <form action="{{ route('mostrarComentarios') }}" method="get">
                                 @csrf
                                 <input type="hidden" name="id_usuario" value="{{ $usuario->id }}">
                                 <button type="submit" class="btn btn-info">Ver mensajes</button>
                             </form>
+
                         </td>
                     </tr>
                 @endforeach

@@ -18,6 +18,7 @@ class AdminController extends Controller
 
         //Cojo todos los datos de los usuarios que no sean admin.
         $usuarios = Usuario::where('rol', '!=', 'ADMIN')->get();
+        
         return view('panelAdministrador', compact('usuarios'));
     }
 
