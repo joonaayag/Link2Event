@@ -60,9 +60,16 @@
                             </div>
                         </div>
                         <div class="row mt-5">
+                            <!-- Muestra un mensaje de confirmación cuando se actualiza el perfil exitosamente -->
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif
                             <div class="col-md-12 d-flex flex-column">
                                 <form action="{{ route('enviarComentario') }}" method="POST">
-                                @csrf
+                                    @csrf
                                     <label for="cuerpo" class="form-label">Mandanos un mensaje para atención
                                         prioritaria:</label>
                                     <textarea name="comentario" class="contactanos-mensaje "
