@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutentificadorController;
+use App\Http\Controllers\comentariosController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/logout', [AutentificadorController::class, 'cerrarSesion'])->name('logout');
 
+    
     // ------------- RUTAS POST -------------
     Route::post('/perfil', [UserController::class, 'actualizarPerfil'])->name('perfil.actualizar');
+    Route::post('/contactanos', [comentariosController::class, 'almacenarComentario'])->name('enviarComentario');
 });

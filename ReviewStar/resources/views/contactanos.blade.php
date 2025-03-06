@@ -59,9 +59,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row mt-5">
+                            <div class="col-md-12 d-flex flex-column">
+                                <form action="{{ route('enviarComentario') }}" method="POST">
+                                @csrf
+                                    <label for="cuerpo" class="form-label">Mandanos un mensaje para atención
+                                        prioritaria:</label>
+                                    <textarea name="comentario" class="contactanos-mensaje "
+                                        placeholder="Escribe tu mensaje"></textarea>
+                                    <button type="submit">Enviar</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Fin de la tarjeta -->
+
             </div>
         </div>
     </div>
