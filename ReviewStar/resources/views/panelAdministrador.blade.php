@@ -9,6 +9,14 @@
     </div>
 
     <div class="container mt-5">
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        
+        @endif
+
         <h2>Lista de Usuarios</h2>
 
         <table class="tabla-usuarios">
@@ -35,15 +43,13 @@
                                 <button type="submit" class="btn btn-danger">Eliminar usuario</button>
                             </form>
                             <!-- Editar Usuario -->
-                            <form action="{{ route('editarUsuario') }}" method="get">
+                            <form action="{{ route('editarUsuario') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="id_usuario" value="{{ $usuario->id }}">
                                 <button type="submit" class="btn btn-warning">Editar Usuario</button>
                             </form>
                             <!-- Ver mensajes -->
-
-
-                            <form action="{{ route('mostrarComentarios') }}" method="get">
+                            <form action="{{ route('mostrarComentarios') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="id_usuario" value="{{ $usuario->id }}">
                                 <button type="submit" class="btn btn-info">Ver mensajes</button>
