@@ -82,11 +82,57 @@ const concertList = concerts.map(concert => {
                     <p class="card-text"><strong>Género:</strong> ${concert.classifications && concert.classifications.length > 0 ? concert.classifications[0].genre.name : 'No disponible'}</p>
                     <p class="card-text"><strong>Precio:</strong> Desde $${concert.priceRanges ? concert.priceRanges[0].min : 'No disponible'}</p>
                     <a href="${concert.url}" target="_blank" class="btn btn-primary w-100">Comprar Entradas</a>
+
+                    <button type="button" class="btn btn-primary btn-modal" data-target="#modal_${concert.id}">
+                        Ver detalles
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal_${concert.id}" tabindex="-1" role="dialog" aria-labelledby="modalTitle_${concert.id}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Más información sobre ${concert.name}</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-4">
+                                        <img src="${concert.images ? concert.images[0].url : 'https://via.placeholder.com/300'}" alt="Imagen del evento">
+                                    </div>
+                                    <div class="col-8">
+                                        <p>Ciudad: ${concert._embedded.venues[0].city.name}</p>
+                                        <p>Lugar: ${concert._embedded.venues[0].name}</p>
+                                        <p>Fecha de inicio:  ${concert.dates.start.dateTime ? new Date(concert.dates.start.dateTime).toLocaleString() : 'Fecha no disponible'}</p>
+                                        <p>Hora de inicio:  ${concert.dates.start.dateTime ? new Date(concert.dates.start.dateTime).toLocaleTimeString() : 'Hora no disponible'}</p>
+                                        <p>Fecha entradas disponibles:  ${concert.sales.public.startDateTime ? new Date(concert.sales.public.startDateTime).toLocaleString() : 'Fecha no disponible'}</p>
+                                        <p>Dirección:  ${concert._embedded.venues[0].address.line1}</p>
+                                        <p>Género:  ${concert.classifications && concert.classifications.length > 0 ? concert.classifications[0].genre.name : 'No disponible'}</p>
+                                        <p>Precio minimo:  ${concert.priceRanges ? concert.priceRanges[0].min : 'No disponible'}</p>
+                                        <p>Precio maximo:  ${concert.priceRanges ? concert.priceRanges[0].max : 'No disponible'}</p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     `;
 }).join('');
+
+//Abrir modal
+$(document).on("click", ".btn-modal", function () {
+    let target = $(this).data("target"); // Obtiene el ID de la modal
+    $(target).modal("show"); // Abre la modal manualmente
+});
+
+//Cerrar modal
+$(document).on("click", ".close, .btn-secondary", function () {
+    $(this).closest(".modal").modal("hide");
+});
 
 container.innerHTML = `<div class="row">${concertList}</div>`;
 
