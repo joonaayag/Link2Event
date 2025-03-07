@@ -13,7 +13,7 @@ function inicio() {
 
     function obtenerDatosEvento(event) {
         let fechaEntradas = event.sales?.public?.startDateTime;
-        let fechaEntradasNueva = fechaEntradas.split("T")[0] + " " +fechaEntradas.split("T")[1].replace("Z", "H");
+        let fechaEntradasNueva = fechaEntradas.split("T")[0] + " " + fechaEntradas.split("T")[1].replace("Z", "H");
         return {
             id: event.id,
             nombre: event.name,
@@ -25,26 +25,26 @@ function inicio() {
             fechaHora: event.dates?.start?.dateTime
                 ? new Date(event.dates.start.dateTime).toLocaleString()
                 : "No disponible",
-            lugar : event._embedded?.venues?.[0]?.name || "No disponible",
+            lugar: event._embedded?.venues?.[0]?.name || "No disponible",
             direccion: event._embedded?.venues?.[0]?.address?.line1 || "No disponible",
-            genero : event.classifications?.[0]?.genre?.name || "No disponible",
+            genero: event.classifications?.[0]?.genre?.name || "No disponible",
             precioMinimo: event.priceRanges?.[0]?.min
-                ? `${event.priceRanges[0].min.toFixed(2)} $`
+                ? `${event.priceRanges[0].min.toFixed(2)}$`
                 : "No disponible",
             precioMaximo: event.priceRanges?.[0]?.max
-                ? `${event.priceRanges[0].max.toFixed(2)}  $`
+                ? `${event.priceRanges[0].max.toFixed(2)}$`
                 : "No disponible",
         };
     }
     function imprimirColumnaDep(datosEvento) {
         return `<div class="row mb-4 carta-inicio tarjeta-inicio">
-                        <div class="col-5 d-flex flex-column align-items-center">
+                        <div class="col-5 d-flex flex-column align-items-center justify-content-center">
                             <img src="${datosEvento.imagen}" class="imagen-inicio" alt="Imagen del evento">
                             <button type="button" class="btn btn-primary btn-modal btn-registro mt-3 w-100" data-target="#modal_${datosEvento.id}">
                                 Ver detalles
                             </button>
                         </div>
-                        <div class="col-7">
+                        <div class="col-7 d-flex flex-column justify-content-center">
                             <h4 class="negrita naranjita" >${datosEvento.nombre}</h4>
                             <p><span class="negrita">Lugar:</span> ${datosEvento.ciudad}</p>
                             <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
@@ -58,12 +58,12 @@ function inicio() {
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLongTitle">Más información sobre ${datosEvento.nombre}</h5>
                                         </div>
-                                        <div class="modal-body">
+                                        <div class="modal-body d-flex justify-content-center align-items-center">
                                             <div class="row">
-                                                <div class="col-6">
+                                                <div class="col-6 contenedor-imagen-modal">
                                                     <img src="${datosEvento.imagen}" alt="Imagen del evento">
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-6 d-flex flex-column justify-content-between">
                                                     <p><span class="negrita">Ciudad:</span> ${datosEvento.ciudad}</p>
                                                     <p><span class="negrita">Lugar:</span> ${datosEvento.lugar}</p>
                                                     <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
@@ -71,8 +71,8 @@ function inicio() {
                                                     <p><span class="negrita">Fecha entradas disponibles:</span>  ${datosEvento.entradas}</p>
                                                     <p><span class="negrita">Dirección:</span>  ${datosEvento.direccion}</p>
                                                     <p><span class="negrita">Genero:</span>  ${datosEvento.genero}</p>
-                                                    <p><span class="negrita">Precio minimo:</span>  ${datosEvento.precioMinimo}$</p>
-                                                    <p><span class="negrita">Precio maximo:</span>  ${datosEvento.precioMaximo}$</p>
+                                                    <p><span class="negrita">Precio minimo:</span>  ${datosEvento.precioMinimo}</p>
+                                                    <p><span class="negrita">Precio maximo:</span>  ${datosEvento.precioMaximo}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -89,13 +89,13 @@ function inicio() {
 
     function imprimirColumnaMA(datosEvento) {
         return `<div class="row mb-4 carta-inicio tarjeta-inicio">
-                        <div class="col-5 d-flex flex-column align-items-center">
+                        <div class="col-5 d-flex flex-column align-items-center justify-content-center">
                             <img src="${datosEvento.imagen}" class="imagen-inicio" alt="Imagen del evento">
                             <button type="button" class="btn btn-primary btn-registro btn-modal mt-3 w-100" data-target="#modal_${datosEvento.id}">
                                 Ver detalles
                             </button>
                         </div>
-                        <div class="col-7">
+                        <div class="col-7 d-flex flex-column justify-content-center">
                             <h4 class="negrita naranjita" >${datosEvento.nombre}</h4>
                             <p><span class="negrita">Ciudad:</span> ${datosEvento.ciudad}</p>
                             <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
@@ -110,10 +110,10 @@ function inicio() {
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
-                                                <div class="col-6">
+                                                <div class="col-6 contenedor-imagen-modal">
                                                     <img src="${datosEvento.imagen}" alt="Imagen del evento">
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-6 d-flex flex-column justify-content-between">
                                                     <p><span class="negrita">Ciudad:</span> ${datosEvento.ciudad}</p>
                                                     <p><span class="negrita">Lugar:</span> ${datosEvento.lugar}</p>
                                                     <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
@@ -194,7 +194,7 @@ function inicio() {
             //Verifica si la respuesta contiene eventos y  recorre la lista de eventos
             if (response._embedded && response._embedded.events) {
                 response._embedded.events.forEach((event) => {
-                    
+
                     let datosEvento = obtenerDatosEvento(event);
 
                     $("#columnaArte").append(imprimirColumnaMA(datosEvento));
@@ -218,6 +218,6 @@ function inicio() {
     $(document).on("click", ".close, .btn-secondary", function () {
         $(this).closest(".modal").modal("hide");
     });
-    
+
 
 }
