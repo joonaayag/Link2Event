@@ -3,6 +3,10 @@
 
 @section('contenido')
 
+<video autoplay muted loop class="fondo-contactanos">
+    <source src="{{ asset('assets/videos/video_fondo_bienvenida_2.mp4') }}" type="video/mp4">
+</video>
+
     <div class="container bienvenida-container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -28,7 +32,8 @@
 
                             <div class="col-lg-4 col-md-12">
                                 <div class="columna-botones d-flex flex-column">
-                                    <a href="{{ route('registrarse') }}" class="btn btn-registro btn-lg btn-block">Crear cuenta</a>
+                                    <a href="{{ route('registrarse') }}" class="btn btn-registro btn-lg btn-block">Crear
+                                        cuenta</a>
                                     <a href="{{ route('login') }}" class="btn btn-login btn-lg btn-block">Iniciar sesión</a>
                                 </div>
                             </div>
