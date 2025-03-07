@@ -25,7 +25,7 @@ Route::post('/login', [AutentificadorController::class, 'iniciarSesion'])->name(
 Route::post('/eventos', [UserController::class, 'eventos'])->name('eventos');
 
 // Rutas para favoritos
-Route::get('/favorites', [FavoriteEventController::class, 'index'])->name('favorites.index');
+Route::get('/favoritos', [FavoriteEventController::class, 'index'])->name('favoritos.index');
 Route::post('/favorites', [FavoriteEventController::class, 'store'])->name('favorites.store');
 Route::delete('/favorites', [FavoriteEventController::class, 'destroy'])->name('favorites.destroy');
 Route::get('/favorites/check', [FavoriteEventController::class, 'check'])->name('favorites.check');

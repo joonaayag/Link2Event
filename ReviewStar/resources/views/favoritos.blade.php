@@ -1,5 +1,10 @@
 @extends('layouts.base')
-@section('content')
+
+@section('titulo', '- Inicio')
+
+@section('claseBody', 'class=pagina-registrarse')
+
+@section('contenido')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -12,7 +17,7 @@
                         <div class="row">
                             @foreach($favorites as $favorite)
                                 <div class="col-md-4 col-sm-6 mb-4">
-                                    <div class="card h-100 shadow-sm">
+                                    <div class="card tarjeta-formulario">
                                         <img src="{{ $favorite->event_image ?? 'https://via.placeholder.com/300' }}" class="card-img-top" alt="{{ $favorite->event_name }}">
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $favorite->event_name }}</h5>

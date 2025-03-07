@@ -22,7 +22,7 @@ class FavoriteEventController extends BaseController
     $user = \App\Models\Usuario::find(Auth::id());
     $favorites = $user ? $user->favoriteEvents()->orderBy('user_id', 'desc')->get() : collect(); // Devuelve una colección vacía si no hay usuario.
 
-    return view('favorites.index', compact('favorites'));
+    return view('favoritos', compact('favorites'));
 }
 
 
