@@ -157,6 +157,13 @@ textarea:focus {
   height: 50px;
   max-width: 50px;
 }
+.foto-perfil:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 4px 4px var(--color-seleccion) !important;
+  }
+
 
 .foto-perfil-grande {
   height: 130px;
@@ -516,11 +523,21 @@ circle {
 
 
 /* PÁGINA PANEL ADMIN */
+.pagina-panelAdministrador{
+  background-image: url('../assets/img/fondo_bienvenida.png');
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 .contenedor-panel {
   background-color: var(--hover-navbar);
   border-radius: 10px;
   padding: 25px;
+  margin-bottom: 50px;
+  box-shadow: 0 0 4px 4px rgba(255, 153, 0, 0.7);
 }
 
 .tabla-usuarios {
@@ -562,6 +579,15 @@ circle {
 
 
 /* PÁGINA COMENTARIOS ADMIN */
+
+.pagina-adminComentarios{
+  background-image: url('../assets/img/fondo-registro.svg');
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 .carta-comentario {
   background-color: var(--fondo-footer);

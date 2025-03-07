@@ -8,7 +8,7 @@
 
     <div class="container mt-5">
         @if (count($comentarios) > 0)
-            <h2>Comentarios de {{ $comentarios[0]->nombre_usuario }}</h2>
+            <h2 class="blanco">Comentarios de {{ $comentarios[0]->nombre_usuario }}</h2>
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
@@ -68,7 +68,7 @@
                 </div>
             @endforeach
         @else
-            <p>No hay comentarios disponibles para este usuario </p>
+            <p class="blanco">No hay comentarios disponibles para este usuario </p>
         @endif
     </div>
 

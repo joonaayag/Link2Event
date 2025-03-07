@@ -6,7 +6,7 @@
 @section('contenido')
     <div class="container mt-5">
         <div class="text-center">
-            <h1>Bienvenido, {{ Auth::user()->nombre }}</h1>
+            <h1 class="blanco">Bienvenido, {{ Auth::user()->nombre }}</h1>
         </div>
 
         <div class="container contenedor-panel mt-5">

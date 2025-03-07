@@ -14,6 +14,8 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
+    <!-- Iconos BS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Link css -->
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
@@ -45,37 +47,30 @@
                         <li class="nav-item">
                             <a class="nav-link {{ Route::currentRouteName() == 'inicio' ? 'active' : '' }}"
                                 href="{{ route('inicio') }}">
-                                <img src="{{ asset('assets/iconos/home.svg') }}" class="nav-icon" alt="Inicio"> Inicio
+                                <i class="bi bi-house-fill"> Inicio</i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::currentRouteName() == 'eventos' ? 'active' : '' }}"
                                 href="{{ route('eventos') }}">
-                                <img src="{{ asset('assets/iconos/ticket.svg') }}" class="nav-icon" alt="eventos">
-                                Eventos
+                                <i class="bi bi-ticket-perforated-fill"> Eventos</i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::currentRouteName() == 'favoritos' ? 'active' : '' }}"
                                 href="{{ route('favoritos.index') }}">
-                                <img src="{{ asset('assets/iconos/ticket.svg') }}" class="nav-icon" alt="eventos">
-                                Favoritos
+                                <i class="bi bi-heart-fill"> Favoritos</i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::currentRouteName() == 'sobre' ? 'active' : '' }}" href="{{route('sobre_nosotros')}}">
-                                <img src="{{ asset('assets/iconos/informacion.svg') }}" class="nav-icon"
-                                    alt="Sobre Nosotros">
-                                Sobre Nosotros
+                            <i class="bi bi-info-square-fill"> Sobre Nosotros</i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::currentRouteName() == 'contactanos' ? 'active' : '' }}"
                                 href="{{ route('contactanos') }}">
-                                <img src="{{ asset('assets/iconos/contacto.svg') }}" class="nav-icon"
-                                    alt="Contactanos">
-                                Contacto
-
+                                <i class="bi bi-telephone-outbound-fill"> Contacto</i>
                             </a>
                         </li>
                     </ul>
