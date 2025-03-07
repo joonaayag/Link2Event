@@ -50,5 +50,9 @@ class Usuario extends Authenticatable
         ];
     }
 
+    public function favoriteEvents()
+    {
+        return $this->hasMany(FavoriteEvent::class, 'user_id');
+    }
     // Puedes agregar métodos adicionales aquí si es necesario.
 }

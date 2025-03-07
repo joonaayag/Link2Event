@@ -6,6 +6,7 @@ use App\Http\Controllers\comentariosController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FavoriteEventController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -25,7 +26,11 @@ Route::post('/login', [AutentificadorController::class, 'iniciarSesion'])->name(
 //Ruta despues de haber iniciado sesión y haber entrado a la ruta iniciarSesion (al final mostramos la vista conciertos)
 Route::post('/eventos', [UserController::class, 'eventos'])->name('eventos');
 
-
+// Rutas para favoritos
+Route::get('/favoritos', [FavoriteEventController::class, 'index'])->name('favoritos.index');
+Route::post('/favorites', [FavoriteEventController::class, 'store'])->name('favorites.store');
+Route::delete('/favorites', [FavoriteEventController::class, 'destroy'])->name('favorites.destroy');
+Route::get('/favorites/check', [FavoriteEventController::class, 'check'])->name('favorites.check');
 
 // ------------- RUTAS PROTEGIDAS -------------
 //Rutas cuyo acceso necesita ser autentificado (si no estas autentificado no puedes acceder a estas rutas)
