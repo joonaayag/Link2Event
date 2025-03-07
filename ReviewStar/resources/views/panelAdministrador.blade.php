@@ -43,7 +43,7 @@
                                 <button type="submit" class="btn btn-danger">Eliminar usuario</button>
                             </form>
                             <!-- Editar Usuario -->
-                            <form action="{{ route('editarUsuario') }}" method="post">
+                            <form action="{{ route('editarUsuario') }}" method="get">
                                 @csrf
                                 <input type="hidden" name="id_usuario" value="{{ $usuario->id }}">
                                 <button type="submit" class="btn btn-warning">Editar Usuario</button>

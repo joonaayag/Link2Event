@@ -60,7 +60,7 @@ class AdminController extends Controller
             'tipo_identificacion' => 'required|in:NIF,DNI',
             'num_identificacion' => 'required|string|max:9',
             'direccion' => 'required|string|max:100',
-            'email' => 'required|string|email|max:50|unique:usuarios'
+            'email' => 'required|string|email|max:50|unique:usuarios,email,' . $request->input('id_usuario')
         ]);
 
         $usuario = Usuario::findOrFail($request->input('id_usuario'));
@@ -76,7 +76,7 @@ class AdminController extends Controller
 
         $usuario->save();
 
-        return redirect()->route('admin.panel').with('success', 'Perfil actualizado correctamente');
+        return redirect()->route('admin.panel')->with('success', 'Perfil actualizado correctamente');
     }
 
     public function mostrarComentarios(Request $request){

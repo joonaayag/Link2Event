@@ -39,7 +39,7 @@
                                 <label for="pais" class="form-label">País</label>
                                 <div class="contenedor-select">
                                     <select name="pais" id="pais" class="form-control">
-                                        <option value="{{ $usuario->pais }}" disabled selected>{{ $usuario->pais }}
+                                        <option value="{{ $usuario->pais }}" selected>{{ $usuario->pais }}
                                         </option>
                                     </select>
                                     <svg viewBox="25 25 50 50" id="iconoCargando">
