@@ -27,7 +27,6 @@ Route::post('/eventos', [UserController::class, 'eventos'])->name('eventos');
 
 
 
-
 // ------------- RUTAS PROTEGIDAS -------------
 //Rutas cuyo acceso necesita ser autentificado (si no estas autentificado no puedes acceder a estas rutas)
 Route::middleware(['auth'])->group(function () {

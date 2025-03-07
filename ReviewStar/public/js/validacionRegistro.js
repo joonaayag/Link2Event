@@ -6,24 +6,14 @@ function inicio() {
 }
 
 function validarFormulario(event) {
-    //Aquí recojo todos los mensajes de error si los hay
     let mensajes_error = document.querySelectorAll('.mensaje-error');
-    //Voy pasando por todos los mensajes y los borro
-    mensajes_error.forEach(mensaje => {
-        mensaje.remove();
-    });
+    mensajes_error.forEach(mensaje => mensaje.remove());
 
-    //Hago lo mismo con la clase del borde error
     let marcos_rojos = document.querySelectorAll(".borde-error");
-
-    marcos_rojos.forEach(marco => {
-        marco.classList.remove("borde-error");
-    });
+    marcos_rojos.forEach(marco => marco.classList.remove("borde-error"));
 
     let marcos_verdes = document.querySelectorAll(".borde-correcto");
-    marcos_verdes.forEach(marco => {
-        marco.classList.remove("borde-correcto");
-    });
+    marcos_verdes.forEach(marco => marco.classList.remove("borde-correcto"));
 
     let nombre = document.getElementById("nombre");
     let apellidos = document.getElementById("apellidos");
@@ -35,33 +25,28 @@ function validarFormulario(event) {
     let password = document.getElementById("password");
     let password_confirmation = document.getElementById("password_confirmation");
 
-    //Hago un booleano y de momento digo que es válido
     let valido = true;
 
-    //Validar nombre
+    // Validar nombre
     if (nombre.value.trim() === "") {
-        nombre.classList.add('borde-error'); //Pongo borde rojo al input
+        nombre.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
         mensaje_error.textContent = "El nombre es obligatorio";
-        mensaje_error.classList.add('mensaje-error'); // pongo el texto de error rojo
-
-        // Inserto el mensaje debajo del input
+        mensaje_error.classList.add('mensaje-error');
         nombre.parentElement.appendChild(mensaje_error);
         valido = false;
     } else if (nombre.value.trim().length > 15) {
         nombre.classList.add('borde-error');
-
         let mensaje_error = document.createElement('small');
         mensaje_error.textContent = "El nombre no puede tener más de 15 caracteres";
         mensaje_error.classList.add('mensaje-error');
-
         nombre.parentElement.appendChild(mensaje_error);
         valido = false;
     } else {
         nombre.classList.add('borde-correcto');
     }
 
-    //Validar apellidos
+    // Validar apellidos
     if (apellidos.value.trim() === "") {
         apellidos.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
@@ -80,7 +65,7 @@ function validarFormulario(event) {
         apellidos.classList.add("borde-correcto");
     }
 
-    //Validar edad
+    // Validar edad
     if (edad.value.trim() === "" || isNaN(edad.value) || edad.value < 18 || edad.value > 120) {
         edad.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
@@ -92,8 +77,8 @@ function validarFormulario(event) {
         edad.classList.add("borde-correcto");
     }
 
-    //Validar país
-    let paises = JSON.parse(localStorage.getItem("paisesOrdenados")) || []; //Accedemos al valor del localStorage, si no, devolvemos un array vacío
+    // Validar país
+    let paises = JSON.parse(localStorage.getItem("paisesOrdenados")) || [];
     if (pais.value === "") {
         pais.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
@@ -101,7 +86,7 @@ function validarFormulario(event) {
         mensaje_error.classList.add('mensaje-error');
         pais.parentElement.appendChild(mensaje_error);
         valido = false;
-    }else if(!paises.includes(pais.value)){
+    } else if (!paises.includes(pais.value)) {
         pais.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
         mensaje_error.textContent = "El pais seleccionado no es válido";
@@ -112,7 +97,7 @@ function validarFormulario(event) {
         pais.classList.add("borde-correcto");
     }
 
-    //Validar tipo identificación
+    // Validar tipo identificación
     if (tipo_identificacion.value !== "DNI" && tipo_identificacion.value !== "NIE") {
         tipo_identificacion.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
@@ -124,7 +109,7 @@ function validarFormulario(event) {
         tipo_identificacion.classList.add("borde-correcto");
     }
 
-    // Validar numero identificación
+    // Validar número identificación
     if (num_identificacion.value.trim() === "") {
         num_identificacion.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
@@ -132,14 +117,14 @@ function validarFormulario(event) {
         mensaje_error.classList.add('mensaje-error');
         num_identificacion.parentElement.appendChild(mensaje_error);
         valido = false;
-    } else if (tipo_identificacion.value === "DNI" && !validarDNI(num_identificacion.value)) {
+    } else if (tipo_identificacion.value === "DNI" && !ValidarPatrones.validarDNI(num_identificacion.value)) {
         tipo_identificacion.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
         mensaje_error.textContent = "DNI incorrecto";
         mensaje_error.classList.add('mensaje-error');
         num_identificacion.parentElement.appendChild(mensaje_error);
         valido = false;
-    } else if (tipo_identificacion.value === "NIE" && !validarNIE(num_identificacion.value)) {
+    } else if (tipo_identificacion.value === "NIE" && !ValidarPatrones.validarNIE(num_identificacion.value)) {
         tipo_identificacion.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
         mensaje_error.textContent = "NIE incorrecto";
@@ -149,7 +134,6 @@ function validarFormulario(event) {
     } else {
         num_identificacion.classList.add("borde-correcto");
     }
-
 
     // Validar dirección
     if (direccion.value.trim() === "") {
@@ -171,7 +155,7 @@ function validarFormulario(event) {
     }
 
     // Validar correo
-    if (email.value.trim() === "" || !validarEmail(email.value)) {
+    if (email.value.trim() === "" || !ValidarPatrones.validarEmail(email.value)) {
         email.classList.add('borde-error');
         let mensaje_error = document.createElement('small');
         mensaje_error.textContent = "Formato de email incorrecto";
@@ -189,60 +173,37 @@ function validarFormulario(event) {
         email.classList.add("borde-correcto");
     }
 
-    // Validar las contraseñas
+    // Validar contraseñas
     if (password.value.trim() === "" || password_confirmation.value.trim() === "") {
         password.classList.add('borde-error');
         password_confirmation.classList.add('borde-error');
-
         let mensaje_error = document.createElement('small');
         mensaje_error.textContent = "Las contraseñas no puede estar vacías";
         mensaje_error.classList.add('mensaje-error');
         password_confirmation.parentElement.appendChild(mensaje_error);
-
         valido = false;
     } else if (password.value.trim() !== password_confirmation.value.trim()) {
         password.classList.add('borde-error');
         password_confirmation.classList.add('borde-error');
-
         let mensaje_error = document.createElement('small');
         mensaje_error.textContent = "Las contraseñas no coinciden";
         mensaje_error.classList.add('mensaje-error');
         password_confirmation.parentElement.appendChild(mensaje_error);
-
         valido = false;
     } else if (password.value.trim().length < 6) {
         password.classList.add('borde-error');
         password_confirmation.classList.add('borde-error');
-
         let mensaje_error = document.createElement('small');
         mensaje_error.textContent = "La contraseña debe tener al menos 6 caracteres";
         mensaje_error.classList.add('mensaje-error');
         password_confirmation.parentElement.appendChild(mensaje_error);
-
         valido = false;
-
     } else {
         password.classList.add("borde-correcto");
         password_confirmation.classList.add("borde-correcto");
     }
 
     if (!valido) {
-        event.preventDefault(); // Si no esta validado no se envía el formulario.
+        event.preventDefault();
     }
-}
-
-//Funciones para validar expresiones regulares en los campos//
-function validarDNI(dni) {
-    const expresionDNI = /^[0-9]{8}[TWRAGMYFPDXBNJZSQVHLCKE]$/;
-    return expresionDNI.test(dni); //Esto devuelve true si pasa la validacion
-}
-
-function validarNIE(nie) {
-    const expresionNIE = /^[XYZ][0-9]{7}[A-Z]$/;
-    return expresionNIE.test(nie); //Esto devuelve true si pasa la validacion
-}
-
-function validarEmail(email) {
-    const expresionEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return expresionEmail.test(email); //Esto devuelve true si pasa la validacion
 }
