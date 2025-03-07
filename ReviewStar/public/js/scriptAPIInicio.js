@@ -12,6 +12,8 @@ function inicio() {
 
 
     function obtenerDatosEvento(event) {
+        let fechaEntradas = event.sales?.public?.startDateTime;
+        let fechaEntradasNueva = fechaEntradas.split("T")[0] + " " +fechaEntradas.split("T")[1].replace("Z", "H");
         return {
             id: event.id,
             nombre: event.name,
@@ -19,7 +21,7 @@ function inicio() {
             fechaInicio: event.dates?.start?.localDate || "No disponible",
             ciudad: event._embedded?.venues?.[0]?.city?.name || "No disponible",
             imagen: event.images?.[0]?.url || "URL no disponible",
-            entradas: event.sales?.public?.startDateTime || "No disponible",
+            entradas: fechaEntradasNueva || "No disponible",
             fechaHora: event.dates?.start?.dateTime
                 ? new Date(event.dates.start.dateTime).toLocaleString()
                 : "No disponible",
@@ -27,17 +29,20 @@ function inicio() {
             direccion: event._embedded?.venues?.[0]?.address?.line1 || "No disponible",
             genero : event.classifications?.[0]?.genre?.name || "No disponible",
             precioMinimo: event.priceRanges?.[0]?.min
-                ? `${event.priceRanges[0].min.toFixed(2)}`
+                ? `${event.priceRanges[0].min.toFixed(2)} $`
                 : "No disponible",
             precioMaximo: event.priceRanges?.[0]?.max
-                ? `${event.priceRanges[0].max.toFixed(2)}`
+                ? `${event.priceRanges[0].max.toFixed(2)}  $`
                 : "No disponible",
         };
     }
     function imprimirColumnaDep(datosEvento) {
         return `<div class="row mb-4 carta-inicio tarjeta-inicio">
-                        <div class="col-5">
+                        <div class="col-5 d-flex flex-column align-items-center">
                             <img src="${datosEvento.imagen}" class="imagen-inicio" alt="Imagen del evento">
+                            <button type="button" class="btn btn-primary btn-modal btn-registro mt-3 w-100" data-target="#modal_${datosEvento.id}">
+                                Ver detalles
+                            </button>
                         </div>
                         <div class="col-7">
                             <h4 class="negrita naranjita" >${datosEvento.nombre}</h4>
@@ -45,36 +50,35 @@ function inicio() {
                             <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
                             <p><span class="negrita">Fecha entradas disponibles:</span>  ${datosEvento.entradas}</p>
                             
-                            <button type="button" class="btn btn-primary btn-modal btn-registro" data-target="#modal_${datosEvento.id}">
-                                Ver detalles
-                            </button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="modal_${datosEvento.id}" tabindex="-1" role="dialog" aria-labelledby="modalTitle_${datosEvento.id}" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal fade modalInicio" id="modal_${datosEvento.id}" tabindex="-1" role="dialog" aria-labelledby="modalTitle_${datosEvento.id}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLongTitle">Más información sobre ${datosEvento.nombre}</h5>
                                         </div>
                                         <div class="modal-body">
-                                            <div class="col-4">
-                                                <img src="${datosEvento.imagen}" alt="Imagen del evento">
-                                            </div>
-                                            <div class="col-8">
-                                                <p><span class="negrita">Ciudad:</span> ${datosEvento.ciudad}</p>
-                                                <p><span class="negrita">Lugar:</span> ${datosEvento.lugar}</p>
-                                                <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
-                                                <p><span class="negrita">Hora de inicio:</span>  ${datosEvento.fechaHora}</p>
-                                                <p><span class="negrita">Fecha entradas disponibles:</span>  ${datosEvento.entradas}</p>
-                                                <p><span class="negrita">Dirección:</span>  ${datosEvento.direccion}</p>
-                                                <p><span class="negrita">Genero:</span>  ${datosEvento.genero}</p>
-                                                <p><span class="negrita">Precio minimo:</span>  ${datosEvento.precioMinimo}$</p>
-                                                <p><span class="negrita">Precio maximo:</span>  ${datosEvento.precioMaximo}$</p>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <img src="${datosEvento.imagen}" alt="Imagen del evento">
+                                                </div>
+                                                <div class="col-6">
+                                                    <p><span class="negrita">Ciudad:</span> ${datosEvento.ciudad}</p>
+                                                    <p><span class="negrita">Lugar:</span> ${datosEvento.lugar}</p>
+                                                    <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
+                                                    <p><span class="negrita">Hora de inicio:</span>  ${datosEvento.fechaHora}</p>
+                                                    <p><span class="negrita">Fecha entradas disponibles:</span>  ${datosEvento.entradas}</p>
+                                                    <p><span class="negrita">Dirección:</span>  ${datosEvento.direccion}</p>
+                                                    <p><span class="negrita">Genero:</span>  ${datosEvento.genero}</p>
+                                                    <p><span class="negrita">Precio minimo:</span>  ${datosEvento.precioMinimo}$</p>
+                                                    <p><span class="negrita">Precio maximo:</span>  ${datosEvento.precioMaximo}$</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <a href="${datosEvento.url}" target="_blank" class="btn btn-primary">Ver en Ticketmaster</a>
+                                            <a href="${datosEvento.url}" target="_blank" class="btn btn-primary btn-registro">Ver en Ticketmaster</a>
                                         </div>
                                     </div>
                                 </div>
@@ -85,8 +89,11 @@ function inicio() {
 
     function imprimirColumnaMA(datosEvento) {
         return `<div class="row mb-4 carta-inicio tarjeta-inicio">
-                        <div class="col-5">
+                        <div class="col-5 d-flex flex-column align-items-center">
                             <img src="${datosEvento.imagen}" class="imagen-inicio" alt="Imagen del evento">
+                            <button type="button" class="btn btn-primary btn-registro btn-modal mt-3 w-100" data-target="#modal_${datosEvento.id}">
+                                Ver detalles
+                            </button>
                         </div>
                         <div class="col-7">
                             <h4 class="negrita naranjita" >${datosEvento.nombre}</h4>
@@ -94,36 +101,34 @@ function inicio() {
                             <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
                             <p><span class="negrita">Fecha entradas disponibles:</span>  ${datosEvento.entradas}</p>
                             
-                            <button type="button" class="btn btn-primary btn-registro btn-modal" data-target="#modal_${datosEvento.id}">
-                                Ver detalles
-                            </button>
-
                             <!-- Modal -->
-                            <div class="modal fade" id="modal_${datosEvento.id}" tabindex="-1" role="dialog" aria-labelledby="modalTitle_${datosEvento.id}" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal fade modalInicio" id="modal_${datosEvento.id}" tabindex="-1" role="dialog" aria-labelledby="modalTitle_${datosEvento.id}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLongTitle">Más información sobre ${datosEvento.nombre}</h5>
                                         </div>
                                         <div class="modal-body">
-                                            <div class="col-4">
-                                                <img src="${datosEvento.imagen}" alt="Imagen del evento">
-                                            </div>
-                                            <div class="col-8">
-                                                <p><span class="negrita">Ciudad:</span> ${datosEvento.ciudad}</p>
-                                                <p><span class="negrita">Lugar:</span> ${datosEvento.lugar}</p>
-                                                <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
-                                                <p><span class="negrita">Hora de inicio:</span>  ${datosEvento.fechaHora}</p>
-                                                <p><span class="negrita">Fecha entradas disponibles:</span>  ${datosEvento.entradas}</p>
-                                                <p><span class="negrita">Dirección:</span>  ${datosEvento.direccion}</p>
-                                                <p><span class="negrita">Genero:</span>  ${datosEvento.genero}</p>
-                                                <p><span class="negrita">Precio minimo:</span>  ${datosEvento.precioMinimo}$</p>
-                                                <p><span class="negrita">Precio maximo:</span>  ${datosEvento.precioMaximo}$</p>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <img src="${datosEvento.imagen}" alt="Imagen del evento">
+                                                </div>
+                                                <div class="col-6">
+                                                    <p><span class="negrita">Ciudad:</span> ${datosEvento.ciudad}</p>
+                                                    <p><span class="negrita">Lugar:</span> ${datosEvento.lugar}</p>
+                                                    <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
+                                                    <p><span class="negrita">Hora de inicio:</span>  ${datosEvento.fechaHora}</p>
+                                                    <p><span class="negrita">Fecha entradas disponibles:</span>  ${datosEvento.entradas}</p>
+                                                    <p><span class="negrita">Dirección:</span>  ${datosEvento.direccion}</p>
+                                                    <p><span class="negrita">Genero:</span>  ${datosEvento.genero}</p>
+                                                    <p><span class="negrita">Precio minimo:</span>  ${datosEvento.precioMinimo}</p>
+                                                    <p><span class="negrita">Precio maximo:</span>  ${datosEvento.precioMaximo}</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <a href="${datosEvento.url}" target="_blank" class="btn btn-primary">Ver en Ticketmaster</a>
+                                            <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+                                            <a href="${datosEvento.url}" target="_blank" class="btn btn-primary btn-registro">Ver en Ticketmaster</a>
                                         </div>
                                     </div>
                                 </div>

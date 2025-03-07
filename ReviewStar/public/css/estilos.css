@@ -488,6 +488,13 @@ circle {
   margin-top: 0;
 }
 
+.modalInicio img{
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+
 /* FIN PÁGINA DE INICIO */
 
 

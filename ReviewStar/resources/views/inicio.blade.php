@@ -8,7 +8,7 @@
     <script src="{{ asset('js/scriptAPIInicio.js') }}" defer></script>
 
     <div class="container mt-5">
-        <h2 class="negrita grande mb-5">¿Qúe te apetece hacer hoy?</h2>
+        <h2 class="negrita grande mb-5 blanco">¿Qúe te apetece hacer hoy?</h2>
         <div class="row">
             <div class="col-xl-6 col-lg-12" id="columnaDeportes">
 
