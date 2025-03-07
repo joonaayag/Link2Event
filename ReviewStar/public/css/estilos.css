@@ -48,13 +48,16 @@ body {
 .gigante {
   font-size: 100px;
 }
-.grande{
+
+.grande {
   font-size: 70px;
-  }
-.mediana{
+}
+
+.mediana {
   font-size: 45px;
 }
-.blanco{
+
+.blanco {
   color: white;
 }
 
@@ -191,7 +194,7 @@ textarea:focus {
   margin: 0px !important;
 }
 
-.modal-footer{
+.modal-footer {
   padding-top: 0px !important;
   border: none;
 }
@@ -411,7 +414,8 @@ circle {
   transform: scale(1.02);
   transition: all var(--velocidad-transicion);
 }
-.borde-form-comentario{
+
+.borde-form-comentario {
   border-radius: 10px !important;
   border: solid var(--color-seleccion) 2px !important;
 }
@@ -460,7 +464,7 @@ circle {
 
 
 /* PÁGINA DE INICIO */
-.pagina-inicio{
+.pagina-inicio {
   background-image: url('../assets/img/fondo_bienvenida.png');
   display: flex;
   align-items: center;
@@ -469,34 +473,42 @@ circle {
   background-repeat: no-repeat;
 }
 
-.imagen-inicio{
-  width: 100%;
+.imagen-inicio {
+  max-width: 100%;
   height: auto;
   border-radius: 10px;
 }
-.carta-inicio{
+
+.carta-inicio {
   padding: 10px !important;
   border-radius: 15px !important;
   box-shadow: 0 0 3px 5px rgba(0, 0, 0, 0.6) !important;
 }
-.carta-inicio:hover{
+
+.carta-inicio:hover {
   box-shadow: 0 0 3px 5px var(--color-seleccion) !important;
-  transition: 0.3s ease ;
-}
-.tarjeta-inicio{
-    background-color: rgba(34, 34, 34, 0.75) !important;
-    color: var(--color-principal) !important;
-    height: 300px;
+  transition: 0.3s ease;
 }
 
-#columnaArte{
+.tarjeta-inicio {
+  background-color: rgba(34, 34, 34, 0.75) !important;
+  color: var(--color-principal) !important;
+  height: 300px;
+}
+
+#columnaArte {
   margin-top: 0;
 }
 
-.modalInicio img{
+.modalInicio img {
   width: 100%;
   height: auto;
   border-radius: 10px;
+}
+
+.btn-modal {
+  max-width: 100% !important;
+  white-space: normal !important;
 }
 
 
@@ -505,7 +517,7 @@ circle {
 
 /* PÁGINA PANEL ADMIN */
 
-.contenedor-panel{
+.contenedor-panel {
   background-color: var(--hover-navbar);
   border-radius: 10px;
   padding: 25px;
@@ -551,12 +563,36 @@ circle {
 
 /* PÁGINA COMENTARIOS ADMIN */
 
-.carta-comentario{
+.carta-comentario {
   background-color: var(--fondo-footer);
   color: white;
 }
-.boton-eliminarAdmin{
+
+.boton-eliminarAdmin {
   margin-right: 20px;
 }
 
 /* FIN PÁGINA COMENTARIOS ADMIN */
+
+
+/* MEDIA QUERIES */
+
+/* @media (min-width: 992px) and (max-width: 1200px) {
+
+  .tarjeta-inicio .col-5,
+  .tarjeta-inicio .col-7 {
+    padding: 0.5rem;
+    max-height: 300px;
+  }
+
+  .tarjeta-inicio h4 {
+    font-size: 1.2rem;
+  }
+
+  .tarjeta-inicio p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+} */
+
+/* FIN MEDIA QUERIES */

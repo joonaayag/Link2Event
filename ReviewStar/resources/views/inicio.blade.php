@@ -10,10 +10,10 @@
     <div class="container mt-5">
         <h2 class="negrita grande mb-5 blanco">¿Qúe te apetece hacer hoy?</h2>
         <div class="row">
-            <div class="col-xl-6 col-lg-12" id="columnaDeportes">
+            <div class="col-xl-6 col-lg-6" id="columnaDeportes">
 
             </div>
-            <div class="col-xl-5 col-lg-12 ms-auto d-flex flex-end">
+            <div class="col-xl-5 col-lg-5 ms-auto d-flex flex-end">
                 <div class="row">
                     <div class="col-12 mb-5" id="columnaMusica">
 
