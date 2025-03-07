@@ -43,15 +43,16 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('/logout', [AutentificadorController::class, 'cerrarSesion'])->name('logout');
 
-    Route::get('/admin/editarUsuario', [AdminController::class, 'editarUsuario'])->name('editarUsuario');
+    Route::post('/admin/editarUsuario', [AdminController::class, 'editarUsuario'])->name('editarUsuario');
     Route::get('/admin/panel', [AdminController::class, 'adminPanel'])->name('admin.panel');//ruta para ver el panel
-
+    
     // ------------- RUTAS POST -------------
     Route::post('/perfil', [UserController::class, 'actualizarPerfil'])->name('perfil.actualizar');
-
+    
     Route::delete('admin/eliminarUsuario', [AdminController::class, 'eliminarUsuario'])->name('eliminarUsuario'); //Ruta para eliminar usuario pulsando el botón
-    Route::post('/admin/mostrarComentariosUsuario', [AdminController::class, 'mostrarComentarios'])->name('mostrarComentarios');
     Route::delete('/admin/eliminarComentario/{id}', [AdminController::class, 'eliminarComentario'])->name('eliminarComentario');
+    Route::post('/admin/panel', [AdminController::class, 'adminPanel'])->name('admin.panel');//ruta para ver el panel después de haber enviado el formulario
+    Route::post('/admin/mostrarComentariosUsuario', [AdminController::class, 'mostrarComentarios'])->name('mostrarComentarios');
 
     Route::post('/contactanos', [comentariosController::class, 'almacenarComentario'])->name('enviarComentario');
     Route::post('/admin/editar/perfil', [AdminController::class, 'editarPerfilUsuario'])->name('editarPerfilUsuario');
