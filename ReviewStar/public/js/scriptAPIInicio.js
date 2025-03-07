@@ -6,9 +6,9 @@ function inicio() {
     let apiMusica = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&classificationName=Music&size=2`;
     let apiArte = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&classificationName=Arts & Theatre&size=2`;
 
-    $("#columnaDeportes").html("<h3>Deportes</h3>");
-    $("#columnaMusica").html("<h3>Música</h3>");
-    $("#columnaArte").html("<h3>Arte</h3>");
+    $("#columnaDeportes").html("<h3 class='blanco mediana'>Deportes</h3>");
+    $("#columnaMusica").html("<h3 class='blanco mediana'>Música</h3>");
+    $("#columnaArte").html("<h3 class='blanco mediana'>Arte</h3>");
 
 
     function obtenerDatosEvento(event) {
@@ -35,17 +35,17 @@ function inicio() {
         };
     }
     function imprimirColumnaDep(datosEvento) {
-        return `<div class="row mb-3">
-                        <div class="col-4">
-                            <img src="${datosEvento.imagen}" alt="Imagen del evento">
+        return `<div class="row mb-4 carta-inicio tarjeta-inicio">
+                        <div class="col-5">
+                            <img src="${datosEvento.imagen}" class="imagen-inicio" alt="Imagen del evento">
                         </div>
-                        <div class="col-8">
-                            <h4>Nombre del evento: ${datosEvento.nombre}</h4>
-                            <p>Lugar: ${datosEvento.ciudad}</p>
-                            <p>Fecha de inicio:  ${datosEvento.fechaInicio}</p>
-                            <p>Fecha entradas disponibles:  ${datosEvento.entradas}</p>
+                        <div class="col-7">
+                            <h4 class="negrita naranjita" >${datosEvento.nombre}</h4>
+                            <p><span class="negrita">Lugar:</span> ${datosEvento.ciudad}</p>
+                            <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
+                            <p><span class="negrita">Fecha entradas disponibles:</span>  ${datosEvento.entradas}</p>
                             
-                            <button type="button" class="btn btn-primary btn-modal" data-target="#modal_${datosEvento.id}">
+                            <button type="button" class="btn btn-primary btn-modal btn-registro" data-target="#modal_${datosEvento.id}">
                                 Ver detalles
                             </button>
 
@@ -61,15 +61,15 @@ function inicio() {
                                                 <img src="${datosEvento.imagen}" alt="Imagen del evento">
                                             </div>
                                             <div class="col-8">
-                                                <p>Ciudad: ${datosEvento.ciudad}</p>
-                                                <p>Lugar: ${datosEvento.lugar}</p>
-                                                <p>Fecha de inicio:  ${datosEvento.fechaInicio}</p>
-                                                <p>Hora de inicio:  ${datosEvento.fechaHora}</p>
-                                                <p>Fecha entradas disponibles:  ${datosEvento.entradas}</p>
-                                                <p>Dirección:  ${datosEvento.direccion}</p>
-                                                <p>Genero:  ${datosEvento.genero}</p>
-                                                <p>Precio minimo:  ${datosEvento.precioMinimo}$</p>
-                                                <p>Precio maximo:  ${datosEvento.precioMaximo}$</p>
+                                                <p><span class="negrita">Ciudad:</span> ${datosEvento.ciudad}</p>
+                                                <p><span class="negrita">Lugar:</span> ${datosEvento.lugar}</p>
+                                                <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
+                                                <p><span class="negrita">Hora de inicio:</span>  ${datosEvento.fechaHora}</p>
+                                                <p><span class="negrita">Fecha entradas disponibles:</span>  ${datosEvento.entradas}</p>
+                                                <p><span class="negrita">Dirección:</span>  ${datosEvento.direccion}</p>
+                                                <p><span class="negrita">Genero:</span>  ${datosEvento.genero}</p>
+                                                <p><span class="negrita">Precio minimo:</span>  ${datosEvento.precioMinimo}$</p>
+                                                <p><span class="negrita">Precio maximo:</span>  ${datosEvento.precioMaximo}$</p>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -84,17 +84,17 @@ function inicio() {
     }
 
     function imprimirColumnaMA(datosEvento) {
-        return `<div class="row mb-3">
-                        <div class="col-4">
-                            <img src="${datosEvento.imagen}" alt="Imagen del evento">
+        return `<div class="row mb-4 carta-inicio tarjeta-inicio">
+                        <div class="col-5">
+                            <img src="${datosEvento.imagen}" class="imagen-inicio" alt="Imagen del evento">
                         </div>
-                        <div class="col-8">
-                            <h4>Nombre del evento: ${datosEvento.nombre}</h4>
-                            <p>Ciudad: ${datosEvento.ciudad}</p>
-                            <p>Fecha de inicio:  ${datosEvento.fechaInicio}</p>
-                            <p>Fecha entradas disponibles:  ${datosEvento.entradas}</p>
+                        <div class="col-7">
+                            <h4 class="negrita naranjita" >${datosEvento.nombre}</h4>
+                            <p><span class="negrita">Ciudad:</span> ${datosEvento.ciudad}</p>
+                            <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
+                            <p><span class="negrita">Fecha entradas disponibles:</span>  ${datosEvento.entradas}</p>
                             
-                            <button type="button" class="btn btn-primary btn-modal" data-target="#modal_${datosEvento.id}">
+                            <button type="button" class="btn btn-primary btn-registro btn-modal" data-target="#modal_${datosEvento.id}">
                                 Ver detalles
                             </button>
 
@@ -110,15 +110,15 @@ function inicio() {
                                                 <img src="${datosEvento.imagen}" alt="Imagen del evento">
                                             </div>
                                             <div class="col-8">
-                                                <p>Ciudad: ${datosEvento.ciudad}</p>
-                                                <p>Lugar: ${datosEvento.lugar}</p>
-                                                <p>Fecha de inicio:  ${datosEvento.fechaInicio}</p>
-                                                <p>Hora de inicio:  ${datosEvento.fechaHora}</p>
-                                                <p>Fecha entradas disponibles:  ${datosEvento.entradas}</p>
-                                                <p>Dirección:  ${datosEvento.direccion}</p>
-                                                <p>Genero:  ${datosEvento.genero}</p>
-                                                <p>Precio minimo:  ${datosEvento.precioMinimo}$</p>
-                                                <p>Precio maximo:  ${datosEvento.precioMaximo}$</p>
+                                                <p><span class="negrita">Ciudad:</span> ${datosEvento.ciudad}</p>
+                                                <p><span class="negrita">Lugar:</span> ${datosEvento.lugar}</p>
+                                                <p><span class="negrita">Fecha de inicio:</span>  ${datosEvento.fechaInicio}</p>
+                                                <p><span class="negrita">Hora de inicio:</span>  ${datosEvento.fechaHora}</p>
+                                                <p><span class="negrita">Fecha entradas disponibles:</span>  ${datosEvento.entradas}</p>
+                                                <p><span class="negrita">Dirección:</span>  ${datosEvento.direccion}</p>
+                                                <p><span class="negrita">Genero:</span>  ${datosEvento.genero}</p>
+                                                <p><span class="negrita">Precio minimo:</span>  ${datosEvento.precioMinimo}$</p>
+                                                <p><span class="negrita">Precio maximo:</span>  ${datosEvento.precioMaximo}$</p>
                                             </div>
                                         </div>
                                         <div class="modal-footer">

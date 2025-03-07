@@ -20,6 +20,14 @@
                         <div class="row">
                             <div class="col-lg-8 col-md-12 d-flex flex-column">
                                 <h3 class="bienvenida-titulo card-header card-title">Mándanos un correo</h3>
+                                <!-- Muestra un mensaje de confirmación cuando se actualiza el perfil exitosamente -->
+                                @if (session('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="emailUsuario" class="form-label">Tu correo:</label>
@@ -41,40 +49,25 @@
                             </div>
 
                             <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-end">
-                                <div class="row">
+                                <div class="contact-info">
                                     <h6 class="bienvenida-titulo card-title">Información de contacto</h6>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo">
-                                        </div>
-                                        <div class="col-md-12 mb-3">
-                                            <p class="mt-3">
-                                                Calle Gran Via, 12
-                                                28013</p>
-                                        </div>
+                                    <div class="contact-details">
+                                        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo">
+                                        <p class="address mt-3">Calle Gran Via, 12<br>28013</p>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <button id="botonEnviar" class="btn btn-enviar btn-lg mx-auto">Enviar</button>
-                                </div>
+                                <button id="botonEnviar" class="btn btn-enviar btn-lg  mt-3">Enviar</button>
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <!-- Muestra un mensaje de confirmación cuando se actualiza el perfil exitosamente -->
-                            @if (session('success'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {{ session('success') }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            @endif
                             <div class="col-md-12 d-flex flex-column">
-                                <form action="{{ route('enviarComentario') }}" method="POST">
+                                <form action="{{ route('enviarComentario') }}" method="POST" class="p-3 borde-form-comentario">
                                     @csrf
-                                    <label for="cuerpo" class="form-label">Mandanos un mensaje para atención
-                                        prioritaria:</label>
-                                    <textarea name="comentario" class="contactanos-mensaje "
-                                        placeholder="Escribe tu mensaje"></textarea>
-                                    <button type="submit">Enviar</button>
+                                    <div class="mb-3">
+                                        <label for="comentario" class="form-label fw-bold">Mándanos un mensaje para atención prioritaria:</label>
+                                        <textarea name="comentario" class="form-control" placeholder="Escribe tu mensaje"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-registro mt-2">Enviar</button>
                                 </form>
                             </div>
                         </div>

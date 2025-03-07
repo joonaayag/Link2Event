@@ -8,6 +8,8 @@
   --color-seleccion: #f1c40f;
   --velocidad-transicion: 0.3s;
   --borde-carta: #e0e0e0;
+  --fondo-inicio: #b65e15;
+  --fondo-inicio2: #b36d20;
 }
 
 ::selection {
@@ -45,6 +47,15 @@ body {
 
 .gigante {
   font-size: 100px;
+}
+.grande{
+  font-size: 70px;
+  }
+.mediana{
+  font-size: 45px;
+}
+.blanco{
+  color: white;
 }
 
 .container {
@@ -168,7 +179,7 @@ textarea:focus {
 }
 
 .modal-content {
-  background-color: rgba(34, 34, 34, 0.75) !important;
+  background-color: rgba(34, 34, 34, 0.959) !important;
   color: var(--color-principal) !important;
 }
 
@@ -395,6 +406,10 @@ circle {
   transform: scale(1.02);
   transition: all var(--velocidad-transicion);
 }
+.borde-form-comentario{
+  border-radius: 10px !important;
+  border: solid var(--color-seleccion) 2px !important;
+}
 
 /* FIN PÁGINA DE CONTACTANOS */
 /* FIN PÁGINA EDITAR PERFIL */
@@ -437,3 +452,99 @@ circle {
 .buy-ticket-btn:hover {
   background-color: #0056b3;
 }
+
+
+/* PÁGINA DE INICIO */
+.pagina-inicio{
+  background-image: url('../assets/img/fondo_bienvenida.png');
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.imagen-inicio{
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.carta-inicio{
+  padding: 10px !important;
+  border-radius: 15px !important;
+  box-shadow: 0 0 3px 5px rgba(0, 0, 0, 0.6) !important;
+}
+.carta-inicio:hover{
+  box-shadow: 0 0 3px 5px var(--color-seleccion) !important;
+  transition: 0.3s ease ;
+}
+.tarjeta-inicio{
+    background-color: rgba(34, 34, 34, 0.75) !important;
+    color: var(--color-principal) !important;
+    height: 300px;
+}
+
+#columnaArte{
+  margin-top: 0;
+}
+
+/* FIN PÁGINA DE INICIO */
+
+
+/* PÁGINA PANEL ADMIN */
+
+.contenedor-panel{
+  background-color: var(--hover-navbar);
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.tabla-usuarios {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  background-color: rgba(34, 34, 34, 0.7);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tabla-usuarios thead {
+  background-color: var(--color-seleccion);
+}
+
+.tabla-usuarios th {
+  padding: 1rem;
+  text-align: left;
+  color: var(--fondo-navbar);
+  font-weight: bold;
+}
+
+.tabla-usuarios td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(224, 224, 224, 0.3);
+  color: var(--color-seleccion);
+}
+
+.tabla-usuarios tbody tr:hover {
+  background-color: rgba(52, 73, 94, 0.5);
+  transition: background-color var(--velocidad-transicion);
+}
+
+.tabla-usuarios tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* FIN PÁGINA PANEL ADMIN */
+
+
+/* PÁGINA COMENTARIOS ADMIN */
+
+.carta-comentario{
+  background-color: var(--fondo-footer);
+  color: white;
+}
+.boton-eliminarAdmin{
+  margin-right: 20px;
+}
+
+/* FIN PÁGINA COMENTARIOS ADMIN */

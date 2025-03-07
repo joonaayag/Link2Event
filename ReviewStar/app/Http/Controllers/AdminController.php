@@ -91,9 +91,9 @@ class AdminController extends Controller
     }
     
     public function eliminarComentario(Request $request){
-        $comentario = Comentarios::findOrFail($request->id);
+        $comentario = Comentarios::findOrFail($request->input('id_comentario'));
         $comentario->delete();
-        return redirect()->back()->with('success', 'Comentario eliminado correctamente');
+        return redirect()->route('mostrarComentarios', ['id_usuario' => $request->input('id_usuario')])->with('success','Comentario borrado con éxito');
     }
 
 }

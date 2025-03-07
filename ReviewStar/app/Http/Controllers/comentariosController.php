@@ -31,7 +31,7 @@ class comentariosController extends Controller
             'comentario' => $request->comentario,
         ]);
 
-        return redirect()->back()->with('success', 'Texto enviado al administrador correctamente');
+        return redirect()->back()->with('success', 'Comentario enviado al administrador correctamente');
     }
 
 

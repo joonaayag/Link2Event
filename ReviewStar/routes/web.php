@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inicio', [UserController::class, 'inicio'])->name('inicio');
     Route::get('/sobre_nosotros', [UserController::class, 'sobreNosotros'])->name('sobre_nosotros');
     Route::get('/contactanos', [UserController::class, 'contactanos'])->name('contactanos');
+   
 
     
     Route::get('/logout', [AutentificadorController::class, 'cerrarSesion'])->name('logout');
@@ -49,10 +50,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/perfil', [UserController::class, 'actualizarPerfil'])->name('perfil.actualizar');
     
     Route::delete('admin/eliminarUsuario', [AdminController::class, 'eliminarUsuario'])->name('eliminarUsuario'); //Ruta para eliminar usuario pulsando el botón
-    Route::delete('/admin/eliminarComentario/{id}', [AdminController::class, 'eliminarComentario'])->name('eliminarComentario');
+    Route::delete('/admin/eliminarComentario', [AdminController::class, 'eliminarComentario'])->name('eliminarComentario');
     Route::post('/admin/panel', [AdminController::class, 'adminPanel'])->name('admin.panel');//ruta para ver el panel después de haber enviado el formulario
     Route::post('/admin/mostrarComentariosUsuario', [AdminController::class, 'mostrarComentarios'])->name('mostrarComentarios');
-
+    Route::get('/admin/mostrarComentariosUsuario', [AdminController::class, 'mostrarComentarios'])->name('mostrarComentarios');
+    
     Route::post('/contactanos', [comentariosController::class, 'almacenarComentario'])->name('enviarComentario');
     Route::post('/admin/editar/perfil', [AdminController::class, 'editarPerfilUsuario'])->name('editarPerfilUsuario');
 });
