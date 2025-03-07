@@ -1,11 +1,18 @@
 // Variables globales para manejar la paginación
 let currentPage = 0;
 let lastResponse = null;
+let concertsData = {}; // Objeto para almacenar los datos de conciertos por ID
 
 //Cargar todos los eventos por defecto al cargar la página
 document.addEventListener("DOMContentLoaded", function() {
     fetchConcerts(); // Llamada sin filtros para obtener todos los eventos
     fetchGenres(); // Cargar los géneros disponibles
+    
+    // Verificar si hay un elemento meta con csrf-token
+    if (!document.querySelector('meta[name="csrf-token"]')) {
+        console.warn('Se recomienda agregar un meta tag con csrf-token en tu HTML para las peticiones a Laravel:');
+        console.warn('<meta name="csrf-token" content="{{ csrf_token() }}">')
+    }
 });
 
 // Escuchar el clic del botón de filtro
@@ -69,6 +76,16 @@ async function fetchConcerts(filtros = {}, newSearch = false) {
         lastResponse = data;
 
         if (data._embedded && data._embedded.events) {
+            // Guardar los conciertos en el objeto de datos
+            if (newSearch) {
+                concertsData = {}; // Limpiar datos anteriores si es una nueva búsqueda
+            }
+            
+            // Guardar cada concierto en nuestro objeto de datos
+            data._embedded.events.forEach(concert => {
+                concertsData[concert.id] = concert;
+            });
+            
             // Mostrar conciertos en el HTML
             displayConcerts(data._embedded.events, newSearch);
             
@@ -174,9 +191,15 @@ function displayConcerts(concerts, newSearch) {
                         <p class="card-text"><strong>Ciudad:</strong> ${concert._embedded.venues[0].city.name}</p>
                         <p class="card-text"><strong>Género:</strong> ${concert.classifications && concert.classifications.length > 0 ? concert.classifications[0].genre.name : 'No disponible'}</p>
                         <p class="card-text"><strong>Precio:</strong> Desde $${concert.priceRanges ? concert.priceRanges[0].min : 'No disponible'}</p>
-                        <a href="${concert.url}" target="_blank" class="btn btn-primary w-100">Comprar Entradas</a>
+                        
+                        <div class="d-flex justify-content-between mt-3">
+                            <a href="${concert.url}" target="_blank" class="btn btn-primary flex-grow-1 mr-2">Comprar Entradas</a>
+                            <button id="fav-btn-${concert.id}" onclick="saveAsFavorite('${concert.id}')" class="btn btn-outline-danger flex-grow-1">
+                                <i class="far fa-heart"></i> Favorito
+                            </button>
+                        </div>
 
-                        <button type="button" class="btn btn-primary btn-modal mt-2" data-target="#modal_${concert.id}">
+                        <button type="button" class="btn btn-primary btn-modal mt-2 w-100" data-target="#modal_${concert.id}">
                             Ver detalles
                         </button>
 
@@ -202,6 +225,11 @@ function displayConcerts(concerts, newSearch) {
                                                 <p>Género:  ${concert.classifications && concert.classifications.length > 0 ? concert.classifications[0].genre.name : 'No disponible'}</p>
                                                 <p>Precio minimo:  ${concert.priceRanges ? concert.priceRanges[0].min : 'No disponible'}</p>
                                                 <p>Precio maximo:  ${concert.priceRanges ? concert.priceRanges[0].max : 'No disponible'}</p>
+                                                
+                                                <!-- Botón de favorito en el modal también -->
+                                                <button onclick="saveAsFavorite('${concert.id}')" class="btn btn-outline-danger mt-3">
+                                                    <i class="far fa-heart"></i> Guardar como favorito
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -243,6 +271,102 @@ function displayConcerts(concerts, newSearch) {
     }
 }
 
+
+// Función para guardar un evento como favorito
+async function saveAsFavorite(eventId) {
+    try {
+        // Obtener el evento del objeto de datos almacenado
+        const event = concertsData[eventId];
+        if (!event) {
+            throw new Error('Evento no encontrado');
+        }
+        
+        // Obtener CSRF token (Laravel requiere esto para las solicitudes POST)
+        const csrfToken = document.querySelector('meta[name="csrf-token"]') ? 
+                           document.querySelector('meta[name="csrf-token"]').getAttribute('content') : '';
+                           
+        
+        // Preparar datos del evento para enviar
+        const eventData = {
+            event_id: event.id,
+            event_name: event.name,
+            event_image: event.images && event.images.length > 0 ? event.images[0].url : null,
+            event_date: new Date(event.dates.start.dateTime).toISOString().slice(0, 19).replace("T", " "),
+            event_venue: event._embedded.venues[0].name,
+            event_city: event._embedded.venues[0].city.name,
+            event_genre: event.classifications && event.classifications.length > 0 ? 
+                   event.classifications[0].genre.name : 'No disponible',
+            event_price_min: event.priceRanges ? event.priceRanges[0].min : null,
+            event_price_max: event.priceRanges ? event.priceRanges[0].max : null,
+            event_url: event.url
+        };
+        console.log(concertsData);
+console.log(eventId);
+console.log(concertsData[eventId]);
+        
+        // Enviar solicitud al backend de Laravel
+        const response = await fetch('/favorites', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken,
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(eventData)
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Error al guardar favorito');
+        }
+        
+        const result = await response.json();
+        
+        // Mostrar mensaje de éxito
+        showNotification('Evento guardado como favorito', 'success');
+        
+        // Actualizar todos los botones para este evento
+        const favButtons = document.querySelectorAll(`button[onclick="saveAsFavorite('${eventId}')"]`);
+        favButtons.forEach(button => {
+            button.innerHTML = '<i class="fas fa-heart"></i> Guardado';
+            button.disabled = true;
+            button.classList.remove('btn-outline-danger');
+            button.classList.add('btn-danger');
+        });
+        
+        return result;
+    } catch (error) {
+        console.error('Error al guardar favorito:', error);
+        showNotification(error.message || 'Error al guardar favorito', 'error');
+    }
+}
+
+// Función para mostrar notificaciones
+function showNotification(message, type = 'info') {
+    // Sistema simple de notificaciones usando Bootstrap alerts
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show`;
+    alertDiv.setAttribute('role', 'alert');
+    alertDiv.style.position = 'fixed';
+    alertDiv.style.top = '20px';
+    alertDiv.style.right = '20px';
+    alertDiv.style.zIndex = '9999';
+    alertDiv.innerHTML = `
+        ${message}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    `;
+    
+    // Añadir al body
+    document.body.appendChild(alertDiv);
+    
+    // Auto-eliminar después de 5 segundos
+    setTimeout(() => {
+        alertDiv.remove();
+    }, 5000);
+}
+
 async function fetchGenres() {
     try {
         const apiKey = "NaABMVnPL3zTNZQa5eaP5AEuVTf4V0Aw";
@@ -280,3 +404,18 @@ function populateGenreSelect(genres) {
         genreSelect.appendChild(option);
     });
 }
+
+// // Función para verificar si un evento ya está en favoritos
+// // Esta función se puede implementar cuando tengas una API en tu backend para consultar favoritos
+// async function checkIfEventIsFavorite(eventId) {
+//     try {
+//         const response = await fetch(`/api/favorites/check/${eventId}`);
+//         if (!response.ok) return false;
+        
+//         const data = await response.json();
+//         return data.isFavorite;
+//     } catch (error) {
+//         console.error('Error al verificar favorito:', error);
+//         return false;
+//     }
+// }

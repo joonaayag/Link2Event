@@ -6,6 +6,8 @@ use App\Models\FavoriteEvent;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cookie;
 
 class FavoriteEventController extends BaseController
 {
@@ -28,6 +30,9 @@ class FavoriteEventController extends BaseController
     // Guardar un evento como favorito (AJAX)
     public function store(Request $request)
     {
+
+            Log::info($request->all()); // Ver qué datos llegan sin detener la ejecución
+        
         $validated = $request->validate([
             'event_id' => 'required|string',
             'event_name' => 'required|string',

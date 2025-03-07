@@ -10,7 +10,7 @@ class CreateFavoriteEventsTable extends Migration
     {
         Schema::create('favorite_events', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Relación con la tabla users
+            $table->foreignId('user_id')->constrained('usuarios')->onDelete('cascade'); // Relación con la tabla users
             $table->string('event_id')->index(); // Índice para mejorar búsquedas
             $table->string('event_name');
             $table->string('event_image')->nullable();
