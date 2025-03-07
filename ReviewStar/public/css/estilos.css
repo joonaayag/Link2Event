@@ -43,7 +43,7 @@ body {
   padding-top: 85px;
 }
 
-.gigante{
+.gigante {
   font-size: 100px;
 }
 
@@ -160,6 +160,29 @@ textarea:focus {
 }
 
 /* FIN CARTAS */
+
+/* MODALES */
+
+.modal-header {
+  border-bottom: 2px solid var(--color-seleccion);
+}
+
+.modal-content {
+  background-color: rgba(34, 34, 34, 0.75) !important;
+  color: var(--color-principal) !important;
+}
+
+.modal-content p {
+  margin: 0px !important;
+}
+
+.modal-footer{
+  border: none;
+}
+
+
+/* FIN MODALES */
+
 /* FIN ESTILOS GENERALES */
 
 
@@ -345,7 +368,8 @@ circle {
   min-width: 100%;
   min-height: 100%;
 }
-.contactanos-contenedor{
+
+.contactanos-contenedor {
   position: fixed;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
@@ -353,9 +377,11 @@ circle {
   width: 100%;
   padding: 20px;
 }
-.contactanos-mensaje{
+
+.contactanos-mensaje {
   min-height: 100px;
 }
+
 .btn-enviar {
   background-color: var(--color-seleccion) !important;
   border: none !important;
