@@ -31,7 +31,7 @@ Route::get('/user', function (Request $request) {
 
 
 //Rutas guzzle
-
+//Usuarios
 Route::get('/usuarios', [ApiController::class, 'listaUsuarios']);
 Route::get('/usuarios/id/{id}', [ApiController::class, 'usuario']);
 Route::get('/usuarios/edad/{edad}', [ApiController::class, 'usuarioEdad']);
@@ -41,4 +41,17 @@ Route::get('/usuarios/tipo_identificacion/{tipo_identificacion}', [ApiController
 Route::get('/usuarios/num_identificacion/{num_identificacion}', [ApiController::class, 'usuarioNumeroIdentificacion']);
 Route::get('/usuarios/email/{email}', [ApiController::class, 'usuarioEmail']);
 Route::get('/usuarios/rol/{rol}', [ApiController::class, 'usuarioRol']);
-
+//Comentarios
+Route::get('/comentarios', [ApiController::class,'listaComentarios']);
+Route::get('/comentarios/{id_comentario}', [ApiController::class,'comentarioId']);
+Route::get('/comentarios/usuario/{id_usuario}', [ApiController::class,'comentariosUsuario']);
+Route::get('/comentarios/contenido/{mensaje}', [ApiController::class,'comentarioContenido']);
+//Favoritos
+Route::get('/favoritos', [ApiController::class,'listaFavoritos']);
+Route::get('/favoritos/usuario/{id_usuario}', [ApiController::class,'listaFavoritosUsuario']);
+Route::get('/favoritos/{id_favoritos}', [ApiController::class,'favoritosId']);
+Route::get('/favoritos/evento/{id_eventos}', [ApiController::class,'favoritosIDEvento']);
+Route::get('/favoritos/evento/{id_eventos}/usuario/{id_usuario}', [ApiController::class,'favoritosIDEventoIDUsuario']);
+Route::get('/favoritos/evento/nombre/{nombre_evento}', [ApiController::class,'listaFavoritosNombre']);
+Route::get('/favoritos/evento/ciudad/{ciudad}', [ApiController::class,'listaFavoritosCiudad']);
+Route::get('/favoritos/evento/genero/{genero}', [ApiController::class,'listaFavoritosGenero']);
