@@ -93,19 +93,19 @@
 
                                     <!-- Menú desplegable -->
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="{{ route('perfil') }}">Ver perfil</a></li>
-                                        <li>
+                                        <li class="desplegable" ><a class="dropdown-item" href="{{ route('perfil') }}">Ver perfil</a></li>
+                                        <li class="desplegable" >
                                             <hr class="dropdown-divider">
                                         </li>
                                         {{-- Condición para el rol ADMIN --}}
                                         @if (Auth::user()->rol === 'ADMIN')
-                                            <li><a class="dropdown-item" href="{{ route('admin.panel') }}">Panel de
+                                            <li class="desplegable" ><a class="dropdown-item" href="{{ route('admin.panel') }}">Panel de
                                                     Administración</a></li>
-                                            <li>
+                                            <li class="desplegable" >
                                                 <hr class="dropdown-divider">
                                             </li>
                                         @endif
-                                        <li>
+                                        <li class="desplegable" >
                                             <a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a>
                                         </li>
                                     </ul>
