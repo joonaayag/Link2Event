@@ -49,6 +49,16 @@ body {
     padding-top: 85px;
 }
 
+.boton-comprar-favoritos{
+  width: 175px !important;
+  height: 38px !important;
+}
+
+.boton-eliminar-favorito{
+  width: 175px !important;
+  height: 38px !important;
+}
+
 .titulo-gigante {
     font-size: 150px;
 }
@@ -228,14 +238,7 @@ textarea:focus {
 
 /* MODALES */
 
-<<<<<<< HEAD
 
-=======
-/* .contenedor-imagen-modal {} */
-  /* Por hacer */
-
-
->>>>>>> feature-guzzle
 .modal-header {
     border-bottom: 2px solid var(--color-seleccion);
 }
@@ -906,7 +909,7 @@ circle {
     align-items: start !important;
     transform: scale(0.95);
   }
-<<<<<<< HEAD
+
   
   .flex-responsive{
     flex-direction: row !important;
@@ -919,16 +922,6 @@ circle {
     margin: 0px !important;
     height: 46px !important;
   }
-
-<<<<<<< HEAD
->>>>>>> 83cc46518aa1238e0f324aba2aaa1059ea6357a1
-=======
-  /* #botonEnviar {
-    
-  } */
->>>>>>> feature-guzzle
-=======
->>>>>>> fb1630ebc88200cbd86236662d4b847644398a57
 }
 
 /* FIN MEDIA QUERIES PARA PÁGINA DE CONTACTO */

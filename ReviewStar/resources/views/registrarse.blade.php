@@ -42,7 +42,7 @@
                             <div class="col-md-6">
                                 <label for="edad" class="form-label">Edad</label>
                                 <input type="number" class="form-control" id="edad" name="edad"
-                                    value="{{ old('edad') }}" required>
+                                    value="{{ old('edad') }}" required min="18" max="120">
                                 @error('edad')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror

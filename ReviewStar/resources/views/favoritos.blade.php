@@ -16,7 +16,7 @@
                     @if($favorites && $favorites->count() > 0)
                         <div class="row">
                             @foreach($favorites as $favorite)
-                                <div class="col-md-4 col-sm-6 mb-4">
+                                <div class="col-md-6 col-sm-12 mb-4">
                                     <div class="card tarjeta-formularioBis carta-inicioBis">
                                         <img src="{{ $favorite->event_image ?? 'https://via.placeholder.com/300' }}" class="card-img-top" alt="{{ $favorite->event_name }}">
                                         <div class="card-body">
@@ -36,10 +36,10 @@
                                             
                                             <div class="d-flex justify-content-between mt-3">
                                                 @if($favorite->event_url)
-                                                    <a href="{{ $favorite->event_url }}" target="_blank" class="btn btn-primary btn-registroBis btn-modal mt-auto">Comprar Entradas</a>
+                                                    <a href="{{ $favorite->event_url }}" target="_blank" class="btn btn-primary btn-registroBis btn-modal mt-auto boton-comprar-favoritos">Comprar Entradas</a>
                                                 @endif
                                                 <button 
-                                                    class="btn btn-danger btn-loginBisRemove btn-modal mt-auto remove-favorite" 
+                                                    class="btn btn-danger btn-loginBisRemove btn-modal mt-auto remove-favorite boton-eliminar-favorito" 
                                                     data-event-id="{{ $favorite->event_id }}"
                                                     data-event-name="{{ $favorite->event_name }}"
                                                 >
