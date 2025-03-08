@@ -301,6 +301,10 @@ textarea:focus {
 #tituloFav{
   height: 100px;
 }
+#filterForm {
+    padding-left: 15px; /* Ajusta el valor según lo necesites */
+    padding-right: 15px; /* Ajusta el valor según lo necesites */
+}
 
 /*FIN DUPLICADOS EVENTOS*/
 

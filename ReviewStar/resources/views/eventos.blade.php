@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
 <div class="container mt-5">
-    <div class="card">
+    <div class="card tarjeta-formulario">
     <div class="row mb-4">
         <div class="col-md-12">
             <h1 class="text-center card-header">Eventos de Hoy</h1>
@@ -53,9 +53,8 @@
                 <input type="number" class="form-control" id="precio_max" step="0.01" min="0" placeholder="0.00">
             </div>
         </div>
-        
         <div class="text-center">
-            <button id="filterButton" class="btn btn-primary">Filtrar</button>
+            <button id="filterButton" class="btn btn-primary btn-registroBis mt-3">Filtrar</button>
         </div>
     </div>
     <!-- Contenedor de Resultados -->
