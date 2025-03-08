@@ -17,7 +17,7 @@
                         <div class="row">
                             @foreach($favorites as $favorite)
                                 <div class="col-md-4 col-sm-6 mb-4">
-                                    <div class="card tarjeta-formulario">
+                                    <div class="card tarjeta-formulario carta-inicio">
                                         <img src="{{ $favorite->event_image ?? 'https://via.placeholder.com/300' }}" class="card-img-top" alt="{{ $favorite->event_name }}">
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $favorite->event_name }}</h5>

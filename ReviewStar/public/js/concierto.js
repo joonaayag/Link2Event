@@ -237,8 +237,8 @@ function displayConcerts(concerts, newSearch) {
                 : 'Fecha no disponible';
             
             return `
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="card h-100 shadow-sm">
+                <div class="col-md-4 col-sm-6">
+                    <div class="card tarjeta-formulario carta-inicio">
                         <img src="${imageUrl}" class="card-img-top" alt="${concert.name || 'Evento'}">
                         <div class="card-body">
                             <h5 class="card-title">${concert.name || 'Evento sin nombre'}</h5>
@@ -250,12 +250,12 @@ function displayConcerts(concerts, newSearch) {
                             
                             <div class="d-flex justify-content-between mt-3">
                                 <a href="${concert.url || '#'}" target="_blank" class="btn btn-primary flex-grow-1 mr-2">Comprar Entradas</a>
-                                <button id="fav-btn-${concert.id}" onclick="saveAsFavorite('${concert.id}')" class="btn btn-outline-danger flex-grow-1">
+                                <button id="fav-btn-${concert.id}" onclick="saveAsFavorite('${concert.id}')" class="btn btn-primary btn-registro btn-modal mt-3 w-100">
                                     <i class="far fa-heart"></i> Favorito
                                 </button>
                             </div>
 
-                            <button type="button" class="btn btn-primary btn-modal mt-2 w-100" data-target="#modal_${concert.id}">
+                            <button type="button" class="btn btn-primary btn-registro btn-modal mt-3 w-100" data-target="#modal_${concert.id}">
                                 Ver detalles
                             </button>
 
@@ -283,14 +283,14 @@ function displayConcerts(concerts, newSearch) {
                                                     <p>Precio máximo: ${maxPrice !== 'No disponible' ? '$' + maxPrice : 'No disponible'}</p>
                                                     
                                                     <!-- Botón de favorito en el modal también -->
-                                                    <button onclick="saveAsFavorite('${concert.id}')" class="btn btn-outline-danger mt-3">
+                                                    <button onclick="saveAsFavorite('${concert.id}')" class="btn btn-primary btn-registro btn-modal mt-3 w-100">
                                                         <i class="far fa-heart"></i> Guardar como favorito
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn btn-secondary mt-3 w-100" data-dismiss="modal">Cerrar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -302,8 +302,8 @@ function displayConcerts(concerts, newSearch) {
         } catch (error) {
             console.error("Error al procesar el concierto:", error, concert);
             return `
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="card h-100 shadow-sm">
+                <div class="col-md-4 col-sm-6">
+                    <div class="card tarjeta-formulario carta-inicio">
                         <div class="card-body">
                             <h5 class="card-title">${concert.name || 'Evento sin nombre'}</h5>
                             <p class="card-text">No se pudieron cargar todos los detalles para este evento.</p>
