@@ -196,13 +196,7 @@ textarea:focus {
 
 /* MODALES */
 
-<<<<<<< HEAD
-/* .contenedor-imagen-modal {} */
-  /* Por hacer */
 
-
-=======
->>>>>>> 1b3bf599ac04f06d1a1b255f5d5f41c4f18a428c
 .modal-header {
     border-bottom: 2px solid var(--color-seleccion);
 }
