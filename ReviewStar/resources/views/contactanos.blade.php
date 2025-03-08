@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-end">
-                                <div class="contact-info d-flex flex-column align-items-center">
+                                <div class="info-contacto d-flex flex-column align-items-center">
                                     <h6 class="bienvenida-titulo card-title">Información de contacto</h6>
                                     <div class="contact-details">
                                         <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo">

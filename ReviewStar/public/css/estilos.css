@@ -1,414 +1,404 @@
 :root {
-  --fondo-navbar: #2c3e50;
-  --fondo-footer: #2c3e50;
-  --fondo-carta: #222;
-  --hover-navbar: #34495e;
-  --activo-navbar: #1a2530;
-  --color-principal: #ecf0f1;
-  --color-seleccion: #f1c40f;
-  --velocidad-transicion: 0.3s;
-  --borde-carta: #e0e0e0;
-  --fondo-inicio: #b65e15;
-  --fondo-inicio2: #b36d20;
+    --fondo-navbar: #2c3e50;
+    --fondo-footer: #2c3e50;
+    --fondo-carta: #222;
+    --hover-navbar: #34495e;
+    --activo-navbar: #1a2530;
+    --color-principal: #ecf0f1;
+    --color-seleccion: #f1c40f;
+    --velocidad-transicion: 0.3s;
+    --borde-carta: #e0e0e0;
+    --fondo-inicio: #b65e15;
+    --fondo-inicio2: #b36d20;
 }
 
 ::selection {
-  background-color: var(--color-seleccion);
-  color: var(--fondo-carta);
+    background-color: var(--color-seleccion);
+    color: var(--fondo-carta);
 }
 
 .form-check-input:checked {
-  background-color: var(--color-seleccion) !important;
-  border-color: var(--color-seleccion) !important;
+    background-color: var(--color-seleccion) !important;
+    border-color: var(--color-seleccion) !important;
 }
 
 .borde-error {
-  border: red 1.5px solid;
+    border: red 1.5px solid;
 }
 
 .borde-correcto {
-  border: green 1.5px solid;
+    border: green 1.5px solid;
 }
-
 
 /* ESTILOS GENERALES */
 
-html,body{
-  min-width: 375px;
+html,
+body {
+    min-width: 375px;
 }
 
 html {
-  min-height: 100%;
-  position: relative;
+    min-height: 100%;
+    position: relative;
 }
 
 body {
-  margin: 0;
-  margin-bottom: 40px;
-  min-height: 100vh;
-  padding-top: 85px;
+    margin: 0;
+    margin-bottom: 40px;
+    min-height: 100vh;
+    padding-top: 85px;
 }
 
 .titulo-gigante {
-  font-size: 150px;
+    font-size: 150px;
 }
 
 .gigante {
-  font-size: 100px;
+    font-size: 100px;
 }
 
 .grande {
-  font-size: 70px;
+    font-size: 70px;
 }
 
 .mediana {
-  font-size: 45px;
+    font-size: 45px;
 }
 
 .blanco {
-  color: white;
+    color: white;
 }
 
 .container {
-  min-height: calc(100vh - 85px);
-  /* Esto es para que respete la altura del navbar */
+    min-height: calc(100vh - 85px);
+    /* Esto es para que respete la altura del navbar */
 }
 
 .navbar {
-  display: flex;
-  align-items: center;
-  background-color: rgba(34, 34, 34, 0.9);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-height: 85px;
-  z-index: 1000;
-  /* Para que quede por encima del contenido */
+    display: flex;
+    align-items: center;
+    background-color: rgba(34, 34, 34, 0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 85px;
+    z-index: 1000;
+    /* Para que quede por encima del contenido */
 }
 
 .parrafo-navbar {
-  margin: 0px 5px;
-  padding: 15px;
+    margin: 0px 5px;
+    padding: 15px;
 }
 
-
 footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--fondo-footer);
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 50px;
-  color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--fondo-footer);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    color: white;
 }
 
 footer p {
-  margin: 0;
+    margin: 0;
 }
 
 .enlaceAmarillo {
-  color: var(--color-seleccion);
+    color: var(--color-seleccion);
 }
 
 .negrita {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .naranjita {
-  color: var(--color-seleccion);
+    color: var(--color-seleccion);
 }
 
 input:focus,
 select:focus {
-  box-shadow: none !important;
-  border-color: var(--color-seleccion) !important;
+    box-shadow: none !important;
+    border-color: var(--color-seleccion) !important;
 }
 
 textarea {
-  border: 1px solid var(--color-seleccion);
-  outline: none;
-  border-radius: 10px;
-  resize: none;
+    border: 1px solid var(--color-seleccion);
+    outline: none;
+    border-radius: 10px;
+    resize: none;
 }
 
 textarea:focus {
-  border: 1px solid var(--color-seleccion);
-  outline: none;
+    border: 1px solid var(--color-seleccion);
+    outline: none;
 }
-
-
 
 /* CARTAS */
 
 .card {
-  border-radius: 15px !important;
-  box-shadow: 0 0 3px 5px rgba(0, 0, 0, 0.6) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 0 3px 5px rgba(0, 0, 0, 0.6) !important;
 }
 
 .card-title {
-  color: var(--color-principal) !important;
-  margin-bottom: 25px;
-  font-weight: bold;
+    color: var(--color-principal) !important;
+    margin-bottom: 25px;
+    font-weight: bold;
 }
 
 .card-subtitle {
-  color: var(--color-seleccion) !important;
+    color: var(--color-seleccion) !important;
 }
 
 .card-header {
-  border-bottom: 2px solid var(--color-seleccion);
+    border-bottom: 2px solid var(--color-seleccion);
 }
 
 .foto-perfil {
-  height: 50px;
-  max-width: 50px;
+    height: 50px;
+    max-width: 50px;
 }
 .foto-perfil:hover {
     transform: scale(1.05);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     box-shadow: 0 0 4px 4px var(--color-seleccion) !important;
-  }
-
+}
 
 .foto-perfil-grande {
-  height: 130px;
-  max-width: 130px;
+    height: 130px;
+    max-width: 130px;
 }
 
 .nav-icon {
-  height: 30px;
-  width: auto;
+    height: 30px;
+    width: auto;
 }
 
 .logo {
-  height: 60px;
-  width: auto;
+    height: 60px;
+    width: auto;
 }
 
 /* FIN CARTAS */
 
 /* MODALES */
 
-
 .modal-header {
-  border-bottom: 2px solid var(--color-seleccion);
+    border-bottom: 2px solid var(--color-seleccion);
 }
 
 .modal-content {
-  background-color: rgba(34, 34, 34, 0.959) !important;
-  color: var(--color-principal) !important;
+    background-color: rgba(34, 34, 34, 0.959) !important;
+    color: var(--color-principal) !important;
 }
 
 .modal-content p {
-  margin: 0px !important;
+    margin: 0px !important;
 }
 
 .modal-footer {
-  padding-top: 0px !important;
-  border: none;
+    padding-top: 0px !important;
+    border: none;
 }
-
 
 /* FIN MODALES */
 
 /* FIN ESTILOS GENERALES */
 
-
 /* PÁGINA BIENVENIDA */
 
 .bienvenida-container {
-  padding: 0 15px;
+    padding: 0 15px;
 }
 
 .offset-0 {
-  margin-left: 0;
+    margin-left: 0;
 }
 
 .offset-1 {
-  margin-left: 10rem;
+    margin-left: 10rem;
 }
 
 .offset-2 {
-  margin-left: 12rem;
+    margin-left: 12rem;
 }
 
 .fondo-bienvenida {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .opacidad-video {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 
 .pagina-bienvenida {
-  display: flex;
-  padding: 0;
-  align-items: center;
-  background-color: rgba(34, 34, 34, 0.952) !important;
-  color: var(--color-principal) !important;
-  margin: 100px 0px;
-  z-index: 1 !important;
-  /* border-radius: 15px !important; */
+    display: flex;
+    padding: 0;
+    align-items: center;
+    background-color: rgba(34, 34, 34, 0.952) !important;
+    color: var(--color-principal) !important;
+    margin: 100px 0px;
+    z-index: 1 !important;
+    /* border-radius: 15px !important; */
 }
 
 .tarjeta-formulario-bienvenida {
-  background-color: rgba(34, 34, 34, 0.308) !important;
-  color: var(--color-principal) !important;
-  margin: 100px 0px;
-  border-radius: 15px !important;
+    background-color: rgba(34, 34, 34, 0.308) !important;
+    color: var(--color-principal) !important;
+    margin: 100px 0px;
+    border-radius: 15px !important;
 }
 
 .tarjeta-formulario {
-  background-color: rgba(34, 34, 34, 0.75) !important;
-  color: var(--color-principal) !important;
-  margin: 100px 0px;
+    background-color: rgba(34, 34, 34, 0.75) !important;
+    color: var(--color-principal) !important;
+    margin: 100px 0px;
 }
 
 .columna-botones a {
-  cursor: pointer;
-  transition: var(--velocidad-transicion);
-  border: none;
-  border-radius: 20px;
-  margin: 10px 5px;
-  width: 100%;
-  height: 100%;
+    cursor: pointer;
+    transition: var(--velocidad-transicion);
+    border: none;
+    border-radius: 20px;
+    margin: 10px 5px;
+    width: 100%;
+    height: 100%;
 }
 
 .btn-registro {
-  background-color: var(--color-seleccion) !important;
-  border: none !important;
-  color: #222 !important;
+    background-color: var(--color-seleccion) !important;
+    border: none !important;
+    color: #222 !important;
 }
 
 .btn-registro:hover {
-  background-color: #ffd940 !important;
-  color: #222 !important;
-  transform: scale(1.02);
-  transition: all var(--velocidad-transicion);
+    background-color: #ffd940 !important;
+    color: #222 !important;
+    transform: scale(1.02);
+    transition: all var(--velocidad-transicion);
 }
 
 .btn-login {
-  background-color: var(--fondo-carta) !important;
-  border: none !important;
-  color: var(--color-principal) !important;
+    background-color: var(--fondo-carta) !important;
+    border: none !important;
+    color: var(--color-principal) !important;
 }
 
 .btn-login:hover {
-  background-color: #2c2c2c !important;
-  color: var(--color-principal) !important;
-  transform: scale(1.02);
-  transition: all var(--velocidad-transicion);
+    background-color: #2c2c2c !important;
+    color: var(--color-principal) !important;
+    transform: scale(1.02);
+    transition: all var(--velocidad-transicion);
 }
 
 /* FIN PÁGINA BIENVENIDA */
 
-
 /* PÁGINA DE LOGIN */
 
 .pagina-login {
-  background-image: url('../assets/img/fondo-registro.svg');
-  display: flex;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    background-image: url("../assets/img/fondo-registro.svg");
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* FIN PÁGINA DE LOGIN */
 
-
 /* PÁGINA DE REGISTRARSE */
 
 .pagina-registrarse {
-  /* min-height: 100vh !important; */
-  background-image: url('../assets/img/fondo-registro.svg');
-  display: flex;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    /* min-height: 100vh !important; */
+    background-image: url("../assets/img/fondo-registro.svg");
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .mensaje-error {
-  color: red;
-  margin: 0;
+    color: red;
+    margin: 0;
 }
 
 /* ICONO CARGANDO */
 
 .contenedor-select {
-  position: relative;
+    position: relative;
 }
 
 svg {
-  width: 25px;
-  transform-origin: center;
-  animation: rotate4 2s linear infinite;
-  position: absolute;
-  top: 7px;
-  right: 5px;
+    width: 25px;
+    transform-origin: center;
+    animation: rotate4 2s linear infinite;
+    position: absolute;
+    top: 7px;
+    right: 5px;
 }
 
 circle {
-  fill: none;
-  stroke: var(--color-seleccion);
-  stroke-width: 4;
-  stroke-dasharray: 1, 200;
-  stroke-dashoffset: 0;
-  stroke-linecap: round;
-  animation: dash4 1.5s ease-in-out infinite;
+    fill: none;
+    stroke: var(--color-seleccion);
+    stroke-width: 4;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: dash4 1.5s ease-in-out infinite;
 }
 
 @keyframes rotate4 {
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes dash4 {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
 
-  50% {
-    stroke-dasharray: 90, 200;
-    stroke-dashoffset: -35px;
-  }
+    50% {
+        stroke-dasharray: 90, 200;
+        stroke-dashoffset: -35px;
+    }
 
-  100% {
-    stroke-dashoffset: -125px;
-  }
+    100% {
+        stroke-dashoffset: -125px;
+    }
 }
 
 /* FIN ICONO CARGANDO */
 
 /* FIN PÁGINA DE REGISTRARSE */
 
-
 /* PAGINA DE PERFIL */
 
 .pagina-perfil {
-  background-image: url('../assets/img/fondo_bienvenida.png');
-  display: flex;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    background-image: url("../assets/img/fondo_bienvenida.png");
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .infoPerfil .row {
-  height: 90px;
+    height: 90px;
 }
 
 /* FIN PAGINA DE PERFIL */
@@ -420,58 +410,60 @@ circle {
 /* PÁGINA SOBRE-NOSOTROS */
 
 .pagina-sobre_nosotros {
-  background-image: url('../assets/img/fondo_bienvenida.png');
-  display: flex;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    background-image: url("../assets/img/fondo_bienvenida.png");
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-
 
 /* FIN PÁGINA SOBRE-NOSOTROS */
 
 /* PÁGINA DE CONTACTANOS */
 
 .pagina-contactanos {
-  background-image: url('../assets/img/fondo_bienvenida.png');
-  display: flex;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    background-image: url("../assets/img/fondo_bienvenida.png");
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .contactanos-contenedor {
-  position: fixed;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  color: #f1f1f1;
-  width: 100%;
-  padding: 20px;
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
 }
 
 .contactanos-mensaje {
-  min-height: 100px;
+    min-height: 100px;
 }
 
 .btn-enviar {
-  background-color: var(--color-seleccion) !important;
-  border: none !important;
-  color: #222 !important;
-  width: 50%;
+    background-color: var(--color-seleccion) !important;
+    border: none !important;
+    color: #222 !important;
+    width: 50%;
 }
 
 .btn-enviar:hover {
-  background-color: #ffd940 !important;
-  color: #222 !important;
-  transform: scale(1.02);
-  transition: all var(--velocidad-transicion);
+    background-color: #ffd940 !important;
+    color: #222 !important;
+    transform: scale(1.02);
+    transition: all var(--velocidad-transicion);
 }
 
 .borde-form-comentario {
-  border-radius: 10px !important;
-  border: solid var(--color-seleccion) 2px !important;
+    border-radius: 10px !important;
+    border: solid var(--color-seleccion) 2px !important;
+}
+.info-contacto{
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* FIN PÁGINA DE CONTACTANOS */
@@ -480,245 +472,291 @@ circle {
 /* Estilos para eventos */
 
 #container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
 .concert {
-  border: 1px solid #ccc;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 10px;
-  background: #f9f9f9;
-  text-align: center;
-  max-width: 300px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    background: #f9f9f9;
+    text-align: center;
+    max-width: 300px;
 }
 
 .event-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
 }
 
 .buy-ticket-btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-  border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .buy-ticket-btn:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
-
 
 /* PÁGINA DE INICIO */
 .pagina-inicio {
-  background-image: url('../assets/img/fondo_bienvenida.png');
-  display: flex;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    background-image: url("../assets/img/fondo_bienvenida.png");
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.pagina-inicio h2 {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.pagina-inicio h3 {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .imagen-inicio {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 
 .carta-inicio {
-  padding: 10px !important;
-  border-radius: 15px !important;
-  box-shadow: 0 0 3px 5px rgba(0, 0, 0, 0.6) !important;
+    padding: 10px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 0 3px 5px rgba(0, 0, 0, 0.6) !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .carta-inicio:hover {
-  box-shadow: 0 0 3px 5px var(--color-seleccion) !important;
-  transition: 0.3s ease;
+    box-shadow: 0 0 3px 5px var(--color-seleccion) !important;
+    transition: 0.3s ease;
 }
 
 .tarjeta-inicio {
-  background-color: rgba(34, 34, 34, 0.75) !important;
-  color: var(--color-principal) !important;
-  height: 300px;
+    background-color: rgba(34, 34, 34, 0.75) !important;
+    color: var(--color-principal) !important;
+    height: 300px;
 }
 
 #columnaArte {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .modalInicio img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 
 .btn-modal {
-  max-width: 100% !important;
-  white-space: normal !important;
+    max-width: 100% !important;
+    white-space: normal !important;
 }
-
 
 /* FIN PÁGINA DE INICIO */
 
-
 /* PÁGINA PANEL ADMIN */
-.pagina-panelAdministrador{
-  background-image: url('../assets/img/fondo_bienvenida.png');
-  display: flex;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.pagina-panelAdministrador {
+    background-image: url("../assets/img/fondo_bienvenida.png");
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .contenedor-panel {
-  background-color: rgba(44, 62, 80, 0.8);
-  border-radius: 10px;
-  padding: 25px;
-  margin-bottom: 50px;
-  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.7);
+    background-color: rgba(44, 62, 80, 0.8);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 50px;
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.7);
 }
 
 .tabla-usuarios {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 2rem;
-  background-color: rgba(34, 34, 34, 0.7);
-  border-radius: 8px;
-  overflow: hidden;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    background-color: rgba(34, 34, 34, 0.7);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .tabla-usuarios thead {
-  background-color: var(--color-seleccion);
+    background-color: var(--color-seleccion);
 }
 
 .tabla-usuarios th {
-  padding: 1rem;
-  text-align: left;
-  color: var(--fondo-navbar);
-  font-weight: bold;
+    padding: 1rem;
+    text-align: left;
+    color: var(--fondo-navbar);
+    font-weight: bold;
 }
 
 .tabla-usuarios td {
-  padding: 0.8rem 1rem;
-  border-bottom: 1px solid rgba(224, 224, 224, 0.3);
-  color: var(--color-seleccion);
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid rgba(224, 224, 224, 0.3);
+    color: var(--color-seleccion);
 }
 
 .tabla-usuarios tbody tr:hover {
-  background-color: rgba(52, 73, 94, 0.5);
-  transition: background-color var(--velocidad-transicion);
+    background-color: rgba(52, 73, 94, 0.5);
+    transition: background-color var(--velocidad-transicion);
 }
 
 .tabla-usuarios tbody tr:last-child td {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 /* FIN PÁGINA PANEL ADMIN */
 
-
 /* PÁGINA COMENTARIOS ADMIN */
 
-.pagina-adminComentarios{
-  background-image: url('../assets/img/fondo-registro.svg');
-  display: flex;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.pagina-adminComentarios {
+    background-image: url("../assets/img/fondo-registro.svg");
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .carta-comentario {
-  background-color: rgba(44, 62, 80, 0.8);
-  color: white;
+    background-color: rgba(44, 62, 80, 0.8);
+    color: white;
 }
 
 .boton-eliminarAdmin {
-  margin-right: 20px;
+    margin-right: 20px;
 }
 
 /* FIN PÁGINA COMENTARIOS ADMIN */
 
-
 /* MEDIA QUERIES */
 
-/* MEDIA QUERIES PARA PÁGINA DE INICIO */
+/* MEDIA QUERIES PARA PÁGINA DE BIENVENIDA */
 
 @media (max-width: 1399px) {
-  /* Centrado del contenedor */
-  .bienvenida-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
-  }
+    /* Centrado del contenedor */
+    .bienvenida-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+    }
 
-  /* Cambio en la alineación de los elementos dentro de .texto-columna-derecha */
-  .texto-columna-derecha {
-    align-items: center !important;  /* Cambio de align-items-start a align-items-center */
-  }
+    /* Cambio en la alineación de los elementos dentro de .texto-columna-derecha */
+    .texto-columna-derecha {
+        align-items: center !important; /* Cambio de align-items-start a align-items-center */
+    }
 
-  .col-xxl-6,
-  .col-xxl-5 {
-    flex: 0 0 auto;
-    max-width: 100%;
-  }
+    .col-xxl-6,
+    .col-xxl-5 {
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
 
-  /* Eliminar los offsets */
-  .col-xxl-6 h1 {
-    margin-left: 0;
-  }
+    /* Eliminar los offsets */
+    .col-xxl-6 h1 {
+        margin-left: 0;
+    }
 
-  .col-xxl-6 h1:nth-of-type(2) {
-    margin-left: 0;
-  }
+    .col-xxl-6 h1:nth-of-type(2) {
+        margin-left: 0;
+    }
 
-  .col-xxl-6 h1:nth-of-type(3) {
-    margin-left: 0;
-  }
+    .col-xxl-6 h1:nth-of-type(3) {
+        margin-left: 0;
+    }
 
-  .columna-derecha {
-    margin-top: 2rem;
-  }
+    .columna-derecha {
+        margin-top: 2rem;
+    }
 }
 
 @media (max-width: 1400px) {
+    .columna-botones {
+        display: flex;
+        justify-content: center;
+    }
 
-  .columna-botones {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .btn-lg {
-    width: auto;
-    max-width: 250px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    .btn-lg {
+        width: auto;
+        max-width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
-
-/* FIN MEDIA QUERIES PARA PÁGINA DE INICIO */
+/* FIN MEDIA QUERIES PARA PÁGINA DE BIENVENIDA */
 
 @media (max-width: 575px) {
-  .titulo-principal {
-    font-size: 7rem !important; 
-  }
+    .titulo-principal {
+        font-size: 7rem !important;
+    }
 
-  h2{
-    font-size: 2rem !important;
+    h2 {
+        font-size: 2rem !important;
+    }
+}
+
+/* MEDIA QUERIES PARA PAGINA DE INICIO */
+
+@media (max-width: 992px) {
+    .pagina-inicio h2 {
+        font-size: 3rem !important;
+        transform: scale(0.95);
+    }
+}
+@media (max-width: 768px) {
+    .pagina-inicio h2 {
+        font-size: 2rem !important;
+        transform: scale(0.95);
+    }
+    .pagina-inicio h3 {
+        transform: scale(0.95);
+        font-size: 1.7rem !important;
+    }
+}
+@media (max-width: 576px) {
+    .pagina-inicio .carta-inicio {
+        transform: scale(0.95);
+        max-width: 360px;
+        margin: 0 auto;
+    }
+    .pagina-inicio h3 {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* FIN MEDIA QUERIES PARA PAGINA DE INICIO */
+
+
+
+/* MEDIA QUERIES PARA PÁGINA DE CONTACTO */
+
+@media (max-width: 992px) {
+  .info-contacto {
+    margin-top: 20px;
+    align-items: start !important;
+    transform: scale(0.95);
+  }
+  #botonEnviar {
+    
   }
 }
 
-
+/* FIN MEDIA QUERIES PARA PÁGINA DE CONTACTO */
 
 /* FIN MEDIA QUERIES */
