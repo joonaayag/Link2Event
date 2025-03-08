@@ -880,14 +880,6 @@ circle {
 
 /* MEDIA QUERIES PARA PÁGINA DE CONTACTO */
 
-<<<<<<< HEAD
-@media (max-width: 992px) {
-    .info-contacto {
-        margin-top: 20px;
-        align-items: start !important;
-        transform: scale(0.95);
-    }
-=======
 @media (max-width: 991px) {
   .info-contacto {
     margin-top: 20px;
@@ -907,7 +899,6 @@ circle {
     height: 46px !important;
   }
 
->>>>>>> 83cc46518aa1238e0f324aba2aaa1059ea6357a1
 }
 
 /* FIN MEDIA QUERIES PARA PÁGINA DE CONTACTO */
