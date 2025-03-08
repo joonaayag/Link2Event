@@ -50,7 +50,7 @@
                                 <div class="info-contacto d-flex flex-column align-items-center">
                                     <h6 class="bienvenida-titulo card-title text-center w-100">Información de contacto</h6>
                                     <div class="flex-responsive d-flex flex-column align-items-center w-100">
-                                        <div class="contact-details w-100 text-center">
+                                        <div class="contact-details text-center">
                                             <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo">
                                             <p class="address mt-3">Calle Gran Via, 12<br>28013</p>
                                         </div>
@@ -66,7 +66,7 @@
                                     @csrf
                                     <div class="mb-3">
                                         <label for="comentario" class="form-label fw-bold">Mándanos un mensaje para atención
-                                            prioritaria:</label>
+                                            prioritaria</label>
                                         <textarea name="comentario" class="form-control"
                                             placeholder="Escribe tu mensaje"></textarea>
                                     </div>
