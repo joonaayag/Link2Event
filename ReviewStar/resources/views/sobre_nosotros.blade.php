@@ -7,16 +7,16 @@
 @section('contenido')
     <div class="container my-5">
         <div class="row mb-5">
-            <div class="col-md-12">
+            <div class="col-lg-12">
                 <div class="text-left">
-                    <h1 class="mb-0 text-light gigante">¿Quienes somos?</h1>
+                    <h1 class="mb-0 text-light gigante negrita">¿Quienes somos?</h1>
                 </div>
                 <div class="card-body">
                     <div class="row mb-5">
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div class="card tarjeta-formulario mb-4">
                                 <div class="card-header">
-                                    <h3 class="mb-0">¿Por qué elegirnos?</h3>
+                                    <h3 class="mb-0 negrita">¿Por qué elegirnos?</h3>
                                 </div>
                                 <div class="card-body">
                                     <p>
@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                        <div class="col-lg-6 d-flex justify-content-center align-items-center">
                             <div class="card tarjeta-formulario mb-4">
                                 <img src="{{ asset('assets/img/sobre-nosotros.jpg') }}" alt="Sobre nosotros"
                                     class="img-fluid rounded">
@@ -43,7 +43,7 @@
                         <div class="col-12">
                             <div class="card tarjeta-formulario">
                                 <div class="card-header text-center">
-                                    <h3 class="mb-0">¿De dónde surge la idea?</h3>
+                                    <h3 class="mb-0 negrita">¿De dónde surge la idea?</h3>
                                 </div>
                                 <div class="card-body">
                                     <p class="text-center">

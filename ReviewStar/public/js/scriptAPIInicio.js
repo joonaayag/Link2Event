@@ -6,9 +6,9 @@ function inicio() {
     let apiMusica = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&classificationName=Music&size=2`;
     let apiArte = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&classificationName=Arts & Theatre&size=2`;
 
-    $("#columnaDeportes").html("<h3 class='blanco mediana mb-4'>Deportes</h3>");
-    $("#columnaMusica").html("<h3 class='blanco mediana mb-4'>Música</h3>");
-    $("#columnaArte").html("<h3 class='blanco mediana'>Arte</h3>");
+    $("#columnaDeportes").html("<h3 class='blanco mediana negrita mb-4'>Deportes</h3>");
+    $("#columnaMusica").html("<h3 class='blanco mediana negrita mb-4'>Música</h3>");
+    $("#columnaArte").html("<h3 class='blanco mediana negrita'>Arte</h3>");
 
 
     function obtenerDatosEvento(event) {

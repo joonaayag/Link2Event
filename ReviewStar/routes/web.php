@@ -26,16 +26,11 @@ Route::post('/login', [AutentificadorController::class, 'iniciarSesion'])->name(
 //Ruta despues de haber iniciado sesión y haber entrado a la ruta iniciarSesion (al final mostramos la vista conciertos)
 Route::post('/eventos', [UserController::class, 'eventos'])->name('eventos');
 
-// Rutas para favoritos
-Route::get('/favoritos', [FavoriteEventController::class, 'index'])->name('favoritos.index');
-Route::post('/favorites', [FavoriteEventController::class, 'store'])->name('favorites.store');
-Route::delete('/favorites', [FavoriteEventController::class, 'destroy'])->name('favorites.destroy');
-Route::get('/favorites/check', [FavoriteEventController::class, 'check'])->name('favorites.check');
 
 // ------------- RUTAS PROTEGIDAS -------------
 //Rutas cuyo acceso necesita ser autentificado (si no estas autentificado no puedes acceder a estas rutas)
 Route::middleware(['auth'])->group(function () {
-
+    
     // ------------- RUTAS GET -------------
     Route::get('/eventos', [UserController::class, 'eventos'])->name('eventos');
     Route::get('/perfil', [UserController::class, 'perfil'])->name('perfil');
@@ -43,23 +38,28 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inicio', [UserController::class, 'inicio'])->name('inicio');
     Route::get('/sobre_nosotros', [UserController::class, 'sobreNosotros'])->name('sobre_nosotros');
     Route::get('/contactanos', [UserController::class, 'contactanos'])->name('contactanos');
-   
-
     
+    // Rutas para favoritos
+    Route::get('/favoritos', [FavoriteEventController::class, 'index'])->name('favoritos.index');
+    Route::post('/favorites', [FavoriteEventController::class, 'store'])->name('favorites.store');
+    Route::delete('/favorites', [FavoriteEventController::class, 'destroy'])->name('favorites.destroy');
+    Route::get('/favorites/check', [FavoriteEventController::class, 'check'])->name('favorites.check');
+
+
     Route::get('/logout', [AutentificadorController::class, 'cerrarSesion'])->name('logout');
 
     Route::post('/admin/editarUsuario', [AdminController::class, 'editarUsuario'])->name('editarUsuario');
     Route::get('/admin/panel', [AdminController::class, 'adminPanel'])->name('admin.panel');//ruta para ver el panel
-    
+
     // ------------- RUTAS POST -------------
     Route::post('/perfil', [UserController::class, 'actualizarPerfil'])->name('perfil.actualizar');
-    
+
     Route::delete('admin/eliminarUsuario', [AdminController::class, 'eliminarUsuario'])->name('eliminarUsuario'); //Ruta para eliminar usuario pulsando el botón
     Route::delete('/admin/eliminarComentario', [AdminController::class, 'eliminarComentario'])->name('eliminarComentario');
     Route::post('/admin/panel', [AdminController::class, 'adminPanel'])->name('admin.panel');//ruta para ver el panel después de haber enviado el formulario
     Route::post('/admin/mostrarComentariosUsuario', [AdminController::class, 'mostrarComentarios'])->name('mostrarComentarios');
     Route::get('/admin/mostrarComentariosUsuario', [AdminController::class, 'mostrarComentarios'])->name('mostrarComentarios');
-    
+
     Route::post('/contactanos', [comentariosController::class, 'almacenarComentario'])->name('enviarComentario');
     Route::post('/admin/editar/perfil', [AdminController::class, 'editarPerfilUsuario'])->name('editarPerfilUsuario');
 });

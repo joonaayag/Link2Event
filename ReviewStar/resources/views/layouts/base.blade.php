@@ -44,7 +44,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto">
+                    <ul class="navbar-nav justify-content-center w-100">
                         <li class="nav-item">
                             <a class="nav-link {{ Route::currentRouteName() == 'inicio' ? 'active' : '' }}"
                                 href="{{ route('inicio') }}">
