@@ -41,30 +41,44 @@ async function fetchConcerts(filtros = {}, newSearch = false) {
         const apiKey = "NaABMVnPL3zTNZQa5eaP5AEuVTf4V0Aw";
         let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}&size=20&page=${currentPage}`;
         
-        // Mapear los filtros para que coincidan con la API de Ticketmaster
+        // Validar los filtros antes de añadirlos a la URL
+        // Para el nombre/keyword, exigir al menos 2 caracteres
         if (filtros.nombre) {
-            url += `&keyword=${encodeURIComponent(filtros.nombre)}`;
+            if (filtros.nombre.trim().length < 2) {
+                showNotification('Por favor, ingresa al menos 2 caracteres para buscar por nombre', 'error');
+                return; // Detener la ejecución si no cumple con la validación
+            }
+            url += `&keyword=${encodeURIComponent(filtros.nombre.trim())}`;
         }
         
-        if (filtros.ciudad) {
-            url += `&city=${encodeURIComponent(filtros.ciudad)}`;
+        if (filtros.ciudad && filtros.ciudad.trim() !== '') {
+            url += `&city=${encodeURIComponent(filtros.ciudad.trim())}`;
         }
         
-        if (filtros.genero) {
-            url += `&classificationName=${encodeURIComponent(filtros.genero)}`;  
+        if (filtros.genero && filtros.genero.trim() !== '') {
+            url += `&classificationName=${encodeURIComponent(filtros.genero.trim())}`;  
         }
 
-        if (filtros.fecha_desde) {
-            url += `&startDateTime=${encodeURIComponent(filtros.fecha_desde)}T00:00:00Z`;
+        if (filtros.fecha_desde && filtros.fecha_desde.trim() !== '') {
+            const fechaDesde = new Date(filtros.fecha_desde);
+            if (!isNaN(fechaDesde.getTime())) {
+                url += `&startDateTime=${filtros.fecha_desde.trim()}T00:00:00Z`;
+            }
         }
 
-        if (filtros.fecha_hasta) {
-            url += `&endDateTime=${encodeURIComponent(filtros.fecha_hasta)}T23:59:59Z`;
+        if (filtros.fecha_hasta && filtros.fecha_hasta.trim() !== '') {
+            const fechaHasta = new Date(filtros.fecha_hasta);
+            if (!isNaN(fechaHasta.getTime())) {
+                url += `&endDateTime=${filtros.fecha_hasta.trim()}T23:59:59Z`;
+            }
         }
 
-        if (filtros.precio_min && filtros.precio_max) {
-            url += `&priceRangeFrom=${encodeURIComponent(filtros.precio_min)}&priceRangeTo=${encodeURIComponent(filtros.precio_max)}`;
+        if (filtros.precio_min && filtros.precio_max && 
+            !isNaN(parseFloat(filtros.precio_min)) && !isNaN(parseFloat(filtros.precio_max))) {
+            url += `&priceRangeFrom=${encodeURIComponent(filtros.precio_min.trim())}&priceRangeTo=${encodeURIComponent(filtros.precio_max.trim())}`;
         }
+        
+        console.log("URL de búsqueda:", url);
         
         const response = await fetch(url);
         if (!response.ok) throw new Error("Error al obtener datos de la API");
@@ -93,7 +107,7 @@ async function fetchConcerts(filtros = {}, newSearch = false) {
             toggleLoadMoreButton(data.page);
         } else {
             if (newSearch) {
-                document.getElementById('results-container').innerHTML = '<p>No se encontraron eventos</p>';
+                document.getElementById('results-container').innerHTML = '<p>No se encontraron eventos con los criterios especificados</p>';
                 hideLoadMoreButton();
             } else if (currentPage === 0) {
                 document.getElementById('results-container').innerHTML = '<p>No se encontraron eventos</p>';
@@ -171,7 +185,7 @@ function displayConcerts(concerts, newSearch) {
         container.innerHTML = '';
     }
 
-    if (concerts.length === 0) {
+    if (!concerts || concerts.length === 0) {
         if (newSearch) {
             container.innerHTML = '<p>No se encontraron conciertos</p>';
         }
@@ -180,82 +194,137 @@ function displayConcerts(concerts, newSearch) {
     
     // Crear HTML para mostrar los conciertos
     const concertList = concerts.map(concert => {
-        return `
-            <div class="col-md-4 col-sm-6 mb-4"> <!-- 3 columnas en pantallas grandes, 2 en medianas, 1 en móviles -->
-                <div class="card h-100 shadow-sm">
-                    <img src="${concert.images ? concert.images[0].url : 'https://via.placeholder.com/300'}" class="card-img-top" alt="${concert.name}">
-                    <div class="card-body">
-                        <h5 class="card-title">${concert.name}</h5>
-                        <p class="card-text"><strong>Fecha:</strong> ${concert.dates.start.dateTime ? new Date(concert.dates.start.dateTime).toLocaleString() : 'Fecha no disponible'}</p>
-                        <p class="card-text"><strong>Lugar:</strong> ${concert._embedded.venues[0].name}</p>
-                        <p class="card-text"><strong>Ciudad:</strong> ${concert._embedded.venues[0].city.name}</p>
-                        <p class="card-text"><strong>Género:</strong> ${concert.classifications && concert.classifications.length > 0 ? concert.classifications[0].genre.name : 'No disponible'}</p>
-                        <p class="card-text"><strong>Precio:</strong> Desde $${concert.priceRanges ? concert.priceRanges[0].min : 'No disponible'}</p>
-                        
-                        <div class="d-flex justify-content-between mt-3">
-                            <a href="${concert.url}" target="_blank" class="btn btn-primary flex-grow-1 mr-2">Comprar Entradas</a>
-                            <button id="fav-btn-${concert.id}" onclick="saveAsFavorite('${concert.id}')" class="btn btn-outline-danger flex-grow-1">
-                                <i class="far fa-heart"></i> Favorito
+        // Verificar que todos los datos necesarios existan y proporcionar valores predeterminados seguros
+        try {
+            const imageUrl = concert.images && concert.images.length > 0 ? concert.images[0].url : 'https://via.placeholder.com/300';
+            
+            const eventDate = concert.dates && concert.dates.start && concert.dates.start.dateTime 
+                ? new Date(concert.dates.start.dateTime).toLocaleString() 
+                : 'Fecha no disponible';
+                
+            const eventTime = concert.dates && concert.dates.start && concert.dates.start.dateTime
+                ? new Date(concert.dates.start.dateTime).toLocaleTimeString()
+                : 'Hora no disponible';
+                
+            // Verificación de venues
+            if (!concert._embedded || !concert._embedded.venues || concert._embedded.venues.length === 0) {
+                throw new Error('Datos de venue no disponibles');
+            }
+            
+            const venue = concert._embedded.venues[0];
+            const venueName = venue.name || 'Lugar no disponible';
+            const cityName = venue.city && venue.city.name ? venue.city.name : 'Ciudad no disponible';
+            const venueAddress = venue.address && venue.address.line1 ? venue.address.line1 : 'Dirección no disponible';
+            
+            // Verificación de genre
+            const genre = concert.classifications && concert.classifications.length > 0 && 
+                  concert.classifications[0].genre && concert.classifications[0].genre.name
+                  ? concert.classifications[0].genre.name 
+                  : 'Género no disponible';
+                  
+            // Verificación de precios
+            const minPrice = concert.priceRanges && concert.priceRanges.length > 0 
+                ? concert.priceRanges[0].min 
+                : 'No disponible';
+                
+            const maxPrice = concert.priceRanges && concert.priceRanges.length > 0 
+                ? concert.priceRanges[0].max 
+                : 'No disponible';
+                
+            // Verificación de fechas de venta
+            const saleDate = concert.sales && concert.sales.public && concert.sales.public.startDateTime
+                ? new Date(concert.sales.public.startDateTime).toLocaleString()
+                : 'Fecha no disponible';
+            
+            return `
+                <div class="col-md-4 col-sm-6">
+                    <div class="card tarjeta-formulario carta-inicio">
+                        <img src="${imageUrl}" class="card-img-top" alt="${concert.name || 'Evento'}">
+                        <div class="card-body">
+                            <h5 class="card-title">${concert.name || 'Evento sin nombre'}</h5>
+                            <p class="card-text"><strong>Fecha:</strong> ${eventDate}</p>
+                            <p class="card-text"><strong>Lugar:</strong> ${venueName}</p>
+                            <p class="card-text"><strong>Ciudad:</strong> ${cityName}</p>
+                            <p class="card-text"><strong>Género:</strong> ${genre}</p>
+                            <p class="card-text"><strong>Precio:</strong> ${minPrice !== 'No disponible' ? 'Desde $' + minPrice : 'No disponible'}</p>
+                            
+                            <div class="d-flex justify-content-between mt-3">
+                                <a href="${concert.url || '#'}" target="_blank" class="btn btn-primary flex-grow-1 mr-2">Comprar Entradas</a>
+                                <button id="fav-btn-${concert.id}" onclick="saveAsFavorite('${concert.id}')" class="btn btn-primary btn-registro btn-modal mt-3 w-100">
+                                    <i class="far fa-heart"></i> Favorito
+                                </button>
+                            </div>
+
+                            <button type="button" class="btn btn-primary btn-registro btn-modal mt-3 w-100" data-target="#modal_${concert.id}">
+                                Ver detalles
                             </button>
-                        </div>
 
-                        <button type="button" class="btn btn-primary btn-modal mt-2 w-100" data-target="#modal_${concert.id}">
-                            Ver detalles
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modal_${concert.id}" tabindex="-1" role="dialog" aria-labelledby="modalTitle_${concert.id}" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Más información sobre ${concert.name}</h5>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <img src="${concert.images ? concert.images[0].url : 'https://via.placeholder.com/300'}" class="img-fluid" alt="Imagen del evento">
-                                            </div>
-                                            <div class="col-8">
-                                                <p>Ciudad: ${concert._embedded.venues[0].city.name}</p>
-                                                <p>Lugar: ${concert._embedded.venues[0].name}</p>
-                                                <p>Fecha de inicio:  ${concert.dates.start.dateTime ? new Date(concert.dates.start.dateTime).toLocaleString() : 'Fecha no disponible'}</p>
-                                                <p>Hora de inicio:  ${concert.dates.start.dateTime ? new Date(concert.dates.start.dateTime).toLocaleTimeString() : 'Hora no disponible'}</p>
-                                                <p>Fecha entradas disponibles:  ${concert.sales && concert.sales.public && concert.sales.public.startDateTime ? new Date(concert.sales.public.startDateTime).toLocaleString() : 'Fecha no disponible'}</p>
-                                                <p>Dirección:  ${concert._embedded.venues[0].address ? concert._embedded.venues[0].address.line1 : 'No disponible'}</p>
-                                                <p>Género:  ${concert.classifications && concert.classifications.length > 0 ? concert.classifications[0].genre.name : 'No disponible'}</p>
-                                                <p>Precio minimo:  ${concert.priceRanges ? concert.priceRanges[0].min : 'No disponible'}</p>
-                                                <p>Precio maximo:  ${concert.priceRanges ? concert.priceRanges[0].max : 'No disponible'}</p>
-                                                
-                                                <!-- Botón de favorito en el modal también -->
-                                                <button onclick="saveAsFavorite('${concert.id}')" class="btn btn-outline-danger mt-3">
-                                                    <i class="far fa-heart"></i> Guardar como favorito
-                                                </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal_${concert.id}" tabindex="-1" role="dialog" aria-labelledby="modalTitle_${concert.id}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Más información sobre ${concert.name || 'este evento'}</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <img src="${imageUrl}" class="img-fluid" alt="Imagen del evento">
+                                                </div>
+                                                <div class="col-8">
+                                                    <p>Ciudad: ${cityName}</p>
+                                                    <p>Lugar: ${venueName}</p>
+                                                    <p>Fecha de inicio: ${eventDate}</p>
+                                                    <p>Hora de inicio: ${eventTime}</p>
+                                                    <p>Fecha entradas disponibles: ${saleDate}</p>
+                                                    <p>Dirección: ${venueAddress}</p>
+                                                    <p>Género: ${genre}</p>
+                                                    <p>Precio mínimo: ${minPrice !== 'No disponible' ? '$' + minPrice : 'No disponible'}</p>
+                                                    <p>Precio máximo: ${maxPrice !== 'No disponible' ? '$' + maxPrice : 'No disponible'}</p>
+                                                    
+                                                    <!-- Botón de favorito en el modal también -->
+                                                    <button onclick="saveAsFavorite('${concert.id}')" class="btn btn-primary btn-registro btn-modal mt-3 w-100">
+                                                        <i class="far fa-heart"></i> Guardar como favorito
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary mt-3 w-100" data-dismiss="modal">Cerrar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-        `;
+            `;
+        } catch (error) {
+            console.error("Error al procesar el concierto:", error, concert);
+            return `
+                <div class="col-md-4 col-sm-6">
+                    <div class="card tarjeta-formulario carta-inicio">
+                        <div class="card-body">
+                            <h5 class="card-title">${concert.name || 'Evento sin nombre'}</h5>
+                            <p class="card-text">No se pudieron cargar todos los detalles para este evento.</p>
+                            <a href="${concert.url || '#'}" target="_blank" class="btn btn-primary btn-sm">Ver en Ticketmaster</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
     }).join('');
 
-    //Abrir modal
-    $(document).on("click", ".btn-modal", function () {
-        let target = $(this).data("target"); // Obtiene el ID de la modal
-        $(target).modal("show"); // Abre la modal manualmente
-    });
-
-    //Cerrar modal
-    $(document).on("click", ".close, .btn-secondary", function () {
-        $(this).closest(".modal").modal("hide");
-    });
+        //Abrir modal
+        $(document).on("click", ".btn-modal", function () {
+            let target = $(this).data("target"); // Obtiene el ID de la modal
+            $(target).modal("show"); // Abre la modal manualmente
+        });
+    
+        //Cerrar modal
+        $(document).on("click", ".close, .btn-secondary", function () {
+            $(this).closest(".modal").modal("hide");
+        });
 
     // Si es una nueva búsqueda, reemplazamos el contenido
     // Si no, añadimos al contenido existente
