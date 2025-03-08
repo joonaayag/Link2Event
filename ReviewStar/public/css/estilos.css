@@ -422,6 +422,11 @@ circle {
 
 /* PÁGINA DE CONTACTANOS */
 
+#botonEnviarMensaje {
+  margin: 0px !important;
+  width: 129px !important;
+}
+
 .pagina-contactanos {
     background-image: url("../assets/img/fondo_bienvenida.png");
     display: flex;
@@ -697,6 +702,11 @@ circle {
         margin-left: auto;
         margin-right: auto;
     }
+
+    #botonEnviarMensaje {
+      margin: 0px !important;
+      height: 46px !important;
+    }
 }
 
 /* FIN MEDIA QUERIES PARA PÁGINA DE BIENVENIDA */
@@ -746,15 +756,25 @@ circle {
 
 /* MEDIA QUERIES PARA PÁGINA DE CONTACTO */
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .info-contacto {
     margin-top: 20px;
     align-items: start !important;
     transform: scale(0.95);
   }
-  #botonEnviar {
-    
+  
+  .flex-responsive{
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    width: 100% !important;
+    align-items: center !important;
   }
+
+  #botonEnviarMensaje {
+    margin: 0px !important;
+    height: 46px !important;
+  }
+
 }
 
 /* FIN MEDIA QUERIES PARA PÁGINA DE CONTACTO */

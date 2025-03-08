@@ -48,12 +48,14 @@
 
                             <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-end">
                                 <div class="info-contacto d-flex flex-column align-items-center">
-                                    <h6 class="bienvenida-titulo card-title">Información de contacto</h6>
-                                    <div class="contact-details">
-                                        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo">
-                                        <p class="address mt-3">Calle Gran Via, 12<br>28013</p>
+                                    <h6 class="bienvenida-titulo card-title text-center w-100">Información de contacto</h6>
+                                    <div class="flex-responsive d-flex flex-column align-items-center w-100">
+                                        <div class="contact-details w-100 text-center">
+                                            <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo">
+                                            <p class="address mt-3">Calle Gran Via, 12<br>28013</p>
+                                        </div>
+                                        <button id="botonEnviarMensaje" class="btn btn-enviar btn-lg  mt-3">Enviar</button>
                                     </div>
-                                    <button id="botonEnviar" class="btn btn-enviar btn-lg  mt-3">Enviar</button>
                                 </div>
                             </div>
                         </div>
