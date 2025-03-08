@@ -4,6 +4,7 @@ use App\Http\Controllers\AutentificadorController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\UsuarioController;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
@@ -28,3 +29,9 @@ Route::get('/registrarse', [UserController::class, 'registrarse'])->name('regist
 Route::post('/registrarse', [AutentificadorController::class, 'registrar'])->name('registrar');
 
 Route::post('/login', [AutentificadorController::class, 'iniciarSesion'])->name('login.post');
+
+
+//Rutas guzzle
+
+Route::get('/usuarios', [UsuarioController::class, 'index']);
+

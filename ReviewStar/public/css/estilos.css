@@ -215,7 +215,14 @@ textarea:focus {
 
 /* MODALES */
 
+<<<<<<< HEAD
 
+=======
+/* .contenedor-imagen-modal {} */
+  /* Por hacer */
+
+
+>>>>>>> feature-guzzle
 .modal-header {
     border-bottom: 2px solid var(--color-seleccion);
 }
@@ -894,6 +901,7 @@ circle {
     align-items: start !important;
     transform: scale(0.95);
   }
+<<<<<<< HEAD
   
   .flex-responsive{
     flex-direction: row !important;
@@ -908,6 +916,11 @@ circle {
   }
 
 >>>>>>> 83cc46518aa1238e0f324aba2aaa1059ea6357a1
+=======
+  /* #botonEnviar {
+    
+  } */
+>>>>>>> feature-guzzle
 }
 
 /* FIN MEDIA QUERIES PARA PÁGINA DE CONTACTO */
