@@ -94,6 +94,19 @@ body {
 .navbar-toggler, .navbar-nav, .parrafo-navbar, .foto-perfil{
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+.dropdown-menu{
+    background-color: rgba(34, 34, 34, 0.9) !important;
+}
+.desplegable .dropdown-item:hover,
+.desplegable .dropdown-item:active,
+.desplegable .dropdown-item:focus {
+  background-color: var(--color-seleccion) !important;
+  color: #000 !important;
+    transition: 0.3s ease;
+}
+.desplegable a{
+    color: white;
+}
 
 footer {
     display: flex;
@@ -887,14 +900,6 @@ circle {
 
 /* MEDIA QUERIES PARA PÁGINA DE CONTACTO */
 
-<<<<<<< HEAD
-@media (max-width: 992px) {
-    .info-contacto {
-        margin-top: 20px;
-        align-items: start !important;
-        transform: scale(0.95);
-    }
-=======
 @media (max-width: 991px) {
   .info-contacto {
     margin-top: 20px;
@@ -915,12 +920,15 @@ circle {
     height: 46px !important;
   }
 
+<<<<<<< HEAD
 >>>>>>> 83cc46518aa1238e0f324aba2aaa1059ea6357a1
 =======
   /* #botonEnviar {
     
   } */
 >>>>>>> feature-guzzle
+=======
+>>>>>>> fb1630ebc88200cbd86236662d4b847644398a57
 }
 
 /* FIN MEDIA QUERIES PARA PÁGINA DE CONTACTO */
