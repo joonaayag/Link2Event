@@ -61,6 +61,7 @@ body {
 
 .titulo-gigante {
     font-size: 150px;
+    font-family: 'Alfa Slab One';
 }
 
 .gigante {
@@ -379,11 +380,17 @@ textarea:focus {
     height: 100%;
     object-fit: cover;
     z-index: -1;
+    filter:brightness(70%);
 }
 
-.opacidad-video {
-    opacity: 0.5;
+.borde-abajo{
+    border-bottom: var(--color-seleccion) 2px solid;
+    border-radius: 8%;
 }
+
+/* .opacidad-video {
+    opacity: 1.5;
+} */
 
 .pagina-bienvenida {
     display: flex;

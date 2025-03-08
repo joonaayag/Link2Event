@@ -11,16 +11,16 @@
         <div class="row d-flex justify-content-between align-items-center">
             <!-- Columna izquierda-->
             <div class="col-xxl-6 col-xl-12">
-                <h1 class="titulo-gigante blanco negrita offset-0 titulo-principal">Link</h1>
-                <h1 class="titulo-gigante blanco negrita offset-1 titulo-principal">2</h1>
-                <h1 class="titulo-gigante blanco negrita offset-2 titulo-principal">Events</h1>
+                <h1 class="titulo-gigante blanco offset-0 titulo-principal">Link</h1>
+                <h1 class="titulo-gigante blanco offset-1 titulo-principal">2</h1>
+                <h1 class="titulo-gigante blanco offset-2 titulo-principal">Events</h1>
             </div>
 
             <!-- Columna derecha-->
             <div class="col-xxl-5 col-xl-12 d-flex flex-column columna-derecha mt-xl-5">
                 <div class="d-flex flex-column align-items-start justify-content-between h-100 texto-columna-derecha">
                     <h1 class="negrita mediana blanco">Los mejores eventos</h1>
-                    <h2 class="mediana negrita naranjita">Al mejor precio</h2>
+                    <h2 class="mediana negrita naranjita borde-abajo">Al mejor precio</h2>
                 </div>
                 <div>
                     <div class="columna-botones d-flex mt-4">

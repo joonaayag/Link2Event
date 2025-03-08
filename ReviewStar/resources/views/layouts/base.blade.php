@@ -23,6 +23,15 @@
     <!-- Link iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <!-- Fuentes -->
+    <!-- Libre Bodoni -->
+    <!-- Bodoni Moda SC -->
+    <!-- Sigmar -->
+    <!-- Anton -->
+    <!-- Lilita One -->
+    <!-- Rowdies -->
+    <!-- Alfa Slab One -->
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton&family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Lilita+One&family=Rowdies:wght@300;400;700&family=Sigmar&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery-3.7.1.min.js') }}" defer></script>
@@ -123,7 +132,7 @@
     @yield('contenido')
 
     <!-- Footer -->
-    <footer>
+    <footer class="negrita">
         <p>&copy; 2025 ReviewStar. Todos los derechos reservados.</p>
     </footer>
 
