@@ -28,8 +28,8 @@ function inicio() {
             return false;
         }
 
-        let patron = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-        if (!patron.test(email.value)) {
+        
+        if (!ValidarPatrones.validarEmail(email.value)) {
             email.classList.add("borde-error");
             let mensajeError = document.createElement("small");
             mensajeError.textContent = "El email no cumple el formato";

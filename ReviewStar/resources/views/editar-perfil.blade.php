@@ -6,6 +6,8 @@
 
 @section('contenido')
     <script src="{{ asset('js/scriptNacionalidades.js') }}" defer></script>
+    <script src="{{ asset('js/ValidarPatrones.js') }}" defer></script>
+    <script src="{{ asset('js/validarEditarPerfil.js') }}" defer></script>
 
     <div class="container d-flex justify-content-center align-items-center">
         <div class="row w-100">
@@ -23,7 +25,7 @@
                                     <label for="nombre" class="form-label naranjita">Nombre</label>
                                     <input type="text" class="form-control @error('nombre') is-invalid @enderror"
                                         id="nombre" name="nombre" value="{{ old('nombre', Auth::user()->nombre) }}"
-                                        required>
+                                        >
                                     @error('nombre')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -35,7 +37,7 @@
                                     <label for="apellidos" class="form-label naranjita">Apellidos</label>
                                     <input type="text" class="form-control @error('apellidos') is-invalid @enderror"
                                         id="apellidos" name="apellidos"
-                                        value="{{ old('apellidos', Auth::user()->apellidos) }}" required>
+                                        value="{{ old('apellidos', Auth::user()->apellidos) }}" >
                                     @error('apellidos')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -47,7 +49,7 @@
                                 <div class="col-md-6">
                                     <label for="tipo_identificacion" class="form-label naranjita">Tipo de identificación</label>
                                     <select class="form-select @error('tipo_identificacion') is-invalid @enderror"
-                                        id="tipo_identificacion" name="tipo_identificacion" required>
+                                        id="tipo_identificacion" name="tipo_identificacion" >
                                         <option value="NIF"
                                             {{ old('tipo_identificacion', Auth::user()->tipo_identificacion) == 'NIF' ? 'selected' : '' }}>
                                             NIF</option>
@@ -66,7 +68,7 @@
                                     <input type="text"
                                         class="form-control @error('num_identificacion') is-invalid @enderror"
                                         id="num_identificacion" name="num_identificacion"
-                                        value="{{ old('num_identificacion', Auth::user()->num_identificacion) }}" required>
+                                        value="{{ old('num_identificacion', Auth::user()->num_identificacion) }}" >
                                     @error('num_identificacion')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -80,7 +82,7 @@
                                     <label for="email" class="form-label naranjita">Correo electrónico</label>
                                     <input type="email" class="form-control @error('email') is-invalid @enderror"
                                         id="email" name="email" value="{{ old('email', Auth::user()->email) }}"
-                                        required>
+                                        >
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -91,7 +93,7 @@
                                     <label for="edad" class="form-label naranjita">Edad</label>
                                     <input type="number" class="form-control @error('edad') is-invalid @enderror"
                                         id="edad" name="edad" value="{{ old('edad', Auth::user()->edad) }}"
-                                        required min="18">
+                                         min="18">
                                     @error('edad')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -123,7 +125,7 @@
                                     <label for="direccion" class="form-label naranjita">Dirección</label>
                                     <input type="text" class="form-control @error('direccion') is-invalid @enderror"
                                         id="direccion" name="direccion"
-                                        value="{{ old('direccion', Auth::user()->direccion) }}" required>
+                                        value="{{ old('direccion', Auth::user()->direccion) }}" >
                                     @error('direccion')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -165,7 +167,7 @@
 
                             <div class="d-flex justify-content-end mt-4">
                                 <a href="{{ route('perfil') }}" class="btn btn-login btn-lg btn-block me-3" role="button">Cancelar</a>
-                                <button type="submit" class="btn btn-registro btn-lg btn-block">Guardar cambios</button>
+                                <button type="submit" id="botonEditarPerfil" name="botonEditarPerfil" class="btn btn-registro btn-lg btn-block">Guardar cambios</button>
                             </div>
                         </form>
                     </div>
