@@ -14,9 +14,4 @@ class UsuarioController extends Controller
         return response()->json(Usuario::all());
     }
 
-    public function store(Request $request)
-    {
-        $user = Usuario::create($request->all());
-        return response()->json($user, 201);
-    }
 }
