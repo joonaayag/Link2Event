@@ -34,12 +34,12 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container-fluid">
                 <!-- Logo -->
-                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo">
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo-navbar">
 
                 {{-- Botón desplegable de bootstrap --}}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="Menú" width="70" height="50">
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -76,7 +76,7 @@
                     </ul>
 
                     @if (Auth::check())
-                        <div class="d-flex align-items-center ">
+                        <div class="d-flex align-items-center infoUsuarioNav ">
                             <!-- Nombre del usuario a la izquierda -->
                             <p class="navbar-brand parrafo-navbar">{{ Auth::user()->nombre }}
                                 {{ explode(' ', Auth::user()->apellidos)[0] }}
@@ -88,7 +88,7 @@
                                 <div class="dropdown">
 
                                     <img src="{{ Auth::user()->foto_perfil ? asset('storage/perfiles/' . Auth::user()->foto_perfil) : asset('assets/img/foto-default.png') }}"
-                                        alt="Foto de perfil" class="rounded-circle dropdown-toggle foto-perfil"
+                                        alt="Foto de perfil" class="rounded-circle dropdown-toggle foto-perfil-nav"
                                         data-bs-toggle="dropdown" aria-expanded="false">
 
                                     <!-- Menú desplegable -->

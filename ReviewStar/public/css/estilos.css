@@ -91,6 +91,9 @@ body {
     margin: 0px 5px;
     padding: 15px;
 }
+.navbar-toggler, .navbar-nav, .parrafo-navbar, .foto-perfil{
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
 footer {
     display: flex;
@@ -170,10 +173,21 @@ textarea:focus {
     box-shadow: 0 0 4px 4px var(--color-seleccion) !important;
 }
 
+.foto-perfil-nav {
+    height: 50px;
+    max-width: 50px;
+}
+.foto-perfil-nav:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 0 4px 4px var(--color-seleccion) !important;
+}
 .foto-perfil-grande {
     height: 130px;
     max-width: 130px;
 }
+
 
 .nav-icon {
     height: 30px;
@@ -181,6 +195,11 @@ textarea:focus {
 }
 
 .logo {
+    height: 60px;
+    width: auto;
+}
+.logo-navbar {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     height: 60px;
     width: auto;
 }
@@ -462,8 +481,8 @@ circle {
     border-radius: 10px !important;
     border: solid var(--color-seleccion) 2px !important;
 }
-.info-contacto{
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.info-contacto {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* FIN PÁGINA DE CONTACTANOS */
@@ -574,6 +593,9 @@ circle {
     background-position: center;
     background-repeat: no-repeat;
 }
+.pagina-panelAdministrador h1{
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
 .contenedor-panel {
     background-color: rgba(44, 62, 80, 0.8);
@@ -590,6 +612,11 @@ circle {
     background-color: rgba(34, 34, 34, 0.7);
     border-radius: 8px;
     overflow: hidden;
+    text-align: center;
+}
+.tabla-usuarios td{
+  color: white !important;
+  text-align: center !important;
 }
 
 .tabla-usuarios thead {
@@ -597,6 +624,7 @@ circle {
 }
 
 .tabla-usuarios th {
+  text-align: center !important;
     padding: 1rem;
     text-align: left;
     color: var(--fondo-navbar);
@@ -616,6 +644,10 @@ circle {
 
 .tabla-usuarios tbody tr:last-child td {
     border-bottom: none;
+}
+
+.boton-panel{
+  width: 150px;
 }
 
 /* FIN PÁGINA PANEL ADMIN */
@@ -641,6 +673,8 @@ circle {
 }
 
 /* FIN PÁGINA COMENTARIOS ADMIN */
+
+
 
 /* MEDIA QUERIES */
 
@@ -742,21 +776,87 @@ circle {
 
 /* FIN MEDIA QUERIES PARA PAGINA DE INICIO */
 
-
-
 /* MEDIA QUERIES PARA PÁGINA DE CONTACTO */
 
 @media (max-width: 992px) {
-  .info-contacto {
-    margin-top: 20px;
-    align-items: start !important;
-    transform: scale(0.95);
-  }
-  #botonEnviar {
-    
-  }
+    .info-contacto {
+        margin-top: 20px;
+        align-items: start !important;
+        transform: scale(0.95);
+    }
 }
 
 /* FIN MEDIA QUERIES PARA PÁGINA DE CONTACTO */
+
+/* MEDIA QUERIES PARA NAVBAR */
+
+@media (max-width: 992px) {
+    .logo-navbar {
+        display: none;
+    }
+    .navbar-toggler {
+        margin-left: auto;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    .navbar-nav {
+        align-items: end;
+        padding-right: 16px !important;
+    }
+    .parrafo-navbar {
+        text-align: right !important;
+        width: 100%;
+    }
+    .foto-perfil-nav {
+      margin-right: 16px !important;
+    }
+}
+
+/* FIN MEDIA QUERIES PARA NAVBAR */
+
+
+/* MEDIA QUERIES PARA PANEL ADMIN */
+@media (max-width: 992px) {
+  .pagina-panelAdministrador .boton-panel{
+    margin: 2px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pagina-panelAdministrador button, .pagina-panelAdministrador .botonEliminar{
+    font-size: 0.8rem !important;
+    padding: 0.2rem 0.5rem !important;
+  }
+  .pagina-panelAdministrador th{
+    font-size: 0.7rem !important;
+  }
+  .pagina-panelAdministrador td{
+    font-size: 0.6rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .pagina-panelAdministrador h2{
+    font-size: 1.2rem !important;
+  }
+}
+
+@media (max-width: 462px) {
+  .pagina-panelAdministrador button{
+    font-size: 0.6rem !important;
+    padding: 0.2rem 0.5rem !important;
+  }
+  .pagina-panelAdministrador th{
+    width: 2rem !important;
+  }
+  .pagina-panelAdministrador td{
+    width: 2rem !important;
+  }
+}
+
+
+/* MEDIA QUERIES PARA PANEL ADMIN */
+
+
 
 /* FIN MEDIA QUERIES */
