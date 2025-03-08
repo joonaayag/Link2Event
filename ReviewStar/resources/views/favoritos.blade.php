@@ -76,12 +76,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <form id="eliminar-favorito-form" action="{{ route('favorites.destroy') }}" method="POST" style="display:inline;">
-                    @csrf
-                    @method('DELETE')
-                    <input type="hidden" name="event_id" id="event_id">
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                </form>
+                <button id="eliminar-favorito-btn" class="btn btn-danger">Eliminar</button>
             </div>
         </div>
     </div>
@@ -97,19 +92,16 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const eventId = this.getAttribute('data-event-id');
             const eventName = this.getAttribute('data-event-name'); // Obtener nombre del evento
-            const card = this.closest('.col-md-4');
+            const card = this.closest('.col-md-6');
 
             // Mostrar modal de confirmación
             const modal = new bootstrap.Modal(document.getElementById('modal-eliminar-favorito'));
             document.getElementById('evento-nombre').innerText = eventName; // Mostrar nombre del evento en el modal
-            document.getElementById('event_id').value = eventId; // Asignar el ID del evento al formulario
 
             modal.show();
 
-            // Manejar el envío del formulario de eliminación
-            document.getElementById('eliminar-favorito-form').onsubmit = function(event) {
-                event.preventDefault();
-
+            // Manejar el evento de eliminación
+            document.getElementById('eliminar-favorito-btn').onclick = function() {
                 fetch('{{ route('favorites.destroy') }}', {
                     method: 'DELETE',
                     headers: {
@@ -124,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         card.remove();
 
                         // Si ya no quedan tarjetas, mostrar mensaje
-                        if (document.querySelectorAll('.col-md-4').length === 0) {
+                        if (document.querySelectorAll('.col-md-6').length === 0) {
                             document.querySelector('.card-body').innerHTML = `
                                 <div class="alert alert-info">
                                     No tienes eventos favoritos guardados. ¡Explora los eventos disponibles y guarda tus favoritos!
