@@ -77,7 +77,7 @@ function inicio() {
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                             <a href="${datosEvento.url}" target="_blank" class="btn btn-primary btn-registro">Ver en Ticketmaster</a>
                                         </div>
                                     </div>
@@ -127,7 +127,7 @@ function inicio() {
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary " data-dismiss="modal">Cerrar</button>
                                             <a href="${datosEvento.url}" target="_blank" class="btn btn-primary btn-registro">Ver en Ticketmaster</a>
                                         </div>
                                     </div>
