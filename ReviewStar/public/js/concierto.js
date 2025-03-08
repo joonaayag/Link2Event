@@ -315,6 +315,17 @@ function displayConcerts(concerts, newSearch) {
         }
     }).join('');
 
+        //Abrir modal
+        $(document).on("click", ".btn-modal", function () {
+            let target = $(this).data("target"); // Obtiene el ID de la modal
+            $(target).modal("show"); // Abre la modal manualmente
+        });
+    
+        //Cerrar modal
+        $(document).on("click", ".close, .btn-secondary", function () {
+            $(this).closest(".modal").modal("hide");
+        });
+
     // Si es una nueva búsqueda, reemplazamos el contenido
     // Si no, añadimos al contenido existente
     if (newSearch) {
