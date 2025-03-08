@@ -6,11 +6,17 @@
 
 @section('contenido')
     <script src="{{ asset('js/scriptCorreo.js') }}" defer></script>
+    <script src="{{ asset('js/claseNotificaciones.js') }}" defer></script>
 
-    <video autoplay muted loop class="fondo-contactanos">
-        <source src="{{ asset('assets/videos/fondo-contactanos.mp4') }}" type="video/mp4">
-    </video>
-
+    <!-- Muestra un mensaje de confirmación cuando se actualiza el perfil exitosamente -->
+    @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const notificador = new Notificacion();
+                notificador.mostrar("{{ session('success') }}", 4000);
+            });
+        </script>
+    @endif
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -20,14 +26,6 @@
                         <div class="row">
                             <div class="col-lg-8 col-md-12 d-flex flex-column">
                                 <h3 class="bienvenida-titulo card-header card-title">Mándanos un correo</h3>
-                                <!-- Muestra un mensaje de confirmación cuando se actualiza el perfil exitosamente -->
-                                @if (session('success'))
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        {{ session('success') }}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
-                                    </div>
-                                @endif
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="emailUsuario" class="form-label">Tu correo:</label>
@@ -49,25 +47,30 @@
                             </div>
 
                             <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-end">
-                                <div class="contact-info">
+                                <div class="contact-info d-flex flex-column align-items-center">
                                     <h6 class="bienvenida-titulo card-title">Información de contacto</h6>
                                     <div class="contact-details">
                                         <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo">
                                         <p class="address mt-3">Calle Gran Via, 12<br>28013</p>
                                     </div>
+                                    <button id="botonEnviar" class="btn btn-enviar btn-lg  mt-3">Enviar</button>
                                 </div>
-                                <button id="botonEnviar" class="btn btn-enviar btn-lg  mt-3">Enviar</button>
                             </div>
                         </div>
                         <div class="row mt-5">
                             <div class="col-md-12 d-flex flex-column">
-                                <form action="{{ route('enviarComentario') }}" method="POST" class="p-3 borde-form-comentario">
+                                <form action="{{ route('enviarComentario') }}" method="POST"
+                                    class="p-3 borde-form-comentario">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="comentario" class="form-label fw-bold">Mándanos un mensaje para atención prioritaria:</label>
-                                        <textarea name="comentario" class="form-control" placeholder="Escribe tu mensaje"></textarea>
+                                        <label for="comentario" class="form-label fw-bold">Mándanos un mensaje para atención
+                                            prioritaria:</label>
+                                        <textarea name="comentario" class="form-control"
+                                            placeholder="Escribe tu mensaje"></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-registro mt-2">Enviar</button>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary btn-registro mt-2">Enviar</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

@@ -30,7 +30,7 @@ class AdminController extends Controller
 
         $id_usuario = $request->input('id_usuario');
         $usuario = Usuario::findOrFail($id_usuario);
-        $usuario->delete();
+        Usuario::destroy($usuario->id);
         return redirect()->route('admin.panel');
     }
 
@@ -76,7 +76,7 @@ class AdminController extends Controller
 
         $usuario->save();
 
-        return redirect()->route('admin.panel')->with('success', 'Perfil actualizado correctamente');
+        return redirect()->route('admin.panel')->with('success', 'Perfil de ' . $usuario->nombre . ' actualizado correctamente');
     }
 
     public function mostrarComentarios(Request $request){

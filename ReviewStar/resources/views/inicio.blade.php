@@ -6,6 +6,16 @@
 
 @section('contenido')
     <script src="{{ asset('js/scriptAPIInicio.js') }}" defer></script>
+    <script src="{{ asset('js/claseNotificaciones.js') }}" defer></script>
+
+    @if(session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const notificador = new Notificacion();
+                notificador.mostrar("{{ session('success') }}", 4000);
+            });
+        </script>
+    @endif
 
     <div class="container mt-5">
         <h2 class="negrita grande mb-5 blanco">¿Qúe te apetece hacer hoy?</h2>
