@@ -26,6 +26,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery-3.7.1.min.js') }}" defer></script>
+    <script src="{{ asset('js/scriptBodyInicio.js') }}" defer></script>
 </head>
 
 <body @yield('claseBody')>
@@ -34,12 +35,12 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container-fluid">
                 <!-- Logo -->
-                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo">
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="logo-navbar">
 
                 {{-- Botón desplegable de bootstrap --}}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="Menú" width="70" height="50">
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -76,7 +77,7 @@
                     </ul>
 
                     @if (Auth::check())
-                        <div class="d-flex align-items-center ">
+                        <div class="d-flex align-items-center infoUsuarioNav ">
                             <!-- Nombre del usuario a la izquierda -->
                             <p class="navbar-brand parrafo-navbar">{{ Auth::user()->nombre }}
                                 {{ explode(' ', Auth::user()->apellidos)[0] }}
@@ -88,24 +89,24 @@
                                 <div class="dropdown">
 
                                     <img src="{{ Auth::user()->foto_perfil ? asset('storage/perfiles/' . Auth::user()->foto_perfil) : asset('assets/img/foto-default.png') }}"
-                                        alt="Foto de perfil" class="rounded-circle dropdown-toggle foto-perfil"
+                                        alt="Foto de perfil" class="rounded-circle dropdown-toggle foto-perfil-nav"
                                         data-bs-toggle="dropdown" aria-expanded="false">
 
                                     <!-- Menú desplegable -->
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="{{ route('perfil') }}">Ver perfil</a></li>
-                                        <li>
+                                        <li class="desplegable" ><a class="dropdown-item" href="{{ route('perfil') }}">Ver perfil</a></li>
+                                        <li class="desplegable" >
                                             <hr class="dropdown-divider">
                                         </li>
                                         {{-- Condición para el rol ADMIN --}}
                                         @if (Auth::user()->rol === 'ADMIN')
-                                            <li><a class="dropdown-item" href="{{ route('admin.panel') }}">Panel de
+                                            <li class="desplegable" ><a class="dropdown-item" href="{{ route('admin.panel') }}">Panel de
                                                     Administración</a></li>
-                                            <li>
+                                            <li class="desplegable" >
                                                 <hr class="dropdown-divider">
                                             </li>
                                         @endif
-                                        <li>
+                                        <li class="desplegable" >
                                             <a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a>
                                         </li>
                                     </ul>
@@ -125,21 +126,6 @@
     <footer>
         <p>&copy; 2025 ReviewStar. Todos los derechos reservados.</p>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Obtener la ruta actual
-            const currentRoute = "{{ Route::currentRouteName() }}";
-
-            // Si estamos en la página de bienvenida, aplicar la clase al body
-            if (currentRoute === 'bienvenida') {
-                document.body.classList.add('pagina-bienvenida');
-            } else {
-                // Si estamos en cualquier otra página, asegurarse de que la clase no esté aplicada
-                document.body.classList.remove('pagina-bienvenida');
-            }
-        });
-    </script>
 
 </body>
 

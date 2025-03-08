@@ -44,7 +44,7 @@
                                 <td>{{ $usuario->email }}</td>
                                 <td>
                                     <!-- Eliminar Usuario -->
-                                    <button type="button" class="btn btn-primary btn-modal btn-danger" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-primary btn-modal boton-panel btn-danger" data-bs-toggle="modal"
                                         data-bs-target="#modal_{{ $usuario->id }}">
                                         Eliminar usuario
                                     </button>
@@ -81,14 +81,14 @@
                                     <form action="{{ route('editarUsuario') }}" method="post" style="display:inline;">
                                         @csrf
                                         <input type="hidden" name="id_usuario" value="{{ $usuario->id }}">
-                                        <button type="submit" class="btn btn-warning">Editar Usuario</button>
+                                        <button type="submit" class="btn boton-panel btn-warning">Editar Usuario</button>
                                     </form>
 
                                     <!-- Ver mensajes -->
                                     <form action="{{ route('mostrarComentarios') }}" method="post" style="display:inline;">
                                         @csrf
                                         <input type="hidden" name="id_usuario" value="{{ $usuario->id }}">
-                                        <button type="submit" class="btn btn-info">Ver mensajes</button>
+                                        <button type="submit" class="btn boton-panel btn-info">Ver mensajes</button>
                                     </form>
                                 </td>
                             </tr>
