@@ -50,7 +50,7 @@ body {
 }
 
 .justificar {
-        text-align: justify;
+    text-align: justify;
 }
 
 .boton-comprar-favoritos {
@@ -340,19 +340,11 @@ textarea:focus {
 }
 
 .btn-loginBis {
-<<<<<<< HEAD
-  background-color: var(--fondo-carta) !important;
-  border: none !important;
-  color: var(--color-principal) !important;
-  margin-top: auto !important;
-  width: 50%;
-=======
     background-color: var(--fondo-carta) !important;
     border: none !important;
     color: var(--color-principal) !important;
     margin-top: 100%;
     width: 50%;
->>>>>>> 776743673340cab9f32632348272cdfb6d6458e1
 }
 
 .btn-loginBis:hover {
@@ -591,6 +583,7 @@ circle {
     background-position: center;
     background-repeat: no-repeat;
 }
+
 .pagina-sobre_nosotros h1 {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -598,9 +591,11 @@ circle {
 .fila-idea .tarjeta-formulario {
     margin-top: 0;
 }
-.pagina-sobre_nosotros .col-texto p {
+
+.pagina-sobre_nosotros .tarjeta-formulario p {
     font-size: 23px;
 }
+
 .foto-sobre-nosotros {
     border-radius: 10px;
     height: 350px;
@@ -663,6 +658,27 @@ circle {
 
 .info-contacto {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.inputEditarFoto {
+    display: none;
+}
+
+.labelEditarFoto {
+    cursor: pointer;
+    border: 1px solid var(--color-seleccion);
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 10px !important;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 50%;
+    text-align: center;
+}
+
+.labelEditarFoto:hover {
+    border: #222 1px solid !important;
+    color: #222 !important;
+    background-color: var(--color-seleccion) !important;
 }
 
 /* FIN PÁGINA DE CONTACTANOS */
@@ -863,6 +879,7 @@ circle {
 /* MEDIA QUERIES PARA PÁGINA DE BIENVENIDA */
 
 @media (max-width: 1399px) {
+
     /* Centrado del contenedor */
     .bienvenida-container {
         display: flex;
@@ -935,7 +952,7 @@ circle {
 
 /* MEDIA QUERIES PARA PAGINA DE INICIO */
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .pagina-inicio h2 {
         font-size: 3rem !important;
         transform: scale(0.95);
@@ -994,7 +1011,7 @@ circle {
 
 /* MEDIA QUERIES PARA NAVBAR */
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .logo-navbar {
         display: none;
     }
@@ -1023,13 +1040,14 @@ circle {
 /* FIN MEDIA QUERIES PARA NAVBAR */
 
 /* MEDIA QUERIES PARA PANEL ADMIN */
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .pagina-panelAdministrador .boton-panel {
         margin: 2px;
     }
 }
 
 @media (max-width: 768px) {
+
     .pagina-panelAdministrador button,
     .pagina-panelAdministrador .botonEliminar {
         font-size: 0.8rem !important;
@@ -1070,12 +1088,13 @@ circle {
 
 /* MEDIA QUERIES PARA SOBRE NOSOTROS */
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .pagina-sobre_nosotros h1 {
         font-size: 5rem !important;
         transform: scale(0.95);
     }
 }
+
 @media (max-width: 767px) {
     .pagina-sobre_nosotros h1 {
         font-size: 3rem !important;
@@ -1084,5 +1103,58 @@ circle {
 }
 
 /* FIN MEDIA QUERIES PARA SOBRE NOSOTROS */
+
+/* MEDIA QUERIES PARA PERFIL */
+
+
+@media (max-width: 575.98px) {
+    .tarjeta-perfil-estilos {
+        width: 100% !important;
+        padding: 10px;
+    }
+    .columna-perfil,
+    .columna-direccion {
+        text-align: center;
+    }
+    .foto-perfil-grande {
+        display: none !important;
+     }
+}
+
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .tarjeta-perfil-estilos {
+        width: 100% !important;
+        padding: 10px;
+    }
+    .columna-perfil,
+    .columna-direccion {
+        text-align: center;
+    }
+    .foto-perfil-grande {
+        display: none !important;
+     }
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .tarjeta-perfil-estilos {
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    .columna-perfil {
+        text-align: left;
+    }
+
+    .foto-perfil-grande {
+        display: none !important;
+     }
+}
+
+
+
+
+/* FIN MEDIA QUERIES PARA PERFIL */
 
 /* FIN MEDIA QUERIES */

@@ -135,9 +135,10 @@
                             </div>
 
                             <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="foto_perfil" class="form-label naranjita">Modificar foto de perfil</label>
-                                    <input type="file" name="foto_perfil" id="foto_perfil">
+                                <div class="col-md-6 d-flex flex-column">
+                                    <label for="foto_perfil" class="form-label naranjita">Foto</label>
+                                    <label for="foto_perfil" class="form-label naranjita labelEditarFoto">Modificar foto de perfil</label>
+                                    <input type="file" name="foto_perfil" id="foto_perfil" class="inputEditarFoto">
                                 </div>
                             </div>
 
