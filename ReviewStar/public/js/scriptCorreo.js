@@ -2,7 +2,7 @@ $(document).ready(inicio);
 
 function inicio() {
 
-    $('#botonEnviar').click(enviarCorreo);
+    $('#botonEnviarMensaje').click(enviarCorreo);
 
     function enviarCorreo(e) {
 
@@ -87,7 +87,7 @@ function inicio() {
     function validarCuerpo(cuerpo) {
         if (cuerpo.val().trim() === "") {
             return confirm("¿Deseas enviar un correo sin cuerpo?");
-        } else if (cuerpo.val().trim().length > 25) {
+        } else if (cuerpo.val().trim().length > 250) {
             let mensajeError = document.createElement("small");
             mensajeError.textContent = "El cuerpo no puede tener más de 25 caracteres";
             mensajeError.classList.add("mensaje-error");

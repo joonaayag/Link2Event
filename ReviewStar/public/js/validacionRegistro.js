@@ -22,6 +22,7 @@ function validarFormulario(event) {
     let tipo_identificacion = document.getElementById("tipo_identificacion");
     let num_identificacion = document.getElementById("num_identificacion");
     let direccion = document.getElementById("direccion");
+    let email = document.getElementById("email");
     let password = document.getElementById("password");
     let password_confirmation = document.getElementById("password_confirmation");
 

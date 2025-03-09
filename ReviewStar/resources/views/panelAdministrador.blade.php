@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('titulo', '- Bienvenida')
+@section('titulo', '- Centro de control')
 
 @section('claseBody', 'class=pagina-panelAdministrador')
 
@@ -65,7 +65,7 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Cerrar</button>
-                                                    <form action="{{ route('eliminarUsuario') }}" method="post"
+                                                    <form action="{{ route('eliminarUsuario') }}" method="POST"
                                                         style="display:inline;">
                                                         @csrf
                                                         @method('DELETE')
@@ -78,14 +78,14 @@
                                     </div>
 
                                     <!-- Editar Usuario -->
-                                    <form action="{{ route('editarUsuario') }}" method="post" style="display:inline;">
+                                    <form action="{{ route('editarUsuario') }}" method="POST" style="display:inline;">
                                         @csrf
                                         <input type="hidden" name="id_usuario" value="{{ $usuario->id }}">
                                         <button type="submit" class="btn boton-panel btn-warning">Editar Usuario</button>
                                     </form>
 
                                     <!-- Ver mensajes -->
-                                    <form action="{{ route('mostrarComentarios') }}" method="post" style="display:inline;">
+                                    <form action="{{ route('mostrarComentarios') }}" method="POST" style="display:inline;">
                                         @csrf
                                         <input type="hidden" name="id_usuario" value="{{ $usuario->id }}">
                                         <button type="submit" class="btn boton-panel btn-info">Ver mensajes</button>

@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row fila-idea">
                         <div class="col-12">
                             <div class="card tarjeta-formulario">
                                 <div class="card-header text-center">

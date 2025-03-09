@@ -20,61 +20,108 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre"
-                                    value="{{ $usuario->nombre }}" required>
+                                <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre"
+                                    name="nombre" value="{{ old('nombre', $usuario->nombre) }}" required>
+                                @error('nombre')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="apellidos" class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" id="apellidos" name="apellidos"
-                                    value="{{ $usuario->apellidos }}" required>
+                                <input type="text" class="form-control @error('apellidos') is-invalid @enderror"
+                                    id="apellidos" name="apellidos" value="{{ old('apellidos', $usuario->apellidos) }}"
+                                    required>
+                                @error('apellidos')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="edad" class="form-label">Edad</label>
-                                <input type="number" class="form-control" id="edad" name="edad"
-                                    value="{{ $usuario->edad }}" required>
+                                <input type="number"
+                                    class="form-control @error('edad') is-invalid @enderror" id="edad" name="edad"
+                                    value="{{ old('edad', $usuario->edad) }}" required>
+                                @error('edad')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="pais" class="form-label">País</label>
                                 <div class="contenedor-select">
-                                    <select name="pais" id="pais" class="form-control">
+                                    <select name="pais" id="pais" class="form-control @error('pais') is-invalid @enderror">
                                         <option value="{{ $usuario->pais }}" selected>{{ $usuario->pais }}
                                         </option>
                                     </select>
                                     <svg viewBox="25 25 50 50" id="iconoCargando">
                                         <circle r="20" cy="50" cx="50"></circle>
                                     </svg>
+                                    @error('pais')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="tipo_identificacion" class="form-label">Tipo de identificación</label>
-                                <select name="tipo_identificacion" id="tipo_identificacion" class="form-control">
-                                    <option value="DNI" {{ $usuario->tipo_identificacion == 'DNI' ? 'selected' : '' }}>
+                                <select name="tipo_identificacion"
+                                    class="form-control @error('tipo_identificacion') is-invalid @enderror"
+                                    id="tipo_identificacion">
+                                    <option value="DNI" {{ old('tipo_identificacion', $usuario->tipo_identificacion) == 'DNI' ? 'selected' : '' }}>
                                         DNI
                                     </option>
-                                    <option value="NIE" {{ $usuario->tipo_identificacion == 'NIE' ? 'selected' : '' }}>
+                                    <option value="NIE" {{ old('tipo_identificacion', $usuario->tipo_identificacion) == 'NIE' ? 'selected' : '' }}>
                                         NIE
                                     </option>
                                 </select>
+                                @error('tipo_identificacion')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="num_identificacion" class="form-label">Número de identificación</label>
-                                <input type="text" class="form-control" id="num_identificacion" name="num_identificacion"
-                                    value="{{ $usuario->num_identificacion }}" required>
+                                <input type="text"
+                                    class="form-control @error('num_identificacion') is-invalid @enderror"
+                                    id="num_identificacion" name="num_identificacion"
+                                    value="{{ old('num_identificacion', $usuario->num_identificacion) }}" required>
+                                @error('num_identificacion')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="direccion" class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="direccion" name="direccion"
-                                value="{{ $usuario->direccion }}" required>
+                            <input type="text" class="form-control @error('direccion') is-invalid @enderror"
+                                id="direccion" name="direccion" value="{{ old('direccion', $usuario->direccion) }}"
+                                required>
+                            @error('direccion')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" id="email" name="email"
-                                value="{{ $usuario->email }}" required>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                                name="email" value="{{ old('email', $usuario->email) }}" required>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <input type="hidden" name="id_usuario" value="{{ $usuario->id }}">
                         <button type="submit" class="btn btn-primary w-100 btn-registro" id="botonRegistrarse">Editar
@@ -85,3 +132,4 @@
         </div>
     </div>
 @endsection
+

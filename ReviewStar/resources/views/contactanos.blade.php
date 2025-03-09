@@ -30,7 +30,7 @@
                                     <div class="col-md-6">
                                         <label for="emailUsuario" class="form-label">Tu correo:</label>
                                         <input type="email" id="emailUsuario" class="form-control"
-                                            placeholder="tuemail@example.com">
+                                            value="{{ Auth::user()->email }}" disabled>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="asunto" class="form-label">Asunto:</label>
@@ -64,10 +64,10 @@
                                 <form action="{{ route('enviarComentario') }}" method="POST"
                                     class="p-3 borde-form-comentario">
                                     @csrf
-                                    <div class="mb-3">
+                                    <div class="mb-3 d-flex flex-column">
                                         <label for="comentario" class="form-label fw-bold">Mándanos un mensaje para atención
                                             prioritaria</label>
-                                        <textarea name="comentario" class="form-control"
+                                        <textarea name="comentario" class="contactanos-mensaje "
                                             placeholder="Escribe tu mensaje"></textarea>
                                     </div>
                                     <div class="d-flex justify-content-end">
