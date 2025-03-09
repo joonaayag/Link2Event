@@ -4,7 +4,17 @@
 
 @section('claseBody', 'class=pagina-perfil')
 @section('contenido')
+    <script src="{{ asset('js/claseNotificaciones.js') }}" defer></script>
     <div class="container d-flex justify-content-center align-items-center">
+        <!-- Muestra un mensaje de confirmación cuando se actualiza el perfil exitosamente -->
+        @if (session('success'))
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const notificador = new Notificacion();
+                    notificador.mostrar("{{ session('success') }}", 4000);
+                });
+            </script>
+        @endif
         <div class="row w-100">
             <!-- Contenido principal -->
 
@@ -13,19 +23,12 @@
                 <div class="card mb-4 tarjeta-formulario">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h2 class="mb-0 negrita">Información personal</h2>
-                        <a href="{{ route('perfil.editar') }}" class="btn btn-sm btn-primary btn-registro" id="editarPerfilBtn">
+                        <a href="{{ route('perfil.editar') }}" class="btn btn-sm btn-primary btn-registro"
+                            id="editarPerfilBtn">
                             <i class="fas fa-edit me-1"></i> Editar
                         </a>
                     </div>
                     <div class="card-body">
-                        <!-- Muestra un mensaje de confirmación cuando se actualiza el perfil exitosamente -->
-                        @if (session('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ session('success') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        @endif
-
                         <!-- Vista de información (visible por defecto) -->
                         <div id="infoView" class="infoPerfil">
                             <div class="row mb-3">

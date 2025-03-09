@@ -8,9 +8,20 @@
 
     <script src="js/scriptContrasena.js" defer></script>
     <script src="js/validacionLogin.js" defer></script>
+    <script src="js/validacionLogin.js" defer></script>
+    <script src="{{ asset('js/claseNotificaciones.js') }}" defer></script>
     <script src="{{ asset('js/ValidarPatrones.js') }}" defer></script>
 
     <div class="container d-flex justify-content-center align-items-center fondito">
+        <!-- Muestra un mensaje de confirmación cuando se actualiza el perfil exitosamente -->
+        @if (session('success'))
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const notificador = new Notificacion();
+                    notificador.mostrar("{{ session('success') }}", 4000);
+                });
+            </script>
+        @endif
         <div class="col-md-6">
             <div class="card tarjeta-formulario">
                 <div class="card-header">

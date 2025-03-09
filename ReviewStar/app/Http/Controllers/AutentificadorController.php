@@ -55,7 +55,7 @@ class AutentificadorController extends Controller
         $usuario->save();
 
         // Redirigir con mensaje de éxito
-        return redirect()->route('login')->with('success', 'Registro exitoso. Inicia sesión.');
+        return redirect()->route('login')->with('success', 'Registro del usuario ' . $request->nombre  . ' exitoso.');
     }
 
     public function iniciarSesion(Request $request)
@@ -77,7 +77,7 @@ class AutentificadorController extends Controller
         if (Auth::attempt($credenciales, $recordar)) { // Si la autenticación fue exitosa
             //Inicio la sesión
             $request->session()->regenerate();
-            return redirect()->route('inicio')->with('success', 'Bienvenido a la página principal ' . Auth::user()->nombre);
+            return redirect()->route('inicio')->with('success', '!Hola ' . Auth::user()->nombre . '! Bienvenido a la página principal');
         }
 
         if (Usuario::where('email', $request->email)->exists()) {
