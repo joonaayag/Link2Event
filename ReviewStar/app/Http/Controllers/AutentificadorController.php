@@ -55,28 +55,31 @@ class AutentificadorController extends Controller
         $usuario->save();
 
         // Redirigir con mensaje de éxito
-        return redirect()->route('login')->with('success', 'Registro del usuario ' . $request->nombre  . ' exitoso.');
+        return redirect()->route('login')->with('success', 'Registro del usuario ' . $request->nombre . ' exitoso.');
     }
 
     public function iniciarSesion(Request $request)
     {
-        $recordar = $request->has('recordar'); // Comprueba si el checkbox está marcado para mantener la sesión
+        $recordar = $request->has('recordar');
 
-        if (!$recordar) {
-            config(['session.lifetime' => 2]); // Si no le ha dado a recordar se pone un tiempo de 2 minutos de sesión
-        }
 
-        // Validar los datos del formulario
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        // Intentar autenticar al usuario
+
+
         $credenciales = $request->only('email', 'password');
-        
-        if (Auth::attempt($credenciales, $recordar)) { // Si la autenticación fue exitosa
-            //Inicio la sesión
+
+        if (Auth::attempt($credenciales, $recordar)) {
             $request->session()->regenerate();
+
+            if (!$recordar) {
+                session()->put('expire_on_close', true);
+            } else {
+                session()->put('expire_on_close', false);
+            }
+
             return redirect()->route('inicio')->with('success', '¡Hola ' . Auth::user()->nombre . '! Bienvenido a la página principal');
         }
 
@@ -102,6 +105,6 @@ class AutentificadorController extends Controller
         return redirect()->route('bienvenida');
     }
 
-    
-    
+
+
 }
