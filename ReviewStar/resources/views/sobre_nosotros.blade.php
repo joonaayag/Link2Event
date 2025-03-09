@@ -13,29 +13,29 @@
                 </div>
                 <div class="card-body">
                     <div class="row mb-5">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="card tarjeta-formulario mb-4">
                                 <div class="card-header">
                                     <h3 class="mb-0 negrita">¿Por qué elegirnos?</h3>
                                 </div>
-                                <div class="card-body">
-                                    <p>
-                                        Nuestra misión es ayudarte a encontrar las mejores ofertas disponibles,
-                                        comparando precios y mostrando las opciones más convenientes.
-                                        Nos enfocamos en brindarte una experiencia rápida y eficiente para que ahorres
-                                        tiempo y dinero.
-                                    </p>
-                                    <p>
-                                        Con un diseño intuitivo y recomendaciones precisas, somos tu aliado perfecto para no
-                                        perderte ninguna oferta.
-                                    </p>
+                                <div class="card-body row d-flex justify-content-around">
+                                    <div class="col-lg-5 d-flex align-items-center col-texto">
+                                        <p class="justificar">
+                                            Nuestra misión es ayudarte a encontrar las mejores ofertas disponibles,
+                                            comparando precios y mostrando las opciones más convenientes.
+                                            Nos enfocamos en brindarte una experiencia rápida y eficiente para que ahorres
+                                            tiempo y dinero.
+                                        <br>
+                                            Con un diseño intuitivo y recomendaciones precisas, somos tu aliado perfecto para no
+                                            perderte ninguna oferta.
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-5 ">
+                                        <img src="{{ asset('assets/img/sobre-nosotros.jpg') }}" alt="Sobre nosotros"
+                                            class="img-fluid foto-sobre-nosotros">
+                                        
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 d-flex justify-content-center align-items-center">
-                            <div class="card tarjeta-formulario mb-4">
-                                <img src="{{ asset('assets/img/sobre-nosotros.jpg') }}" alt="Sobre nosotros"
-                                    class="img-fluid rounded">
                             </div>
                         </div>
                     </div>

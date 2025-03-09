@@ -49,6 +49,10 @@ body {
     padding-top: 85px;
 }
 
+.justificar {
+        text-align: justify;
+}
+
 .boton-comprar-favoritos {
     width: 175px !important;
     height: 38px !important;
@@ -61,7 +65,7 @@ body {
 
 .titulo-gigante {
     font-size: 150px;
-    font-family: 'Alfa Slab One';
+    font-family: "Alfa Slab One";
 }
 
 .gigante {
@@ -237,7 +241,6 @@ textarea:focus {
     max-width: 130px;
 }
 
-
 .nav-icon {
     height: 30px;
     width: auto;
@@ -257,7 +260,6 @@ textarea:focus {
 /* FIN CARTAS */
 
 /* MODALES */
-
 
 .modal-header {
     border-bottom: 2px solid var(--color-seleccion);
@@ -368,7 +370,6 @@ textarea:focus {
 }
 
 /*FIN DUPLICADOS EVENTOS*/
-
 
 /* PÁGINA BIENVENIDA */
 
@@ -582,9 +583,20 @@ circle {
     background-position: center;
     background-repeat: no-repeat;
 }
+.pagina-sobre_nosotros h1 {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
 .fila-idea .tarjeta-formulario {
     margin-top: 0;
+}
+.pagina-sobre_nosotros .col-texto p {
+    font-size: 23px;
+}
+.foto-sobre-nosotros {
+    border-radius: 10px;
+    height: 350px;
+    width: auto;
 }
 
 /* FIN PÁGINA SOBRE-NOSOTROS */
@@ -838,14 +850,11 @@ circle {
 
 /* FIN PÁGINA COMENTARIOS ADMIN */
 
-
-
 /* MEDIA QUERIES */
 
 /* MEDIA QUERIES PARA PÁGINA DE BIENVENIDA */
 
 @media (max-width: 1399px) {
-
     /* Centrado del contenedor */
     .bienvenida-container {
         display: flex;
@@ -960,7 +969,6 @@ circle {
         transform: scale(0.95);
     }
 
-
     .flex-responsive {
         flex-direction: row !important;
         justify-content: space-around !important;
@@ -1006,7 +1014,6 @@ circle {
 
 /* FIN MEDIA QUERIES PARA NAVBAR */
 
-
 /* MEDIA QUERIES PARA PANEL ADMIN */
 @media (max-width: 992px) {
     .pagina-panelAdministrador .boton-panel {
@@ -1015,7 +1022,6 @@ circle {
 }
 
 @media (max-width: 768px) {
-
     .pagina-panelAdministrador button,
     .pagina-panelAdministrador .botonEliminar {
         font-size: 0.8rem !important;
@@ -1052,9 +1058,23 @@ circle {
     }
 }
 
-
 /* MEDIA QUERIES PARA PANEL ADMIN */
 
+/* MEDIA QUERIES PARA SOBRE NOSOTROS */
 
+@media (max-width: 992px) {
+    .pagina-sobre_nosotros h1 {
+        font-size: 5rem !important;
+        transform: scale(0.95);
+    }
+}
+@media (max-width: 767px) {
+    .pagina-sobre_nosotros h1 {
+        font-size: 3rem !important;
+        transform: scale(0.95);
+    }
+}
+
+/* FIN MEDIA QUERIES PARA SOBRE NOSOTROS */
 
 /* FIN MEDIA QUERIES */
