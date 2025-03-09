@@ -13,6 +13,6 @@ class Comentario extends Model
     
     public function user()
     {
-        return $this->belongsTo(Usuario::class);
+        return $this->belongsTo(Usuario::class, 'id_usuario');
     }
 }

@@ -54,5 +54,10 @@ class Usuario extends Authenticatable
     {
         return $this->hasMany(FavoriteEvent::class, 'user_id');
     }
-    // Puedes agregar métodos adicionales aquí si es necesario.
+    
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class, 'id_usuario');
+    }
+
 }

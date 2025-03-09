@@ -6,8 +6,10 @@ use App\Models\Comentario;
 use App\Models\FavoriteEvent;
 use App\Models\User;
 use App\Models\Usuario;
+use Hash;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class ApiController extends Controller
 {
@@ -138,7 +140,8 @@ class ApiController extends Controller
     }
 
 
-    public function listaFavoritos(){
+    public function listaFavoritos()
+    {
         $favoritos = FavoriteEvent::all();
 
         if (!$favoritos) {
@@ -148,7 +151,8 @@ class ApiController extends Controller
         }
     }
 
-    public function listaFavoritosUsuario($id_usuario){
+    public function listaFavoritosUsuario($id_usuario)
+    {
         $favoritos = FavoriteEvent::where('user_id', $id_usuario)->get();
 
         if (count($favoritos) == 0) {
@@ -159,7 +163,8 @@ class ApiController extends Controller
     }
 
 
-    public function favoritosId($id_favoritos){
+    public function favoritosId($id_favoritos)
+    {
         $favorito = FavoriteEvent::find($id_favoritos);
 
         if (!$favorito) {
@@ -169,7 +174,8 @@ class ApiController extends Controller
         }
     }
 
-    public function favoritosIDEvento($id_eventos){
+    public function favoritosIDEvento($id_eventos)
+    {
         $favoritos = FavoriteEvent::where('event_id', $id_eventos)->get();
 
         if (count($favoritos) == 0) {
@@ -179,7 +185,8 @@ class ApiController extends Controller
         }
     }
 
-    public function favoritosIDEventoIDUsuario($id_evento, $id_usuario){
+    public function favoritosIDEventoIDUsuario($id_evento, $id_usuario)
+    {
 
         $favoritos = FavoriteEvent::where('event_id', $id_evento)->where('user_id', $id_usuario)->get();
         if (count($favoritos) > 0) {
@@ -189,7 +196,8 @@ class ApiController extends Controller
         }
     }
 
-    public function listaFavoritosNombre($nombre_evento){
+    public function listaFavoritosNombre($nombre_evento)
+    {
         $favoritos = FavoriteEvent::where('event_name', 'like', '%' . $nombre_evento . '%')->get();
 
         if (count($favoritos) == 0) {
@@ -199,7 +207,8 @@ class ApiController extends Controller
         }
     }
 
-    public function listaFavoritosCiudad($ciudad){
+    public function listaFavoritosCiudad($ciudad)
+    {
         $favoritos = FavoriteEvent::where('event_city', 'like', '%' . $ciudad . '%')->get();
 
         if (count($favoritos) == 0) {
@@ -208,7 +217,8 @@ class ApiController extends Controller
             return response()->json($favoritos);
         }
     }
-    public function listaFavoritosGenero($genero){
+    public function listaFavoritosGenero($genero)
+    {
         $favoritos = FavoriteEvent::where('event_genre', 'like', '%' . $genero . '%')->get();
 
         if (count($favoritos) == 0) {
@@ -218,5 +228,165 @@ class ApiController extends Controller
         }
     }
 
+    public function crearUsuario(Request $request)
+    {
+        if (!$request->isJson()) {
+            return response()->json(['error' => 'El formato esperado no es JSON'], 422);
+        }
+        //Laravel arroja una excepción automáticamente si la validación falla,
+        try {
+            $request->validate([
+                'nombre' => 'required|string|max:15',
+                'apellidos' => 'required|string|max:30',
+                'edad' => 'required|integer|min:18|max:120',
+                'pais' => 'required|string|max:30',
+                'tipo_identificacion' => 'required|in:NIF,DNI',
+                'num_identificacion' => 'required|string|max:9',
+                'direccion' => 'required|string|max:100',
+                'email' => 'required|string|email|max:50|unique:usuarios',
+                'foto_perfil' => 'nullable|string',
+                'password' => 'required|string|min:6|confirmed'
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json(['error' => 'Los datos introducidos no son correctos', 'detalles' => $e->errors()], 400);
+        }
+
+        $usuario = new Usuario();
+        $usuario->nombre = $request->input('nombre');
+        $usuario->apellidos = $request->input('apellidos');
+        $usuario->edad = $request->input('edad');
+        $usuario->pais = $request->input('pais');
+        $usuario->tipo_identificacion = $request->input('tipo_identificacion');
+        $usuario->num_identificacion = $request->input('num_identificacion');
+        $usuario->direccion = $request->input('direccion');
+        $usuario->email = $request->input('email');
+        $usuario->foto_perfil = $request->input('foto_perfil');
+        $usuario->password = Hash::make($request->input('password'));
+        $usuario->save();
+
+        return response()->json(['message' => 'Usuario creado correctamente'], 200);
+    }
+
+    public function crearComentario(Request $request, $id_usuario)
+    {
+        if (!$request->isJson()) {
+            return response()->json(['error' => 'El formato esperado no es JSON'], 422);
+        }
+        $usuario = Usuario::find($id_usuario);
+
+        if (!$usuario) {
+            return response()->json(['error' => 'El usuario no existe, no se puede crear el comentario'], 404);
+        }
+        //Laravel arroja una excepción automáticamente si la validación falla,
+        try {
+            $request->validate([
+                'comentario' => 'required|string',
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json(['error' => 'Los datos introducidos no son correctos', 'detalles' => $e->errors()], 400);
+        }
+
+        $comentario = new Comentario();
+        $comentario->id_usuario = $usuario->id;
+        $comentario->nombre_usuario = $usuario->nombre;
+        $comentario->email_usuario = $usuario->email;
+        $comentario->comentario = $request->input('comentario');
+        $comentario->save();
+
+        return response()->json(['message' => 'Comentario creado correctamente'], 200);
+    }
+
+
+    public function actualizarUsuario(Request $request, $id_usuario)
+    {
+        if (!$request->isJson()) {
+            return response()->json(['error' => 'El formato esperado no es JSON'], 422);
+        }
+        $usuario = Usuario::find($id_usuario);
+
+        if (!$usuario) {
+            return response()->json(['error' => 'El usuario no existe, no se puede modificar el usuario'], 404);
+        }
+        //Laravel arroja una excepción automáticamente si la validación falla,
+        try {
+            $request->validate([
+                'nombre' => 'required|string|max:15',
+                'apellidos' => 'required|string|max:30',
+                'edad' => 'required|integer|min:18|max:120',
+                'pais' => 'required|string|max:30',
+                'tipo_identificacion' => 'required|in:NIF,DNI',
+                'num_identificacion' => 'required|string|max:9',
+                'direccion' => 'required|string|max:100',
+                'email' => 'required|string|email|max:50|unique:usuarios',
+                'foto_perfil' => 'nullable|string',
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json(['error' => 'Los datos introducidos no son correctos', 'detalles' => $e->errors()], 400);
+        }
+
+        $usuario->nombre = $request->input('nombre');
+        $usuario->apellidos = $request->input('apellidos');
+        $usuario->edad = $request->input('edad');
+        $usuario->pais = $request->input('pais');
+        $usuario->tipo_identificacion = $request->input('tipo_identificacion');
+        $usuario->num_identificacion = $request->input('num_identificacion');
+        $usuario->direccion = $request->input('direccion');
+        $usuario->email = $request->input('email');
+        $usuario->foto_perfil = $request->input('foto_perfil');
+
+        $usuario->save();
+
+        return response()->json(['message' => 'Usuario modificado correctamente'], 200);
+    }
+
+    public function actualizarComentario(Request $request, $id_comentario, $id_usuario)
+    {
+        if (!$request->isJson()) {
+            return response()->json(['error' => 'El formato esperado no es JSON'], 422);
+        }
+        $usuario = Usuario::find($id_usuario);
+        $comentario = Comentario::find($id_comentario)->where('id_usuario', $id_usuario)->first();
+
+        if (!$usuario) {
+            return response()->json(['error' => 'El usuario no existe, no se puede actualizar el comentario'], 404);
+        }
+        if (!$comentario) {
+            return response()->json(['error' => 'El comentario no existe o no esta asociado con dicho usuario, no se puede actualizar el comentario'], 404);
+        }
+        //Laravel arroja una excepción automáticamente si la validación falla,
+        try {
+            $request->validate([
+                'comentario' => 'required|string',
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json(['error' => 'Los datos introducidos no son correctos', 'detalles' => $e->errors()], 400);
+        }
+
+        $comentario->comentario = $request->input('comentario');
+        $comentario->save();
+
+        return response()->json(['message' => 'Comentario modificado correctamente'], 200);
+    }
+
+    public function eliminarUsuario($id){
+        $usuario = Usuario::find($id);
+        if (!$usuario) {
+            return response()->json(['error'=> 'ID de usuario no encontrado'],404);
+        }
+
+        Usuario::destroy($id);
+        return response()->json('Usuario eliminado correctamente',200);
+
+    }
+    public function eliminarComentario($id){
+        $comentario = Comentario::find($id);
+        if (!$comentario) {
+            return response()->json(['error'=> 'ID de comentario no encontrado'],404);
+        }
+
+        Comentario::destroy($id);
+        return response()->json('Comentario eliminado correctamente',200);
+
+    }   
 
 }

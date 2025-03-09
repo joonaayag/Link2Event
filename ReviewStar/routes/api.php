@@ -55,3 +55,16 @@ Route::get('/favoritos/evento/{id_eventos}/usuario/{id_usuario}', [ApiController
 Route::get('/favoritos/evento/nombre/{nombre_evento}', [ApiController::class,'listaFavoritosNombre']);
 Route::get('/favoritos/evento/ciudad/{ciudad}', [ApiController::class,'listaFavoritosCiudad']);
 Route::get('/favoritos/evento/genero/{genero}', [ApiController::class,'listaFavoritosGenero']);
+
+// Rutas POST
+Route::post('/usuarios/crear', [ApiController::class, 'crearUsuario']);
+Route::post('/comentarios/crear/{id_usuario}', [ApiController::class, 'crearComentario'])->whereNumber('id_usuario');
+
+// Rutas PUT
+Route::put('/usuarios/actualizar/{id_usuario}', [ApiController::class, 'actualizarUsuario'])->whereNumber('id_usuario');
+Route::put('/comentarios/actualizar/{id_comentario}/usuario/{id_usuario}', [ApiController::class, 'actualizarComentario'])->whereNumber('id_comentario');
+
+// Rutas DELETE
+Route::delete('/usuarios/eliminar/{id}', [ApiController::class, 'eliminarUsuario']);
+Route::delete('/comentarios/eliminar/{id_comentario}', [ApiController::class, 'eliminarComentario']);
+
