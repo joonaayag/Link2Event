@@ -32,9 +32,15 @@
 
 /* ESTILOS GENERALES */
 
+h1,h2,h3,h4,h5{
+    font-family: "Alfa Slab One";
+    letter-spacing: 2px;
+}
+
 html,
 body {
     min-width: 375px;
+    font-family: "Roboto";
 }
 
 html {
@@ -65,7 +71,6 @@ body {
 
 .titulo-gigante {
     font-size: 150px;
-    font-family: "Alfa Slab One";
 }
 
 .gigante {
@@ -1147,6 +1152,12 @@ circle {
         text-align: left;
     }
 
+    .foto-perfil-grande {
+        display: none !important;
+     }
+}
+
+@media (max-width: 1199px) {
     .foto-perfil-grande {
         display: none !important;
      }

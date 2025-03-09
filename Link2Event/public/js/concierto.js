@@ -241,7 +241,7 @@ function displayConcerts(concerts, newSearch) {
                     <div class="card tarjeta-formularioBis carta-inicioBis">
                         <img src="${imageUrl}" class="card-img-top" alt="${concert.name || 'Evento'}">
                         <div class="card-body">
-                            <div id="titulito"><h5 class="card-title">${concert.name || 'Evento sin nombre'}</h5></div>
+                            <div id="titulito"><h4 class="negrita naranjita">${concert.name || 'Evento sin nombre'}</h4></div>
                             <p class="card-text"><strong>Fecha:</strong> ${eventDate}</p>
                             <p class="card-text"><strong>Lugar:</strong> ${venueName}</p>
                             <p class="card-text"><strong>Ciudad:</strong> ${cityName}</p>
@@ -264,7 +264,7 @@ function displayConcerts(concerts, newSearch) {
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title negrita" id="exampleModalLongTitle">Más información sobre ${concert.name || 'este evento'}</h5>
+                                            <h5 class="modal-title negrita naranjita" id="exampleModalLongTitle">Más información sobre ${concert.name || 'este evento'}</h5>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
