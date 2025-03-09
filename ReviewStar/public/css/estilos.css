@@ -328,7 +328,7 @@ textarea:focus {
   background-color: var(--fondo-carta) !important;
   border: none !important;
   color: var(--color-principal) !important;
-  margin-top: 100%;
+  margin-top: auto !important;
   width: 50%;
 }
 
