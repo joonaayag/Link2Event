@@ -25,7 +25,7 @@
                     <div class="card-body d-flex flex-column">
                         <div class="row">
                             <div class="col-lg-8 col-md-12 d-flex flex-column">
-                                <h3 class="bienvenida-titulo card-header card-title">Mándanos un correo</h3>
+                                <h3 class="bienvenida-titulo card-header card-title h3-contacto">Mándanos un correo</h3>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="emailUsuario" class="form-label">Tu correo:</label>
@@ -79,7 +79,6 @@
                     </div>
                 </div>
                 <!-- Fin de la tarjeta -->
-
             </div>
         </div>
     </div>

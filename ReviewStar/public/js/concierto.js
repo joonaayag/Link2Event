@@ -133,7 +133,7 @@ function toggleLoadMoreButton(pageInfo) {
         
         const button = document.createElement('button');
         button.id = 'load-more-button';
-        button.className = 'btn btn-primary';
+        button.className = 'btn btn-primary btn-registroBis mt-3';
         button.textContent = 'Cargar más eventos';
         button.addEventListener('click', loadMoreEvents);
         
@@ -237,7 +237,7 @@ function displayConcerts(concerts, newSearch) {
                 : 'Fecha no disponible';
             
             return `
-                <div class="col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
                     <div class="card tarjeta-formularioBis carta-inicioBis">
                         <img src="${imageUrl}" class="card-img-top" alt="${concert.name || 'Evento'}">
                         <div class="card-body">
@@ -264,23 +264,23 @@ function displayConcerts(concerts, newSearch) {
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Más información sobre ${concert.name || 'este evento'}</h5>
+                                            <h5 class="modal-title negrita" id="exampleModalLongTitle">Más información sobre ${concert.name || 'este evento'}</h5>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
-                                                <div class="col-4">
+                                                <div class="col-6">
                                                     <img src="${imageUrl}" class="img-fluid" alt="Imagen del evento">
                                                 </div>
-                                                <div class="col-8">
-                                                    <p>Ciudad: ${cityName}</p>
-                                                    <p>Lugar: ${venueName}</p>
-                                                    <p>Fecha de inicio: ${eventDate}</p>
-                                                    <p>Hora de inicio: ${eventTime}</p>
-                                                    <p>Fecha entradas disponibles: ${saleDate}</p>
-                                                    <p>Dirección: ${venueAddress}</p>
-                                                    <p>Género: ${genre}</p>
-                                                    <p>Precio mínimo: ${minPrice !== 'No disponible' ? '$' + minPrice : 'No disponible'}</p>
-                                                    <p>Precio máximo: ${maxPrice !== 'No disponible' ? '$' + maxPrice : 'No disponible'}</p>
+                                                <div class="col-6">
+                                                    <p><strong>Ciudad:</strong> ${cityName}</p>
+                                                    <p><strong>Lugar:</strong> ${venueName}</p>
+                                                    <p><strong>Fecha de inicio:</strong> ${eventDate}</p>
+                                                    <p><strong>Hora de inicio:</strong> ${eventTime}</p>
+                                                    <p><strong>Fecha entradas disponibles:</strong> ${saleDate}</p>
+                                                    <p><strong>Dirección:</strong> ${venueAddress}</p>
+                                                    <p><strong>Género:</strong> ${genre}</p>
+                                                    <p><strong>Precio mínimo:</strong> ${minPrice !== 'No disponible' ? '$' + minPrice : 'No disponible'}</p>
+                                                    <p><strong>Precio máximo:</strong> ${maxPrice !== 'No disponible' ? '$' + maxPrice : 'No disponible'}</p>
                                                     
                                                     <!-- Botón de favorito en el modal también -->
                                                     <button onclick="saveAsFavorite('${concert.id}')" class="btn btn-primary btn-registroBis btn-modal mt-3 w-100">

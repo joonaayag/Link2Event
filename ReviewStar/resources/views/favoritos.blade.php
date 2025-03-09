@@ -16,7 +16,7 @@
                         @if($favorites && $favorites->count() > 0)
                             <div class="row">
                                 @foreach($favorites as $favorite)
-                                    <div class="col-md-6 col-sm-12 mb-4">
+                                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                         <div class="card tarjeta-formularioBis carta-inicioBis">
                                             <img src="{{ $favorite->event_image ?? 'https://via.placeholder.com/300' }}"
                                                 class="card-img-top" alt="{{ $favorite->event_name }}">
@@ -38,8 +38,7 @@
                                                 <div class="d-flex justify-content-between mt-3">
                                                     @if($favorite->event_url)
                                                         <a href="{{ $favorite->event_url }}" target="_blank"
-                                                            class="btn btn-primary btn-registroBis btn-modal mt-auto boton-comprar-favoritos">Comprar
-                                                            Entradas</a>
+                                                            class="btn btn-primary btn-registroBis btn-modal mt-auto boton-comprar-favoritos">Comprar</a>
                                                     @endif
                                                     <button
                                                         class="btn btn-danger btn-loginBisRemove btn-modal mt-auto remove-favorite boton-eliminar-favorito"
@@ -124,11 +123,13 @@
                                     // Si ya no quedan tarjetas, mostrar mensaje
                                     if (document.querySelectorAll('.col-md-6').length === 0) {
                                         document.querySelector('.card-body').innerHTML = `
-                                    <div class="alert alert-info">
-                                        No tienes eventos favoritos guardados. ¡Explora los eventos disponibles y guarda tus favoritos!
-                                    </div>
-                                    <a href="{{ route('eventos') }}" class="btn btn-primary">Ver eventos disponibles</a>
-                                `;
+                                            <div class="alert alert-info">
+                                                No tienes eventos favoritos guardados. ¡Explora los eventos disponibles y guarda tus favoritos!
+                                            </div>
+                                            <div class="text-center w-100">
+                                                <a href="{{ route('eventos') }}" class="btn btn-primary btn-loginBis btn-modal mt-3">Ver eventos disponibles</a>
+                                            </div>
+                                        `;
                                     }
 
                                     // Cerrar el modal

@@ -136,7 +136,7 @@
 
     <!-- Footer -->
     <footer class="negrita">
-        <p>&copy; 2025 ReviewStar. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Link 2 Event. Todos los derechos reservados.</p>
     </footer>
 
 </body>

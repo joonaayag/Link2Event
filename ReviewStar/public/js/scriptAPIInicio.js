@@ -55,8 +55,8 @@ function inicio() {
                             <div class="modal fade modalInicio" id="modal_${datosEvento.id}" tabindex="-1" role="dialog" aria-labelledby="modalTitle_${datosEvento.id}" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Más información sobre ${datosEvento.nombre}</h5>
+                                        <div class="modal-header negrita">
+                                            <h5 class="modal-title negrita" id="exampleModalLongTitle">Más información sobre ${datosEvento.nombre}</h5>
                                         </div>
                                         <div class="modal-body d-flex justify-content-center align-items-center">
                                             <div class="row">
@@ -106,7 +106,7 @@ function inicio() {
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Más información sobre ${datosEvento.nombre}</h5>
+                                            <h5 class="modal-title negrita" id="exampleModalLongTitle">Más información sobre ${datosEvento.nombre}</h5>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
@@ -142,7 +142,6 @@ function inicio() {
         type: "GET",
         dataType: "json",
         success: function (response) {
-            console.log(response);
 
             //Verifica si la respuesta contiene eventos y  recorre la lista de eventos
             if (response._embedded && response._embedded.events) {
@@ -166,7 +165,6 @@ function inicio() {
         type: "GET",
         dataType: "json",
         success: function (response) {
-            console.log(response);
 
             //Verifica si la respuesta contiene eventos y  recorre la lista de eventos
             if (response._embedded && response._embedded.events) {
@@ -189,7 +187,6 @@ function inicio() {
         type: "GET",
         dataType: "json",
         success: function (response) {
-            console.log(response);
 
             //Verifica si la respuesta contiene eventos y  recorre la lista de eventos
             if (response._embedded && response._embedded.events) {
@@ -204,7 +201,7 @@ function inicio() {
             }
         },
         error: function () {
-            console.error("error en la petición de música");
+            console.error("error en la petición de arte");
         },
     });
 
