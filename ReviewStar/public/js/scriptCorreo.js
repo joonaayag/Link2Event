@@ -29,7 +29,6 @@ function inicio() {
             window.location.href = mailtoLink;
             // Elimina estilos de validación y valores una vez se ha abierto la ventana del correo 
             setTimeout(() => {
-                emailUsuario.val('');
                 asunto.val('');
                 cuerpo.val('');
 

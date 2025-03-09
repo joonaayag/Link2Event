@@ -44,24 +44,28 @@ html {
 
 body {
     margin: 0;
-    margin-bottom: 40px;
+    margin-bottom: 70px;
     min-height: 100vh;
     padding-top: 85px;
 }
 
-.boton-comprar-favoritos{
-  width: 175px !important;
-  height: 38px !important;
+.justificar {
+        text-align: justify;
 }
 
-.boton-eliminar-favorito{
-  width: 175px !important;
-  height: 38px !important;
+.boton-comprar-favoritos {
+    width: 175px !important;
+    height: 38px !important;
+}
+
+.boton-eliminar-favorito {
+    width: 175px !important;
+    height: 38px !important;
 }
 
 .titulo-gigante {
     font-size: 150px;
-    font-family: 'Alfa Slab One';
+    font-family: "Alfa Slab One";
 }
 
 .gigante {
@@ -100,7 +104,7 @@ body {
     /* Para que quede por encima del contenido */
 }
 
-.nav-item{
+.nav-item {
     margin: 0px 12px;
 }
 
@@ -108,12 +112,18 @@ body {
     margin: 0px 5px;
     padding: 15px;
 }
-.navbar-toggler, .navbar-nav, .parrafo-navbar, .foto-perfil{
+
+.navbar-toggler,
+.navbar-nav,
+.parrafo-navbar,
+.foto-perfil {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.dropdown-menu{
+
+.dropdown-menu {
     background-color: rgba(34, 34, 34, 0.9) !important;
 }
+
 .desplegable .dropdown-item:hover,
 .desplegable .dropdown-item:active,
 .desplegable .dropdown-item:focus {
@@ -121,7 +131,8 @@ body {
     color: #000 !important;
     transition: 0.3s ease;
 }
-.desplegable a{
+
+.desplegable a {
     color: white;
 }
 
@@ -195,16 +206,17 @@ textarea:focus {
 }
 
 .card-img-top {
-  width: 100%;          
-  height: 200px;        
-  object-fit: cover;    
-  display: block;       
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
 }
 
 .foto-perfil {
     height: 50px;
     max-width: 50px;
 }
+
 .foto-perfil:hover {
     transform: scale(1.05);
     cursor: pointer;
@@ -216,17 +228,18 @@ textarea:focus {
     height: 50px;
     max-width: 50px;
 }
+
 .foto-perfil-nav:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 0 4px 4px var(--color-seleccion) !important;
+    transform: scale(1.05);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 4px 4px var(--color-seleccion) !important;
 }
+
 .foto-perfil-grande {
     height: 130px;
     max-width: 130px;
 }
-
 
 .nav-icon {
     height: 30px;
@@ -237,8 +250,9 @@ textarea:focus {
     height: 100px !important;
     width: auto;
 }
+
 .logo-navbar {
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     height: 40px;
     width: auto;
 }
@@ -246,7 +260,6 @@ textarea:focus {
 /* FIN CARTAS */
 
 /* MODALES */
-
 
 .modal-header {
     border-bottom: 2px solid var(--color-seleccion);
@@ -272,87 +285,99 @@ textarea:focus {
 
 /*DUPLICADOS PARA EVENTOS*/
 
- .tarjeta-formularioBis{
-  background-color: rgba(34, 34, 34, 0.75) !important;
-  color: var(--color-principal) !important;
-  margin: 100px 0px;
-  min-height: 700px;
-  max-height: 700px;
-  justify-content: space-between;
+.tarjeta-formularioBis {
+    background-color: rgba(34, 34, 34, 0.75) !important;
+    color: var(--color-principal) !important;
+    margin: 100px 0px;
+    min-height: 700px;
+    max-height: 700px;
+    justify-content: space-between;
 }
 
 .carta-inicioBis {
-  padding: 10px !important;
-  border-radius: 15px !important;
-  box-shadow: 0 0 3px 5px rgba(0, 0, 0, 0.6) !important;
-  max-height: 700px;
-  min-height: 700px;
-  justify-content: space-between;
-} 
+    margin-top: 30px !important;
+    padding: 10px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 0 3px 5px rgba(0, 0, 0, 0.6) !important;
+    max-height: 700px;
+    min-height: 700px;
+    justify-content: space-between;
+}
 
 .btn-registroBis {
-  background-color: var(--color-seleccion) !important;
-  border: none !important;
-  color: #222 !important;
-  width: 50%;
-  margin-top: auto;
+    background-color: var(--color-seleccion) !important;
+    border: none !important;
+    color: #222 !important;
+    width: 50%;
+    margin-top: auto;
 }
 
 .btn-registroBis:hover {
-  background-color: #ffd940 !important;
-  color: #222 !important;
-  transform: scale(1.02);
-  transition: all var(--velocidad-transicion);
+    background-color: #ffd940 !important;
+    color: #222 !important;
+    transform: scale(1.02);
+    transition: all var(--velocidad-transicion);
 }
+
 .btn-registroBisRemove {
-  background-color: #b81e1e !important;
-  border: none !important;
-  color: #222 !important;
-  margin-top: auto;
-  width: 50%;
+    background-color: #b81e1e !important;
+    border: none !important;
+    color: #222 !important;
+    margin-top: auto;
+    width: 50%;
 }
 
 .btn-registroBisRemove:hover {
-  background-color: #ff0000 !important;
-  color: #222 !important;
-  transform: scale(1.02);
-  transition: all var(--velocidad-transicion);
+    background-color: #ff0000 !important;
+    color: #222 !important;
+    transform: scale(1.02);
+    transition: all var(--velocidad-transicion);
 }
 
 .carta-inicioBis:hover {
-  box-shadow: 0 0 3px 5px var(--color-seleccion) !important;
-  transition: 0.3s ease;
+    box-shadow: 0 0 3px 5px var(--color-seleccion) !important;
+    transition: 0.3s ease;
 }
 
 .btn-loginBis {
+<<<<<<< HEAD
   background-color: var(--fondo-carta) !important;
   border: none !important;
   color: var(--color-principal) !important;
   margin-top: auto !important;
   width: 50%;
+=======
+    background-color: var(--fondo-carta) !important;
+    border: none !important;
+    color: var(--color-principal) !important;
+    margin-top: 100%;
+    width: 50%;
+>>>>>>> 776743673340cab9f32632348272cdfb6d6458e1
 }
 
 .btn-loginBis:hover {
-  background-color: #2c2c2c !important;
-  color: var(--color-principal) !important;
-  transform: scale(1.02);
-  transition: all var(--velocidad-transicion);
+    background-color: #2c2c2c !important;
+    color: var(--color-principal) !important;
+    transform: scale(1.02);
+    transition: all var(--velocidad-transicion);
 }
 
 #titulito {
-  height: 100px;
+    height: 100px;
 }
 
-#tituloFav{
-  height: 100px;
+#tituloFav {
+    height: 100px;
 }
+
 #filterForm {
-    padding-left: 15px; /* Ajusta el valor según lo necesites */
-    padding-right: 15px; /* Ajusta el valor según lo necesites */
+    padding-left: 30px;
+    /* Ajusta el valor según lo necesites */
+    padding-right: 30px;
+    /* Ajusta el valor según lo necesites */
 }
 
 /*FIN DUPLICADOS EVENTOS*/
-
 
 /* PÁGINA BIENVENIDA */
 
@@ -380,10 +405,10 @@ textarea:focus {
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    filter:brightness(70%);
+    filter: brightness(70%);
 }
 
-.borde-abajo{
+.borde-abajo {
     border-bottom: var(--color-seleccion) 2px solid;
     border-radius: 8%;
 }
@@ -566,18 +591,33 @@ circle {
     background-position: center;
     background-repeat: no-repeat;
 }
+.pagina-sobre_nosotros h1 {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-.fila-idea .tarjeta-formulario{
+.fila-idea .tarjeta-formulario {
     margin-top: 0;
+}
+.pagina-sobre_nosotros .col-texto p {
+    font-size: 23px;
+}
+.foto-sobre-nosotros {
+    border-radius: 10px;
+    height: 350px;
+    width: auto;
 }
 
 /* FIN PÁGINA SOBRE-NOSOTROS */
 
 /* PÁGINA DE CONTACTANOS */
 
+.h3-contacto {
+    padding-left: 0px;
+}
+
 #botonEnviarMensaje {
-  margin: 0px !important;
-  width: 129px !important;
+    margin: 0px !important;
+    width: 129px !important;
 }
 
 .pagina-contactanos {
@@ -620,6 +660,7 @@ circle {
     border-radius: 10px !important;
     border: solid var(--color-seleccion) 2px !important;
 }
+
 .info-contacto {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -675,9 +716,11 @@ circle {
     background-position: center;
     background-repeat: no-repeat;
 }
+
 .pagina-inicio h2 {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 .pagina-inicio h3 {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -732,8 +775,9 @@ circle {
     background-position: center;
     background-repeat: no-repeat;
 }
-.pagina-panelAdministrador h1{
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+.pagina-panelAdministrador h1 {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .contenedor-panel {
@@ -753,9 +797,10 @@ circle {
     overflow: hidden;
     text-align: center;
 }
-.tabla-usuarios td{
-  color: white !important;
-  text-align: center !important;
+
+.tabla-usuarios td {
+    color: white !important;
+    text-align: center !important;
 }
 
 .tabla-usuarios thead {
@@ -763,7 +808,7 @@ circle {
 }
 
 .tabla-usuarios th {
-  text-align: center !important;
+    text-align: center !important;
     padding: 1rem;
     text-align: left;
     color: var(--fondo-navbar);
@@ -785,8 +830,8 @@ circle {
     border-bottom: none;
 }
 
-.boton-panel{
-  width: 150px;
+.boton-panel {
+    width: 150px;
 }
 
 /* FIN PÁGINA PANEL ADMIN */
@@ -813,8 +858,6 @@ circle {
 
 /* FIN PÁGINA COMENTARIOS ADMIN */
 
-
-
 /* MEDIA QUERIES */
 
 /* MEDIA QUERIES PARA PÁGINA DE BIENVENIDA */
@@ -831,7 +874,8 @@ circle {
 
     /* Cambio en la alineación de los elementos dentro de .texto-columna-derecha */
     .texto-columna-derecha {
-        align-items: center !important; /* Cambio de align-items-start a align-items-center */
+        align-items: center !important;
+        /* Cambio de align-items-start a align-items-center */
     }
 
     .col-xxl-6,
@@ -872,8 +916,8 @@ circle {
     }
 
     #botonEnviarMensaje {
-      margin: 0px !important;
-      height: 46px !important;
+        margin: 0px !important;
+        height: 46px !important;
     }
 }
 
@@ -897,22 +941,26 @@ circle {
         transform: scale(0.95);
     }
 }
+
 @media (max-width: 768px) {
     .pagina-inicio h2 {
         font-size: 2rem !important;
         transform: scale(0.95);
     }
+
     .pagina-inicio h3 {
         transform: scale(0.95);
         font-size: 1.7rem !important;
     }
 }
+
 @media (max-width: 576px) {
     .pagina-inicio .carta-inicio {
         transform: scale(0.95);
         max-width: 360px;
         margin: 0 auto;
     }
+
     .pagina-inicio h3 {
         font-size: 1.5rem !important;
     }
@@ -923,24 +971,23 @@ circle {
 /* MEDIA QUERIES PARA PÁGINA DE CONTACTO */
 
 @media (max-width: 991px) {
-  .info-contacto {
-    margin-top: 20px;
-    align-items: start !important;
-    transform: scale(0.95);
-  }
+    .info-contacto {
+        margin-top: 20px;
+        align-items: start !important;
+        transform: scale(0.95);
+    }
 
-  
-  .flex-responsive{
-    flex-direction: row !important;
-    justify-content: space-around !important;
-    width: 100% !important;
-    align-items: center !important;
-  }
+    .flex-responsive {
+        flex-direction: row !important;
+        justify-content: space-around !important;
+        width: 100% !important;
+        align-items: center !important;
+    }
 
-  #botonEnviarMensaje {
-    margin: 0px !important;
-    height: 46px !important;
-  }
+    #botonEnviarMensaje {
+        margin: 0px !important;
+        height: 46px !important;
+    }
 }
 
 /* FIN MEDIA QUERIES PARA PÁGINA DE CONTACTO */
@@ -951,69 +998,91 @@ circle {
     .logo-navbar {
         display: none;
     }
+
     .navbar-toggler {
         margin-left: auto;
         box-shadow: none !important;
         border: none !important;
     }
+
     .navbar-nav {
         align-items: end;
         padding-right: 16px !important;
     }
+
     .parrafo-navbar {
         text-align: right !important;
         width: 100%;
     }
+
     .foto-perfil-nav {
-      margin-right: 16px !important;
+        margin-right: 16px !important;
     }
 }
 
 /* FIN MEDIA QUERIES PARA NAVBAR */
 
-
 /* MEDIA QUERIES PARA PANEL ADMIN */
 @media (max-width: 992px) {
-  .pagina-panelAdministrador .boton-panel{
-    margin: 2px;
-  }
+    .pagina-panelAdministrador .boton-panel {
+        margin: 2px;
+    }
 }
 
 @media (max-width: 768px) {
-  .pagina-panelAdministrador button, .pagina-panelAdministrador .botonEliminar{
-    font-size: 0.8rem !important;
-    padding: 0.2rem 0.5rem !important;
-  }
-  .pagina-panelAdministrador th{
-    font-size: 0.7rem !important;
-  }
-  .pagina-panelAdministrador td{
-    font-size: 0.6rem !important;
-  }
+    .pagina-panelAdministrador button,
+    .pagina-panelAdministrador .botonEliminar {
+        font-size: 0.8rem !important;
+        padding: 0.2rem 0.5rem !important;
+    }
+
+    .pagina-panelAdministrador th {
+        font-size: 0.7rem !important;
+    }
+
+    .pagina-panelAdministrador td {
+        font-size: 0.6rem !important;
+    }
 }
 
 @media (max-width: 576px) {
-  .pagina-panelAdministrador h2{
-    font-size: 1.2rem !important;
-  }
+    .pagina-panelAdministrador h2 {
+        font-size: 1.2rem !important;
+    }
 }
 
 @media (max-width: 462px) {
-  .pagina-panelAdministrador button{
-    font-size: 0.6rem !important;
-    padding: 0.2rem 0.5rem !important;
-  }
-  .pagina-panelAdministrador th{
-    width: 2rem !important;
-  }
-  .pagina-panelAdministrador td{
-    width: 2rem !important;
-  }
-}
+    .pagina-panelAdministrador button {
+        font-size: 0.6rem !important;
+        padding: 0.2rem 0.5rem !important;
+    }
 
+    .pagina-panelAdministrador th {
+        width: 2rem !important;
+    }
+
+    .pagina-panelAdministrador td {
+        width: 2rem !important;
+    }
+}
 
 /* MEDIA QUERIES PARA PANEL ADMIN */
 
+/* MEDIA QUERIES PARA SOBRE NOSOTROS */
 
+@media (max-width: 992px) {
+    .pagina-sobre_nosotros h1 {
+        font-size: 5rem !important;
+        transform: scale(0.95);
+    }
+}
+@media (max-width: 767px) {
+    .pagina-sobre_nosotros h1 {
+        font-size: 3rem !important;
+        transform: scale(0.95);
+    }
+}
+
+/* FIN MEDIA QUERIES PARA SOBRE NOSOTROS */
 
 /* FIN MEDIA QUERIES */
