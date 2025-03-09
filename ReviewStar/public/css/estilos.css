@@ -340,11 +340,19 @@ textarea:focus {
 }
 
 .btn-loginBis {
+<<<<<<< HEAD
+  background-color: var(--fondo-carta) !important;
+  border: none !important;
+  color: var(--color-principal) !important;
+  margin-top: auto !important;
+  width: 50%;
+=======
     background-color: var(--fondo-carta) !important;
     border: none !important;
     color: var(--color-principal) !important;
     margin-top: 100%;
     width: 50%;
+>>>>>>> 776743673340cab9f32632348272cdfb6d6458e1
 }
 
 .btn-loginBis:hover {
