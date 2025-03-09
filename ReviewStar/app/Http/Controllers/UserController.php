@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Usuario;
-use App\Models\Comentarios;
+use App\Models\Comentario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -143,7 +143,7 @@ class UserController extends Controller
 
     public function mostrarComentarios($id)
     {
-        $comentarios = Comentarios::where('id_usuario', $id)->get();
+        $comentarios = Comentario::where('id_usuario', $id)->get();
 
         return view('adminComentarios', compact('comentarios'));
     }

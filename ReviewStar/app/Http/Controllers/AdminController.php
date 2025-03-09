@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comentarios;
+use App\Models\Comentario;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -86,12 +86,12 @@ class AdminController extends Controller
         }
         $usuario = Usuario::findOrFail($request->input('id_usuario'));
 
-        $comentarios = Comentarios::where('id_usuario', $request->input('id_usuario'))->get();
+        $comentarios = Comentario::where('id_usuario', $request->input('id_usuario'))->get();
         return view('adminComentarios', compact('comentarios', 'usuario'));
     }
     
     public function eliminarComentario(Request $request){
-        $comentario = Comentarios::findOrFail($request->input('id_comentario'));
+        $comentario = Comentario::findOrFail($request->input('id_comentario'));
         $comentario->delete();
         return redirect()->route('mostrarComentarios', ['id_usuario' => $request->input('id_usuario')])->with('success','Comentario borrado con éxito');
     }

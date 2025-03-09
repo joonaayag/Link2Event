@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comentarios;
+use App\Models\Comentario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class comentariosController extends Controller
+class ComentariosController extends Controller
 {
     public function vistaComentarios()
     {
@@ -21,13 +21,10 @@ class comentariosController extends Controller
 
         $usuario = Auth::user();
 
-        $fotoPerfil = $usuario->foto_perfil ? $usuario->foto_perfil : url('assets/img/foto-default.png'); 
-
-        Comentarios::create([
+        Comentario::create([
             'id_usuario' => $usuario->id,
             'nombre_usuario' => $usuario->nombre,
             'email_usuario' => $usuario->email,
-            'foto_perfil' => $fotoPerfil,
             'comentario' => $request->comentario,
         ]);
 

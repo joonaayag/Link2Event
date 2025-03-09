@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Comentarios;
+use App\Models\Comentario;
 use App\Models\FavoriteEvent;
 use App\Models\User;
 use App\Models\Usuario;
@@ -94,7 +94,7 @@ class ApiController extends Controller
 
     public function listaComentarios()
     {
-        $comentarios = Comentarios::all();
+        $comentarios = Comentario::all();
 
         if (!$comentarios) {
             return response()->json(['message' => 'No se encontraron comentarios'], 404);
@@ -105,7 +105,7 @@ class ApiController extends Controller
 
     public function comentariosUsuario($id_usuario)
     {
-        $comentarios = Comentarios::where('id_usuario', $id_usuario)->get();
+        $comentarios = Comentario::where('id_usuario', $id_usuario)->get();
 
         if (count($comentarios) == 0) {
             return response()->json(['message' => 'Este usuario no tiene comentarios'], 404);
@@ -116,7 +116,7 @@ class ApiController extends Controller
 
     public function comentarioId($id_comentario)
     {
-        $comentario = Comentarios::find($id_comentario);
+        $comentario = Comentario::find($id_comentario);
 
         if (!$comentario) {
             return response()->json(['message' => 'No existe comentario con ID introducido'], 404);
@@ -128,7 +128,7 @@ class ApiController extends Controller
     //Esta funcion devuelve los comentarios que contienen el parámetro introducido
     public function comentarioContenido($contenido)
     {
-        $comentarios = Comentarios::where('comentario', 'like', '%' . $contenido . '%')->get();
+        $comentarios = Comentario::where('comentario', 'like', '%' . $contenido . '%')->get();
 
         if (count($comentarios) == 0) {
             return response()->json(['message' => 'No se encontraron comentarios con ese contenido'], 404);

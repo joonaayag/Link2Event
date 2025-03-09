@@ -13,7 +13,7 @@
             <div class="col-xxl-6 col-xl-12">
                 <h1 class="titulo-gigante blanco offset-0 titulo-principal">Link</h1>
                 <h1 class="titulo-gigante blanco offset-1 titulo-principal">2</h1>
-                <h1 class="titulo-gigante blanco offset-2 titulo-principal">Events</h1>
+                <h1 class="titulo-gigante blanco offset-2 titulo-principal">Event</h1>
             </div>
 
             <!-- Columna derecha-->

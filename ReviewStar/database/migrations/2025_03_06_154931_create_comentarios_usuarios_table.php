@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->unsignedBigInteger('id_usuario');
             $table->string('nombre_usuario');
             $table->string('email_usuario');
-            $table->string('foto_perfil');
             $table->text('comentario');
             $table->timestamps();
 
