@@ -6,7 +6,8 @@
 @section('contenido')
     {{-- SCRIPTS EN ESTA PÁGINA --}}
     <script src="{{ asset('js/scriptNacionalidades.js') }}" defer></script>
-    <script src="{{ asset('js/validacionRegistro.js') }}" defer></script>
+    <script src="{{ asset('js/validacionEditarUsuario.js') }}" defer></script>
+    <script src="{{ asset('js/validarPatrones.js') }}" defer></script>
 
     <div class="container d-flex justify-content-center align-items-center">
         <div class="col-md-6">
