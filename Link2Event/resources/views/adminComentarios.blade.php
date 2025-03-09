@@ -5,12 +5,11 @@
 @section('claseBody', 'class=pagina-adminComentarios')
 
 @section('contenido')
-<script src="{{ asset('js/claseNotificaciones.js') }}" defer></script>
+    <script src="{{ asset('js/claseNotificaciones.js') }}" defer></script>
 
     <div class="container mt-5">
         @if (count($comentarios) > 0)
             <h2 class="blanco negrita mb-4">Comentarios de {{ $comentarios[0]->nombre_usuario }}</h2>
-
             <!-- Muestra un mensaje de confirmación cuando se actualiza el perfil exitosamente -->
             @if (session('success'))
                 <script>
@@ -76,6 +75,7 @@
         @else
             <p class="blanco">No hay comentarios disponibles para este usuario </p>
         @endif
+        <a href="{{ route('admin.panel') }}" class="btn btn-registro mb-3">Volver</a>
     </div>
 
 
