@@ -60,7 +60,15 @@
             "@php artisan key:generate",
             "@php artisan migrate",
             "setupt.bat"
-        ]
+        ],
+        "post-install-cmd": [
+        "@php artisan key:generate --force",
+        "@php artisan optimize:clear"
+    ],
+    "post-autoload-dump": [
+        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+        "@php artisan package:discover --ansi"
+    ]
     },
     "extra": {
         "laravel": {
