@@ -1,13 +1,4 @@
-# Curso2425_2DAW_GrupoB
-Proyecto intermodular Curso 2425 2DAW
+# Course2425_2DAW_GroupB
+Intermodular Project - Course 2425 2DAW
 
-## Acceso al Trello del proyecto.
-[Click aquí](https://trello.com/b/sa5hHuhb/reviewstar)
-
-# Diseños provisionales en FIGMA.
-
-## Menú de login/crear cuenta.
-![img de login](/img/login.png)
-
-## Página principal.
-![img de página principal](/img/ventanaPrincipal.png)
+Link2Event is a web application developed as part of a school project by a team of three classmates over the course of two weeks. The main goal was to create a platform where users can easily discover thousands of events sourced from an external API. The application allows users to register an account, browse and filter events based on their interests, view detailed information for each event, contact the support team, and even simulate the ticket purchasing process. The project was built using technologies such as PHP, Laravel, Blade, JavaScript, and Bootstrap, combining server-side logic with a clean and responsive frontend to deliver a smooth user experience. Despite the short development time, the team successfully delivered a functional prototype that showcases both backend and frontend integration, demonstrating solid teamwork and technical skills.
